@@ -5,14 +5,32 @@
   box-sizing: border-box;
 }
 
-#root {
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #666;
+  text-decoration: underline;
+}
+
+body {
   width: 100vw;
   height: 100vh;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: #ddd;
   color: #333;
 }
+
+#navbar {
+  width: 100%;
+  background-color: #fff;
+}
+
+#navbar ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+

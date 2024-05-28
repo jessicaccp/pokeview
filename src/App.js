@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from './components/Header';
+import Credits from './pages/Credits';
 
 function App() {
   // const [apiData, setApiData] = useState([]);
@@ -20,7 +22,7 @@ function App() {
 
   return (
     <>
-      <Header />
+        <Credits />
     </>
   );
 }

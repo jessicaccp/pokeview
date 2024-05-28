@@ -5,10 +5,24 @@
   box-sizing: border-box;
 }
 
-#root {
+body {
   width: 100vw;
   height: 100vh;
   background-color: #ddd;
   color: #333;
   font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  max-width: 1200px;
+}
+
+h1 {
+  line-height: 2;
+}
+
+ul {
+  list-style: none;
 }

@@ -1,6 +1,5 @@
-import './App.css';
-import { useState, useEffect } from 'react';
-import Navbar from './Navbar';
+import React from 'react';
+import Navbar from './components/Navbar';
 
 function App() {
   // const [apiData, setApiData] = useState([]);

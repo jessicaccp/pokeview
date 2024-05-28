@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/css/Navbar.css';
 
 function Navbar() {
     const links = [
@@ -10,11 +11,9 @@ function Navbar() {
     const linksList = links.map(link => <li><a href={link.url}>{link.title}</a></li>);
 
     return (
-        <div id='navbar'>
             <nav>
                 <ul>{linksList}</ul>
             </nav>
-        </div>
     );
 }
 

@@ -1,0 +1,6 @@
+nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 0.5rem;
+    justify-content: center;
+}

@@ -5,32 +5,10 @@
   box-sizing: border-box;
 }
 
-a {
-  color: #333;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #666;
-  text-decoration: underline;
-}
-
-body {
+#root {
   width: 100vw;
   height: 100vh;
   background-color: #ddd;
   color: #333;
+  font-family: sans-serif;
 }
-
-#navbar {
-  width: 100%;
-  background-color: #fff;
-}
-
-#navbar ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-}
-

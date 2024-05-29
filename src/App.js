@@ -1,29 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Header from './components/Header';
-import Credits from './pages/Credits';
+import { Navbar, Header, Main, Footer } from './layout.js'
 
 function App() {
-  // const [apiData, setApiData] = useState([]);
+  const dataMain = '';
 
-  // useEffect(() => {
-  //   document.title = 'React Poke API';
-
-  //   fetch('https://pokeapi.co/api/v2/')
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     setApiData(data);
-  //     console.log({apiData})
-  //   })
-  //   .catch((err) => {
-  //     console.log(err.message);
-  //   });
-  // }, []);
-
+ 
   return (
-    <>
-        <Credits />
-    </>
+  <>
+    <Navbar />
+    <Header />
+    <Main data={dataMain}/>
+    <Footer />
+  </>
   );
 }
 

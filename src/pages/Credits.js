@@ -2,11 +2,11 @@ import React from 'react';
 
 function Credits() {
     const links = [
-        {title: 'Pokeball Icon', url: 'https://icon-icons.com/pt/icone/pokeball-pokemon-go-jogo/67533'},
-        {title: 'Favicon Converter', url: 'https://favicon.io/favicon-converter/'}
+        {id: 1, title: 'Pokeball Icon', url: 'https://icon-icons.com/pt/icone/pokeball-pokemon-go-jogo/67533'},
+        {id: 2, title: 'Favicon Converter', url: 'https://favicon.io/favicon-converter/'}
     ];
 
-    const linksList = links.map(link => <li><a href={link.url}>{link.title}</a></li>);
+    const linksList = links.map(link => <li key={link.id}><a href={link.url}>{link.title}</a></li>);
 
     return (
         <>

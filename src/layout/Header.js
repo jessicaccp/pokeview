@@ -1,16 +1,16 @@
 import React from 'react';
-import Navbar from './Navbar';
 
 function Header() {
-    const projectName = 'PokéView';
+    const page = {
+        title: 'PokéView',
+        subtitle: 'A interface for PokéAPI'
+    };
 
     return (
-        <>
-            <header>
-                <h1>{projectName}</h1>
-                <Navbar />
-            </header>
-        </>
+        <header>
+            <h1>{page.title}</h1>
+            <h2>{page.subtitle}</h2>
+        </header>
     );
 }
 

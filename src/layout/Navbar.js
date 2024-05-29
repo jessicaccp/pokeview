@@ -2,12 +2,12 @@ import React from 'react';
 
 function Navbar() {
     const links = [
-        { title: 'Home', url: '' },
-        { title: 'About', url: 'about' },
-        { title: 'Data', url: 'data' }
+        { id: 1, title: 'Home', url: '' },
+        { id: 2, title: 'About', url: 'about' },
+        { id: 3, title: 'Data', url: 'data' }
     ];
 
-    const linksList = links.map(link => <li><a href={link.url}>{link.title}</a></li>);
+    const linksList = links.map(link => <li key={link.id}><a href={link.url}>{link.title}</a></li>);
 
     return (
             <nav>

@@ -31,8 +31,12 @@ export function Header() {
 }
 
 export function Main(props) {
+    if (props.data !== '') {
+        console.log(props.data.results);
+        props.data.results.map(item => console.log(item.name));
+    }
     return (
-        <main>{props.data}</main>
+        <main></main>
     );
 }
 

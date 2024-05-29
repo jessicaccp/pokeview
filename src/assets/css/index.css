@@ -17,15 +17,19 @@ body {
 
 #root {
   max-width: 1200px;
+  width: 1200px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  background-color: #ccc;
 }
 
 nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 2rem;
+  width: 100%;
 }
 
 a {
@@ -38,19 +42,37 @@ a:hover {
   text-decoration: none;
 }
 
-h1 {
-  line-height: 2;
-}
-
 ul {
   list-style: none;
   display: flex;
   gap: 0.5rem;
 }
 
+header {
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+header h2 {
+  font-size: 1rem;;
+}
+
+main {
+  height: calc(100vh - 9rem);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 footer {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 2rem;
+  width: 100%;
   font-size: 0.75rem;
 }

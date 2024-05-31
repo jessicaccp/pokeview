@@ -9,10 +9,10 @@ function Credits() {
     const linksList = links.map(link => <li key={link.id}><a href={link.url}>{link.title}</a></li>);
 
     return (
-        <>
-            <h1>Credits</h1>
+        <div id='credits'>
+            <h2>Credits</h2>
             <ul>{linksList}</ul>
-        </>
+        </div>
     );
 }
 

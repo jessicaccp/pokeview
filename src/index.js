@@ -7,8 +7,4 @@ const root = document.getElementById('root');
 const container = ReactDOM.createRoot(root);
 
 document.title = 'PokéView';
-container.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
-);
+container.render(<App />);

@@ -76,3 +76,14 @@ footer {
   width: 100%;
   font-size: 0.75rem;
 }
+
+#credits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#credits ul {
+  flex-direction: column;
+  align-items: center;
+}

@@ -12,9 +12,18 @@ function Navbar() {
     const linksList = links.map(link => <li key={link.id}><a href={link.url}>{link.title}</a></li>);
 
     return (
-            <nav>
-                <ul>{linksList}</ul>
-            </nav>
+        <div id='navbar'>
+            <div id='navbar-left'>
+                <div id='logo'></div>
+                <div id='title'>PokéView</div>
+                <div id='subtitle'>An interface for PokéAPI</div>
+            </div>
+            <div id='navbar-right'>
+                <nav>
+                    <ul>{linksList}</ul>
+                </nav>
+            </div>
+        </div>
     );
 }
 

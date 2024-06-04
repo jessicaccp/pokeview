@@ -1,4 +1,5 @@
 import React, { cache, useEffect, useState } from "react";
+import PokemonCard from "./PokemonCard";
 
 function PokemonList() {
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon';
@@ -22,13 +23,24 @@ function PokemonList() {
         });
     }, [apiUrl, pokemonPerPage, currentPage]);
 
-    if (pokemonData) {
-        
+    if (pokemonData.length === pokemonPerPage) {
+        pageContent = pokemonData.map(
+            pokemon => <PokemonCard
+                key={pokemon.id} 
+                name={pokemon.name}
+                image={pokemon.sprites.front_default}
+                types={pokemon.types.map(
+                    (type, key) => <li key={key}>{type.type.name}</li>
+                )} /> 
+        );
+        pageContent.sort((a, b) => a.key - b.key);
     }
 
     return(
         <>
-        <ul>{pageContent}</ul>
+        <div id='pokemon-list'>
+            {pageContent}
+        </div>
         </>
     );
 

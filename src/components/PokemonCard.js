@@ -1,12 +1,17 @@
 import React from 'react';
 
-function Card(props) {
+function PokemonCard(props) {
     return(
-        <section>
-            <img src={props.src} />
-            <h2>{props.name}</h2>
+        <section className='pokemon-card'>
+            <div id='card-info'>
+                <h2>{props.name}</h2>
+                <ul>{props.types}</ul>
+            </div>
+            <div id='card-img'>
+                <img src={props.image} />
+            </div>
 
-            <div class='pokemon-info'>
+            {/* <div class='pokemon-info'>
                 <div class='pokemon-id'>{props.id}</div>
                 <div class='pokemon-name'>{props.name}</div>
                 <div class='pokemon-base-experience'>{props.base_experience}</div>
@@ -27,9 +32,9 @@ function Card(props) {
                 <div class='pokemon-species'>{props.species}</div>
                 <div class='pokemon-stats'>{props.stats}</div>
                 <div class='pokemon-types'>{props.types}</div>
-            </div>
+            </div> */}
         </section>
     );
 }
 
-export default Card;
+export default PokemonCard;

@@ -125,6 +125,50 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
+  overflow: scroll;
+}
+
+#pokemon-list {
+  margin: 2.5rem 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.pokemon-card {
+  display: flex;
+  height: auto;
+  width: 28%;
+  background-color: #bbb;
+  padding: 1rem;
+}
+
+#card-info {
+  margin-top: -2.25rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+#card-info ul {
+  list-style-type: none;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+#card-img {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemon-card img {
+  width: 100%;
 }
 
 footer {

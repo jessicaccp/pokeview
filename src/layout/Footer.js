@@ -10,7 +10,7 @@ function Footer() {
     return (
         <footer>
             <p>
-                Created by <a href={links.jessica}>Jessica Patricio</a> with <a href={links.react}>React</a> and fed by <a href={links.pokeapi}>PokéAPI</a>.
+                Created by <a href={links.jessica} target='_blank' rel='noreferrer'>Jessica Patricio</a> with <a href={links.react}>React</a> and fed by <a href={links.pokeapi}>PokéAPI</a>.
             </p>
         </footer>
     );

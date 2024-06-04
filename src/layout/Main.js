@@ -17,7 +17,7 @@ function Main() {
                     <Route path='/credits' element={<Credits />} />
                 </Routes>
             </BrowserRouter>
-            <Pokemon id='1' name='' />
+            {/* <Pokemon id='1' name='' /> */}
         </main>
     );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import SearchBar from "../components/SearchBar";
 
 function Navbar() {
     const links = [
@@ -22,6 +23,7 @@ function Navbar() {
                 <nav>
                     <ul>{linksList}</ul>
                 </nav>
+                <SearchBar />
             </div>
         </div>
     );

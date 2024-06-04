@@ -57,8 +57,38 @@ body {
   font-size: 0.75rem;
 }
 
+#navbar-right {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
 #navbar nav {
   font-size: 0.9rem;
+}
+
+#navbar form {
+  display: flex;
+  align-items: center;
+}
+
+#search-bar {
+  color: #333;
+  background-color: #efefef;
+  padding: 0.25rem;
+  width: 15rem;
+}
+
+#search-button {
+  height: 1rem;
+  width: 1rem;
+  margin-left: -1.5rem;
+  background-color: #efefef;
+}
+
+#search-button:hover {
+  background-color: #efefef;
+  cursor: pointer;
 }
 
 a {

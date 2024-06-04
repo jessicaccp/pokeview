@@ -4,8 +4,9 @@ function PokemonCard(props) {
     return(
         <section className='pokemon-card'>
             <div id='card-info'>
-                <h2>{props.name}</h2>
-                <ul>{props.types}</ul>
+                <h2>#{props.id} {props.name}</h2>
+                <ul id='card-types'>{props.types}</ul>
+                <ul id='card-stats'>{props.stats}</ul>
             </div>
             <div id='card-img'>
                 <img src={props.image} />

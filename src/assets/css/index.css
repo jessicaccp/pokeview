@@ -7,7 +7,6 @@
 
 body {
   width: 100vw;
-  height: 100vh;
   background-color: #ddd;
   color: #333;
   font-family: sans-serif;
@@ -121,7 +120,6 @@ header h2 {
 }
 
 main {
-  height: calc(100vh - 5rem);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -174,7 +172,7 @@ main {
 footer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 2rem;
   width: 100%;
   font-size: 0.75rem;

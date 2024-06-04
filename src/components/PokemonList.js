@@ -38,9 +38,11 @@ function PokemonList() {
 
     return(
         <>
-        <div id='pokemon-list'>
-            {pageContent}
-        </div>
+            <div id='filter-by'></div>
+            <div id='order-by'></div>
+            <div id='pokemon-list'>
+                {pageContent}
+            </div>
         </>
     );
 

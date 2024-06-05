@@ -181,15 +181,22 @@ main {
   justify-content: center;
 }
 
-button.prev, button.next {
+#options {
+  display: flex;
+}
+
+select#order-select, 
+button.prev, 
+button.next {
   padding: 0.25rem;
   margin: 0 0.25rem;
-  font-size: 1rem;
+  font-size: 0.75rem;
   background-color: #efefef;
   color: #666;
 }
 
-button.prev:hover, button.next:hover {
+button.prev:hover, 
+button.next:hover {
   background-color: #666;
   color: #ddd;
   cursor: pointer;

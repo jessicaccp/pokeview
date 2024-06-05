@@ -6,13 +6,17 @@ function PokemonList() {
     let pageContent = '';
 
     const [pokemonData, setPokemonData] = useState([]);
-    const [currentPage, setCurrentPage] = useState(0);
-    const [pokemonPerPage, setPokemonPerPage] = useState(12);
+    const [limit, setLimit] = useState(12);
+    const [offset, setOffset] = useState(0);
+    const [count, setCount] = useState(0);
 
+    // get api data
     useEffect(() => {
-        fetch(`${apiUrl}?limit=${pokemonPerPage}&offset=${currentPage}`)
+        setPokemonData([])
+        fetch(`${apiUrl}?limit=${limit}&offset=${offset}`)
         .then(response => response.json())
         .then(data => {
+            setCount(data.count);
             data.results.forEach(
                 result => {
                     fetch(`${result.url}`)
@@ -20,10 +24,11 @@ function PokemonList() {
                     .then(resultData => setPokemonData(prev => [...prev, resultData]));
                 }
             );
-        });
-    }, [apiUrl, pokemonPerPage, currentPage]);
+        })
+        .catch(error => console.error(error.message));
+    }, [apiUrl, limit, offset]);
 
-    if (pokemonData.length === pokemonPerPage) {
+    function getPageContent() {
         pageContent = pokemonData.map(
             pokemon => <PokemonCard
                 key={pokemon.id}
@@ -40,10 +45,33 @@ function PokemonList() {
         pageContent.sort((a, b) => a.key - b.key);
     }
 
+    function goToPreviousPage() {
+        if (offset > 0) {
+            if (offset - limit < 0) {
+                setOffset(0);
+            }
+            else {
+                setOffset(offset - limit);
+            }
+        }
+    }
+
+    function goToNextPage() {
+        if (offset < count) {
+            setOffset(offset + limit);
+        }
+    }
+
+    getPageContent();
     return(
         <>
             <div id='filter-by'></div>
             <div id='order-by'></div>
+            <div id='pagination'>
+                <button onClick={goToPreviousPage}>prev</button>
+                 -
+                <button onClick={goToNextPage}>next</button>
+            </div>
             <div id='pokemon-list'>
                 {pageContent}
             </div>

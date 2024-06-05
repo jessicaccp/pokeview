@@ -6,7 +6,7 @@ function Navbar() {
     const links = [
         { title: 'Home', url: '/' },
         { title: 'About', url: 'about' },
-        { title: 'Data', url: 'data' },
+        // { title: 'Data', url: 'data' },
         { title: 'Credits', url: 'credits' },
     ];
 

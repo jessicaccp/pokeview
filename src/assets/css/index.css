@@ -92,6 +92,10 @@ body {
   font-size: 0.9rem;
 }
 
+#navbar ul a.active {
+  font-weight: bold;
+}
+
 #navbar form {
   display: flex;
   align-items: center;

@@ -7,6 +7,7 @@ function PokemonCard(props) {
                 <h2>#{props.id} {props.name}</h2>
                 <ul id='card-types'>{props.types}</ul>
                 <ul id='card-stats'>
+                    <li>Order: {props.order}</li>
                     <li>Height: {props.height}</li>
                     <li>Weight: {props.weight}</li>
                     {props.stats}

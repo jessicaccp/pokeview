@@ -90,17 +90,44 @@ function PokemonList() {
                          <li key={key}>{type.type.name}</li>
                 )} />
         );
+
         pageContent.sort(
-            function (a,b) {
-                if (a.props.name < b.props.name)
+            function (a, b) {
+                let c, d;
+                switch (order) {
+                    case 'id':
+                        c = a.props.id;
+                        d = b.props.id;
+                        break;
+                    case 'name':
+                        c = a.props.name;
+                        d = b.props.name;
+                        break;
+                    case 'order':
+                        c = a.props.order;
+                        d = b.props.order;
+                        break;
+                    case 'height':
+                        c = a.props.height;
+                        d = b.props.height;
+                        break;
+                    case 'weight':
+                        c = a.props.weight;
+                        d = b.props.weight;
+                        break;
+                    default:
+                        c = a.key;
+                        d = b.key;
+                        break;
+                }
+
+                if (c < d)
                     return -1;
-                if (a.props.name > b.props.name)
+                if (c > d)
                     return 1;
                 return 0;
             }
         );
-        
-        // pageContent.sort((a, b) => a.props.name - b.props.name);
     }
 
     setPageContent();

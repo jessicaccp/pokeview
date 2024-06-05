@@ -179,7 +179,28 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* overflow: scroll; */
+}
+
+button.prev, button.next {
+  padding: 0.25rem;
+  margin: 0 0.25rem;
+  font-size: 1rem;
+  background-color: #efefef;
+  color: #666;
+}
+
+button.prev:hover, button.next:hover {
+  background-color: #666;
+  color: #ddd;
+  cursor: pointer;
+}
+
+button.prev::before {
+  content: '\00AB ';
+}
+
+button.next::after {
+  content: '\00BB';
 }
 
 #pokemon-list {
@@ -190,7 +211,6 @@ main {
   gap: 2.5rem;
   justify-content: center;
   align-items: flex-start;
-  /* overflow: hidden; */
 }
 
 .pokemon-card {

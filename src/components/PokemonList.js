@@ -68,9 +68,8 @@ function PokemonList() {
             <div id='filter-by'></div>
             <div id='order-by'></div>
             <div id='pagination'>
-                <button onClick={goToPreviousPage}>prev</button>
-                 -
-                <button onClick={goToNextPage}>next</button>
+                <button className='prev' onClick={goToPreviousPage}></button>
+                <button className='next' onClick={goToNextPage}></button>
             </div>
             <div id='pokemon-list'>
                 {pageContent}

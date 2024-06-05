@@ -9,7 +9,7 @@ function PokemonCard(props) {
                 <ul id='card-stats'>{props.stats}</ul>
             </div>
             <div id='card-img'>
-                <img src={props.image} />
+                <img src={props.image} alt={props.name} />
             </div>
 
             {/* <div class='pokemon-info'>

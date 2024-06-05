@@ -4,7 +4,6 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Data from '../pages/Data';
 import Credits from '../pages/Credits';
-import Pokemon from "../components/Pokemon";
 
 function Main() {
     return (
@@ -17,7 +16,6 @@ function Main() {
                     <Route path='/credits' element={<Credits />} />
                 </Routes>
             </BrowserRouter>
-            {/* <Pokemon id='1' name='' /> */}
         </main>
     );
 }

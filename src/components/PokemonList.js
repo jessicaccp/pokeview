@@ -10,22 +10,39 @@ function PokemonList() {
     const [count, setCount] = useState(0);
     const [order, setOrder] = useState('id');
 
+    // cards per page select
+    const perPageOptions = [
+        12, 24, 48, 96, 192, 384, count
+    ];
+
+    const perPageOptionsList = perPageOptions.map(
+        (option, key) =>
+            <option key={key} value={option}>{option}</option>
+    );
+
+    function handleSelectPerPage(event) {
+        setLimit(event.target.value);
+        setOffset(0);
+    }
+    // end
+
     // order select
     const selectOptions = [
-        {value: 'id', title: ''},
-        {value: 'height', title: ''},
-        {value: 'weight', title: ''},
-        {value: 'order', title: ''},
-        {value: 'name', title: ''}
+        {value: 'id', title: 'ID'},
+        {value: 'height', title: 'Height'},
+        {value: 'weight', title: 'Weight'},
+        {value: 'order', title: 'Order'},
+        {value: 'name', title: 'Name'}
     ];
 
     const selectOptionsList = selectOptions.map(
         (option, key) =>
-            <option key={key} value={option.value}>{option.value}</option>
+            <option key={key} value={option.value}>{option.title}</option>
     );
 
     function handleSelectOrder(event) {
         setOrder(event.target.value);
+        setOffset(0);
     }
     // end
 
@@ -65,7 +82,7 @@ function PokemonList() {
             setCount(data.count);
         })
         .catch(error => console.error(error.message));
-    }, [apiUrl, limit, offset, count]);
+    }, [apiUrl, count]);
     // end
 
     // page content
@@ -136,9 +153,14 @@ function PokemonList() {
     return(
         <>
             <div id='options'>
+                <div id='cards-per-page'>
+                    <label htmlFor='per-page'>Cards per page: </label>
+                    <select default='12' name='per-page' id='per-page' onChange={handleSelectPerPage}>{perPageOptionsList}</select>
+                </div>
                 <div id='filter-by'></div>
                 <div id='order-by'>
-                    <select default='id' name='order-by' id='order-select' onChange={handleSelectOrder}>{selectOptionsList}</select>
+                    <label htmlFor='order-select'>Order by: </label>
+                    <select default='id' name='order-select' id='order-select' onChange={handleSelectOrder}>{selectOptionsList}</select>
                 </div>
                 <div id='pagination'>
                     <button className='prev' onClick={handlePrevButton}></button>
@@ -146,7 +168,7 @@ function PokemonList() {
                 </div>
             </div>
             <div id='pokemon-list'>
-                {pageContent}
+                {[...pageContent].slice(offset, limit + offset)}
             </div>
         </>
     );

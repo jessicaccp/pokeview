@@ -108,12 +108,12 @@ function PokemonList() {
                         d = b.props.order;
                         break;
                     case 'height':
-                        c = a.props.height;
-                        d = b.props.height;
+                        d = a.props.height;
+                        c = b.props.height;
                         break;
                     case 'weight':
-                        c = a.props.weight;
-                        d = b.props.weight;
+                        d = a.props.weight;
+                        c = b.props.weight;
                         break;
                     default:
                         c = a.key;

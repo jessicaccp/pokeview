@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
+import { useNavigate } from "react-router-dom";
 
 function PokemonList() {
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon';
@@ -9,6 +10,11 @@ function PokemonList() {
     const [offset, setOffset] = useState(0);
     const [count, setCount] = useState(0);
     const [order, setOrder] = useState('id');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        navigate(`?limit=${limit}&offset=${offset}`);
+    }, [offset, limit]);
 
     // cards per page select
     const perPageOptions = [
@@ -54,8 +60,8 @@ function PokemonList() {
     }
 
     function handleNextButton() {
-        if (offset < count) {
-            setOffset(offset + limit);
+        if ((offset + limit) < count) {
+            setOffset(Number(offset) + Number(limit));
         }
     }
     // end
@@ -89,6 +95,7 @@ function PokemonList() {
     let pageContent = '';
 
     function setPageContent() {
+        // pageContent = '';
         pageContent = pokemonData.map(
             pokemon => <PokemonCard
                 key={pokemon.id}
@@ -168,7 +175,7 @@ function PokemonList() {
                 </div>
             </div>
             <div id='pokemon-list'>
-                {[...pageContent].slice(offset, limit + offset)}
+                {[...pageContent].slice(Number(offset), Number(limit) + Number(offset))}
             </div>
         </>
     );

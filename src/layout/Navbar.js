@@ -1,16 +1,16 @@
 import React from "react";
 import SearchBar from "../components/SearchBar";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
     const links = [
-        { id: 1, title: 'Home', url: '/' },
-        { id: 2, title: 'About', url: 'about' },
-        { id: 3, title: 'Data', url: 'data' },
-        { id: 4, title: 'Credits', url: 'credits' },
-        { id: 5, title: 'API', url: 'https://pokeapi.co' }
+        { title: 'Home', url: '/' },
+        { title: 'About', url: 'about' },
+        { title: 'Data', url: 'data' },
+        { title: 'Credits', url: 'credits' },
     ];
 
-    const linksList = links.map(link => <li key={link.id}><a href={link.url}>{link.title}</a></li>);
+    const linksList = links.map((link, key) => <li key={key}><NavLink to={link.url}>{link.title}</NavLink></li>);
 
     return (
         <div id='navbar'>

@@ -1,12 +1,17 @@
 import React from "react";
-import PokemonList from "../components/PokemonList";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
-function Home() {
+export default function Home() {
   return (
     <>
-      <PokemonList />
+      <Header />
+
+      <main>
+        <p>Home</p>
+      </main>
+
+      <Footer />
     </>
   );
 }
-
-export default Home;

@@ -36,6 +36,7 @@ body {
     width: 992px;
   }
 }
+
 @media (max-width: 768px) {
   #root {
     width: 768px;
@@ -174,7 +175,7 @@ header {
 }
 
 header h2 {
-  font-size: 1rem;;
+  font-size: 1rem;
 }
 
 main {
@@ -190,8 +191,8 @@ main {
   column-gap: 1rem;
 }
 
-select#order-select, 
-button.prev, 
+select#order-select,
+button.prev,
 button.next {
   padding: 0.25rem;
   margin: 0 0.25rem;
@@ -200,7 +201,7 @@ button.next {
   color: #666;
 }
 
-button.prev:hover, 
+button.prev:hover,
 button.next:hover {
   background-color: #666;
   color: #ddd;
@@ -208,11 +209,11 @@ button.next:hover {
 }
 
 button.prev::before {
-  content: '\00AB ';
+  content: "\00AB ";
 }
 
 button.next::after {
-  content: '\00BB';
+  content: "\00BB";
 }
 
 #pokemon-list {

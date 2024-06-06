@@ -1,16 +1,10 @@
 import React from "react";
-import Navbar from "./layout/Navbar";
-import Main from "./layout/Main";
-import Footer from "./layout/Footer";
+import Router from "./routes";
 
-function App() {
+export default function App() {
   return (
     <>
-      <Navbar />
-      <Main />
-      <Footer />
+      <Router />
     </>
   );
 }
-
-export default App;

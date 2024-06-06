@@ -1,6 +1,6 @@
 import React from "react";
 
-function Footer() {
+export default function Footer() {
   const links = {
     jessica: "https://jessicaccp.github.io/",
     react: "https://react.dev/",
@@ -20,5 +20,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;

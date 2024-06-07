@@ -6,26 +6,33 @@ export default function Pokemon(props) {
   const [pokemonData, setPokemonData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [gotError, setGotError] = useState(false);
 
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((response) => {
-        if (response.ok) return response.json();
-        else {
-          setNotFound(true);
+        if (response.ok) {
+          return response.json();
+        } else {
+          if (response.status === 404) {
+            setNotFound(true);
+          } else {
+            setGotError(true);
+          }
           console.error(`Error while fetching: ${response.status}`);
         }
       })
       .then((data) => setPokemonData(data))
       .then(() => setIsLoading(false))
       .catch((error) => {
-        setNotFound(true);
+        setGotError(true);
         console.error(error);
       });
   }, [id]);
 
-  if (isLoading) return <p>Loading</p>;
-  if (notFound) return <p>Not found</p>;
+  if (isLoading) return <p>Loading battle info...</p>;
+  if (notFound) return <p>The pokémon has escaped! Keep searching!</p>;
+  if (gotError) return <p>A wild ERROR appeared!</p>;
 
   console.log(pokemonData);
 

@@ -1,16 +1,17 @@
 import React from "react";
+import Logo from "./HeaderLogo";
+import Nav from "./HeaderNav";
+import Search from "./HeaderSearch";
 
 function Header() {
-  const page = {
-    title: "PokéView",
-    subtitle: "A interface for PokéAPI",
-  };
-
   return (
-    <header>
-      <h1>{page.title}</h1>
-      <h2>{page.subtitle}</h2>
-    </header>
+    <>
+      <header>
+        <Logo />
+        <Nav />
+        <Search />
+      </header>
+    </>
   );
 }
 

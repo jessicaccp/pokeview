@@ -12,10 +12,4 @@ import "./assets/index.css";
 const root = document.getElementById("root");
 const container = ReactDOM.createRoot(root);
 
-container.render(
-  <React.StrictMode>
-    {/* <CssBaseline enableColorScheme> */}
-    <App />
-    {/* </CssBaseline> */}
-  </React.StrictMode>
-);
+container.render(<App />);

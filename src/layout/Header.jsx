@@ -9,7 +9,7 @@ function Header() {
       <header>
         <Logo />
         <Nav />
-        <Search />
+        {/* <Search /> */}
       </header>
     </>
   );

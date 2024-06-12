@@ -7,14 +7,6 @@ export default function Search(props) {
   const [resultCards, setResultCards] = useState([]);
   const navigate = useNavigate();
 
-  // Center the search form if there are no results
-  const searchComponents = document.getElementById("search-component");
-  if (searchComponents) {
-    if (searchResults.length > 0)
-      searchComponents.style.justifyContent = "normal";
-    else searchComponents.style.justifyContent = "center";
-  }
-
   // Changes the content displayed at the bottom of the
   // page every time the results are modified
   useEffect(() => {
@@ -80,6 +72,16 @@ export default function Search(props) {
         });
       }
     });
+
+    // Center the search form if there are no results
+    const searchComponents = document.getElementById("search-component");
+    if (searchComponents) {
+      if (event.target.value === "") {
+        searchComponents.style.justifyContent = "center";
+      } else {
+        searchComponents.style.justifyContent = "normal";
+      }
+    }
   }
 
   return (

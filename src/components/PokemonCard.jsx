@@ -1,29 +1,17 @@
 import React from "react";
 
-function PokemonCard(props) {
-  // console.log(props);
+export default function PokemonCard(props) {
   return (
-    <h2>
-      {props.id} {props.name}
-    </h2>
-    // <section className="pokemon-card">
-    //   <div id="card-info">
-    //     <h2>
-    //       #{props.id} {props.name}
-    //     </h2>
-    //     <ul id="card-types">{props.types}</ul>
-    //     <ul id="card-stats">
-    //       <li>Order: {props.order}</li>
-    //       <li>Height: {props.height}</li>
-    //       <li>Weight: {props.weight}</li>
-    //       {props.stats}
-    //     </ul>
-    //   </div>
-    //   <div id="card-img">
-    //     <img src={props.image} alt={props.name} />
-    //   </div>
-    // </section>
+    <section className="card">
+      <h2>
+        #{props.id} {props.name}
+      </h2>
+      <img src={props.sprites[4]} alt={props.name} />
+      <p>
+        {props.types.map((type) => (
+          <p>{type[1]}</p>
+        ))}
+      </p>
+    </section>
   );
 }
-
-export default PokemonCard;

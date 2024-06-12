@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { cache, useEffect, useState } from "react";
 import PokemonCard from "../components/PokemonCard";
 
 /**
@@ -159,7 +159,7 @@ export default function Pokemons() {
 
   return (
     <>
-      <div id="pokemon-card-list">{pokemonCards}</div>
+      <div id="card-list">{pokemonCards}</div>
     </>
   );
 }

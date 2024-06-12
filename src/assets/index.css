@@ -87,6 +87,7 @@ main {
   flex-direction: column;
   width: 100%;
   height: calc(100% - 3.75rem);
+  overflow: auto;
 }
 
 #card-list {
@@ -139,6 +140,11 @@ footer {
 
 #search-component {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 #search-component form {
@@ -170,4 +176,21 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
+  width: 100%;
+}
+
+#result-card {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#result-card img {
+  width: max-content;
+  height: max-content;
 }

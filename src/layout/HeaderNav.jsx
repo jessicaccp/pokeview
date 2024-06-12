@@ -4,8 +4,8 @@ export default function Nav() {
   const links = [
     { title: "Home", path: "/" },
     { title: "Pokémons", path: "/pokemon" },
-    { title: "PokéAPI", url: "https://pokeapi.co" },
-    { title: "Credits", path: "/credits" },
+    // { title: "PokéAPI", url: "https://pokeapi.co" },
+    // { title: "Credits", path: "/credits" },
   ];
 
   const navList = links.map((link, key) => {

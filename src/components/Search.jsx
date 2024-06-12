@@ -36,6 +36,9 @@ export default function Search(props) {
 
   // Set the search results based on the keywords
   function handleSearchChange(event) {
+    if (event.target.value === "") navigate(`/`);
+    else navigate(`/?search=${event.target.value}`);
+
     setSearchResults([]);
 
     // Search by id

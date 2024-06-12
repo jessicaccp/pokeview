@@ -201,6 +201,11 @@ footer {
   overflow: hidden;
 }
 
+#result-card:hover {
+  background-color: #eee;
+  border-color: #111;
+}
+
 #result-card img {
   width: max-content;
   height: max-content;

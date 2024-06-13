@@ -1,4 +1,4 @@
-import React, { cache, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PokemonCard from "../components/PokemonCard";
 
 /**

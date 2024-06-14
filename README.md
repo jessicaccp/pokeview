@@ -1,3 +1,3 @@
 # pokeview
 
-A interface for PokéAPI.
+An interface for PokéAPI.

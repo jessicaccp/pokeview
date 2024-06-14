@@ -58,8 +58,8 @@ export default function Search(props) {
   function searchByType(keywords) {
     const types = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", 
       "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon",
-       "dark", "fairy", "unknown", "shadow"];
-      let matchList = [];
+      "dark", "fairy", "unknown", "shadow"];
+    let matchList = [];
 
     types.forEach(type => {
       if (keywords.includes(type)) {
@@ -87,7 +87,7 @@ export default function Search(props) {
   }
 
   useEffect(() => {
-    setSearchResults([...searchById(searchKeywords), ...searchByName(searchKeywords), ... searchByType(searchKeywords)]);
+    setSearchResults([...new Set([...searchById(searchKeywords), ...searchByName(searchKeywords), ... searchByType(searchKeywords)])]);
   }, [searchKeywords]);
 
   useEffect(() => {
@@ -108,15 +108,17 @@ export default function Search(props) {
 
   // Set the search results based on the keywords
   function handleSearchChange(event) {
-    if (event.target.value === "") navigate(`/`);
-    else navigate(`/?search=${event.target.value}`);
+    const input = event.target.value.toLowerCase();
 
-    setSearchKeywords(event.target.value);
+    if (input === "") navigate(`/`);
+    else navigate(`/?search=${input}`);
+
+    setSearchKeywords(input);
 
     // Center the search form if there are no results
     const searchComponents = document.getElementById("search-component");
     if (searchComponents) {
-      if (event.target.value === "") {
+      if (input === "") {
         searchComponents.style.justifyContent = "center";
       } else {
         searchComponents.style.justifyContent = "normal";

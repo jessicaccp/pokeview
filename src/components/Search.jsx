@@ -38,8 +38,8 @@ export default function Search(props) {
   // there is a pokémon name that includes the substring
   function searchByName(keywords) {
     const substrings = keywords.split(" ");
-    const matchList = [];
-  
+    let matchList = [];
+
     substrings.forEach((substring) => {
       if (substring.length >= 3) {
         props.pokemonData.forEach((pokemon) => {
@@ -55,18 +55,39 @@ export default function Search(props) {
     return matchList;
   }
 
+  function searchByType(keywords) {
+    const types = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", 
+      "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon",
+       "dark", "fairy", "unknown", "shadow"];
+      let matchList = [];
+
+    types.forEach(type => {
+      if (keywords.includes(type)) {
+        props.pokemonData.forEach(pokemon => {
+          pokemon.types.forEach(pType => {
+            if (pType.type.name === type) {
+              matchList.push(pokemon);
+            }
+          })
+        })
+      }
+    });
+
+    return matchList;
+  }
+
   function handleResultCards(results) {
     let cardList = [];
 
     if (results) {
-      cardList = results.map((result, key) => <SearchResult result={result} key={key} />);
+      cardList = results.map((result) => <SearchResult result={result} key={result.id} />);
     }
 
-    return cardList;
+    return cardList.sort((a, b) => a.key - b.key);
   }
 
   useEffect(() => {
-    setSearchResults([...searchById(searchKeywords), ...searchByName(searchKeywords)]);
+    setSearchResults([...searchById(searchKeywords), ...searchByName(searchKeywords), ... searchByType(searchKeywords)]);
   }, [searchKeywords]);
 
   useEffect(() => {
@@ -93,14 +114,14 @@ export default function Search(props) {
     setSearchKeywords(event.target.value);
 
     // Center the search form if there are no results
-    // const searchComponents = document.getElementById("search-component");
-    // if (searchComponents) {
-    //   if (event.target.value === "") {
-    //     searchComponents.style.justifyContent = "center";
-    //   } else {
-    //     searchComponents.style.justifyContent = "normal";
-    //   }
-    // }
+    const searchComponents = document.getElementById("search-component");
+    if (searchComponents) {
+      if (event.target.value === "") {
+        searchComponents.style.justifyContent = "center";
+      } else {
+        searchComponents.style.justifyContent = "normal";
+      }
+    }
   }
 
   return (
@@ -113,7 +134,7 @@ export default function Search(props) {
             name="search"
             id="search-input"
             onChange={handleSearchChange}
-            // autoFocus
+          // autoFocus
           />
           <div id="search-buttons">
             {/* <input type="button" value="Search" id="search-button" /> */}

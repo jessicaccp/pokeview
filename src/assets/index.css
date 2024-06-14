@@ -230,3 +230,45 @@ footer {
 #pokemon-card img {
   max-width: 100px;
 }
+
+#pokemon-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  max-width: 100vw;
+  /* height: 90vh; */
+  /* padding: 1rem; */
+  gap: 1rem;
+}
+
+#pokemon-page div {
+  width: 100%;
+  /* border: 1px solid black; */
+  padding: 0.5rem;
+}
+
+#pokemon-page h3 {
+  padding: 0.5rem;
+}
+
+#pokemon-page ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0.5rem;
+}
+
+#pokemon-page li {
+  background-color: #eee;
+  padding: 0.125rem;
+}
+
+#pokemon-page #stats {
+  flex-direction: column;
+}
+
+#pokemon-page img {
+  width: 5rem;
+}

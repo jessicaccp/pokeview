@@ -113,7 +113,8 @@ export default function Search(props) {
     if (input === "") navigate(`/`);
     else navigate(`/?search=${input}`);
 
-    setSearchKeywords(input);
+    if (input !== "")
+      setSearchKeywords(input);
 
     // Center the search form if there are no results
     const searchComponents = document.getElementById("search-component");

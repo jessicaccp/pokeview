@@ -199,18 +199,23 @@ export default function Pokemon(props) {
   };
 
   const cries = () => {
-    return (
-      <>
+    let audio = [];
+    if (pokemonData.cries.latest)
+      audio.push(
         <audio controls preload>
           <source src={pokemonData.cries.latest} type="audio/ogg" />
           Your browser does not support the audio element.
         </audio>
+      );
+
+    if (pokemonData.cries.legacy)
+      audio.push(
         <audio controls preload>
           <source src={pokemonData.cries.legacy} type="audio/ogg" />
           Your browser does not support the audio element.
         </audio>
-      </>
-    );
+      );
+    return audio;
   };
 
   const heldItems = () => {

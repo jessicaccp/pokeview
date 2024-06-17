@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Search from "../components/Search";
 
-export default function Home() {
+export default function SearchPage() {
   const [pokemonCount, setPokemonCount] = useState(0);
   const [pokemonUrls, setPokemonUrls] = useState([]);
   const [pokemonData, setPokemonData] = useState([]);
@@ -64,7 +64,7 @@ export default function Home() {
   if (isError) return <p>A wild error appeared!</p>;
 
   return (
-    <div id="home-page">
+    <div id="home-page2">
       <Search pokemonData={pokemonData} />
     </div>
   );

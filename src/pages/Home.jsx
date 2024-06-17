@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function NewHome() {
+export default function Home() {
   const [isButtonClick, setIsButtonClick] = useState(false);
 
   useEffect(() => {
@@ -9,9 +9,10 @@ export default function NewHome() {
       const shadow = document.getElementById("home-pokeball-shadow");
       pokeball.style.backgroundImage = "url(open-pokeball.png)";
       shadow.style.display = "block";
+
       setTimeout(function () {
         document.location.href = "/search";
-      }, 1500);
+      }, 1000);
     }
   }, [isButtonClick]);
 

@@ -1,3 +1,30 @@
+/* 
+
+  components
+    pokemon
+    pokemon card
+    pokemon list
+    search
+    search result
+
+  layout
+    footer
+    header
+
+  pages
+    about
+    credits
+    home
+    not found
+    pokemon
+    pokemons
+    search
+
+  app
+  index
+  
+*/
+
 @font-face {
   font-family: "Pocket Monk";
   src: url(../fonts/PocketMonk-15ze.ttf) format("truetype");
@@ -40,12 +67,18 @@ a {
   color: var(--mid);
 }
 
+/* ---------- index.js ---------- */
+
 #root {
   width: 100vw;
   height: 100vh;
   background-color: var(--clear);
   position: relative;
 }
+
+/* end */
+
+/* ---------- layout / header ---------- */
 
 header {
   display: flex;
@@ -92,6 +125,10 @@ header {
   padding: 0.25rem;
 }
 
+/* end */
+
+/* ---------- App.jsx ---------- */
+
 main {
   width: 100%;
   height: 100%;
@@ -103,12 +140,20 @@ main {
   /* padding: 0.5rem; */
 }
 
+/* end */
+
+/* ---------- pages / pokemons ---------- */
+
 #card-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
 }
+
+/* end */
+
+/* ---------- components / pokemon card ---------- */
 
 .card {
   border: 1px solid black;
@@ -143,6 +188,10 @@ main {
   height: max-content;
 }
 
+/* end */
+
+/* ---------- App.jsx ---------- */
+
 footer {
   display: flex;
   align-items: center;
@@ -154,6 +203,8 @@ footer {
   height: 1.25rem;
 }
 
+/* ---------- pages / search ---------- */
+
 #home-page2 {
   width: 100%;
   height: 100%;
@@ -162,6 +213,10 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
+/* end */
+
+/* ---------- components / search --------- */
 
 #search-component {
   width: 100%;
@@ -204,6 +259,10 @@ footer {
   width: 100%;
 }
 
+/* end */
+
+/* ---------- components / search result ---------- */
+
 #result-card {
   width: 200px;
   height: 200px;
@@ -225,7 +284,9 @@ footer {
   height: max-content;
 }
 
-#pokemon-card {
+/* end */
+
+/* #pokemon-card {
   width: 100%;
   height: 100%;
   display: flex;
@@ -237,7 +298,9 @@ footer {
 
 #pokemon-card img {
   max-width: 100px;
-}
+} */
+
+/* ---------- pages / pokemon --------- */
 
 #pokemon-page {
   display: flex;
@@ -281,12 +344,9 @@ footer {
   width: 5rem;
 }
 
-#new-home h2 {
-  font-family: "Pocket Monk", sans-serif;
-  font-size: 10rem;
-}
+/* end */
 
-/* -------------------- HOME PAGE -------------------- */
+/* -------------------- pages / home -------------------- */
 
 #home-page {
   width: 100%;
@@ -313,7 +373,6 @@ footer {
   font-family: "Pocket Monk", sans-serif, monospace;
   font-size: 180px;
 }
-
 
 #home-pokeball {
   width: 100px;
@@ -526,4 +585,4 @@ footer {
   }
 }
 
-/* -------------------- end -------------------- */
+/* end */

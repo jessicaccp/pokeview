@@ -2,7 +2,18 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SearchPage from "./pages/Search";
 import Pokemons from "./pages/Pokemons";
-import Pokemon from "./pages/Pokemon";
+import Pokemon, {
+  PokemonColor,
+  PokemonColors,
+  PokemonForm,
+  PokemonForms,
+  PokemonHabitat,
+  PokemonHabitats,
+  PokemonShape,
+  PokemonShapes,
+  PokemonSpecies,
+  PokemonSpeciesId,
+} from "./pages/Pokemon";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 
@@ -19,6 +30,8 @@ import {
   ContestsEffect,
   ContestType,
   ContestsType,
+  SuperContestEffects,
+  SuperContestEffect,
 } from "./pages/Contest";
 import {
   EncounterCondition,
@@ -75,6 +88,15 @@ import GrowthRate, { GrowthRates } from "./pages/GrowthRate";
 import Language, { Languages } from "./pages/Language";
 import Nature, { Natures } from "./pages/Nature";
 import PalParkArea, { PalParkAreas } from "./pages/PalParkArea";
+import PokeathlonStat, { PokeathlonStats } from "./pages/Pokeathlon";
+import Pokedex, { Pokedexes } from "./pages/Pokedex";
+import Region, { Regions } from "./pages/Region";
+import Stat, { Stats } from "./pages/Stat";
+import Version, {
+  VersionGroup,
+  VersionGroups,
+  Versions,
+} from "./pages/Version";
 
 export default function Router() {
   return (
@@ -83,8 +105,7 @@ export default function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<SearchPage />} />
         {/* <Route path="/search/:keyword" element={} /> */}
-        <Route path="/pokemon" element={<Pokemons />} />
-        <Route path="/pokemon/:id" element={<Pokemon />} />
+
         <Route path="/ability" element={<Abilities />} />
         <Route path="/ability/:id" element={<Ability />} />
         <Route path="/berry" element={<Berries />} />
@@ -162,8 +183,37 @@ export default function Router() {
         <Route path="/nature/:id" element={<Nature />} />
         <Route path="/pal-park-area" element={<PalParkAreas />} />
         <Route path="/pal-park-area/:id" element={<PalParkArea />} />
-        <Route path="/types" element={<Types />} />
+        <Route path="/pokeathlon-stat" element={<PokeathlonStats />} />
+        <Route path="/pokeathlon-stat/:id" element={<PokeathlonStat />} />
+        <Route path="/pokedex" element={<Pokedexes />} />
+        <Route path="/pokedex/:id" element={<Pokedex />} />
+        <Route path="/pokemon" element={<Pokemons />} />
+        <Route path="/pokemon/:id" element={<Pokemon />} />
+        <Route path="/pokemon-color" element={<PokemonColors />} />
+        <Route path="/pokemon-color/:id" element={<PokemonColor />} />
+        <Route path="/pokemon-form" element={<PokemonForms />} />
+        <Route path="/pokemon-form/:id" element={<PokemonForm />} />
+        <Route path="/pokemon-habitat" element={<PokemonHabitats />} />
+        <Route path="/pokemon-habitat/:id" element={<PokemonHabitat />} />
+        <Route path="/pokemon-shape" element={<PokemonShapes />} />
+        <Route path="/pokemon-shape/:id" element={<PokemonShape />} />
+        <Route path="/pokemon-species" element={<PokemonSpecies />} />
+        <Route path="/pokemon-species/:id" element={<PokemonSpeciesId />} />
+        <Route path="/region" element={<Regions />} />
+        <Route path="/region/:id" element={<Region />} />
+        <Route path="/stat" element={<Stats />} />
+        <Route path="/stat/:id" element={<Stat />} />
+        <Route path="/super-contest-effect" element={<SuperContestEffects />} />
+        <Route
+          path="/super-contest-effect/:id"
+          element={<SuperContestEffect />}
+        />
+        <Route path="/type" element={<Types />} />
         <Route path="/type/:id" element={<Type />} />
+        <Route path="/version" element={<Versions />} />
+        <Route path="/version/:id" element={<Version />} />
+        <Route path="/version-group" element={<VersionGroups />} />
+        <Route path="/version-group/:id" element={<VersionGroup />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

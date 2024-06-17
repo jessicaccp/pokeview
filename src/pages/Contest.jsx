@@ -211,3 +211,11 @@ export function ContestType() {
     </div>
   );
 }
+
+export function SuperContestEffects() {
+  return <></>;
+}
+
+export function SuperContestEffect() {
+  return <></>;
+}

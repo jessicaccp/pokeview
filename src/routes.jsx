@@ -7,7 +7,13 @@ import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 
 import Ability, { Abilities } from "./pages/Ability";
-import Berry, { Berries } from "./pages/Berry";
+import Berry, {
+  Berries,
+  BerriesFirmness,
+  BerryFirmness,
+  BerriesFlavor,
+  BerryFlavor,
+} from "./pages/Berry";
 import Contest, { Contests } from "./pages/Contest";
 import Encounter, { Encounters } from "./pages/Encounter";
 import Evolution, { Evolutions } from "./pages/Evolution";
@@ -30,8 +36,12 @@ export default function Router() {
         <Route path="/pokemon/:id" element={<Pokemon />} />
         <Route path="/abilities" element={<Abilities />} />
         <Route path="/ability/:id" element={<Ability />} />
-        <Route path="/berries" element={<Berries />} />
+        <Route path="/berry" element={<Berries />} />
         <Route path="/berry/:id" element={<Berry />} />
+        <Route path="/berry-firmness/" element={<BerriesFirmness />} />
+        <Route path="/berry-firmness/:id" element={<BerryFirmness />} />
+        <Route path="/berry-flavor" element={<BerriesFlavor />} />
+        <Route path="/berry-flavor/:id" element={<BerryFlavor />} />
         <Route path="/contests" element={<Contests />} />
         <Route path="/contest/:id" element={<Contest />} />
         <Route path="/encounters" element={<Encounters />} />

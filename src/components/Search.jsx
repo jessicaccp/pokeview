@@ -18,7 +18,7 @@ export default function Search(props) {
     if (numbers) {
       numbers.forEach((number) => {
         const pokemon = props.pokemonData.find(
-          (pokemon) => pokemon.id === Number(number),
+          (pokemon) => pokemon.id === Number(number)
         );
 
         if (pokemon) {
@@ -56,20 +56,39 @@ export default function Search(props) {
   }
 
   function searchByType(keywords) {
-    const types = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", 
-      "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon",
-      "dark", "fairy", "unknown", "shadow"];
+    const types = [
+      "normal",
+      "fighting",
+      "flying",
+      "poison",
+      "ground",
+      "rock",
+      "bug",
+      "ghost",
+      "steel",
+      "fire",
+      "water",
+      "grass",
+      "electric",
+      "psychic",
+      "ice",
+      "dragon",
+      "dark",
+      "fairy",
+      "unknown",
+      "shadow",
+    ];
     let matchList = [];
 
-    types.forEach(type => {
+    types.forEach((type) => {
       if (keywords.includes(type)) {
-        props.pokemonData.forEach(pokemon => {
-          pokemon.types.forEach(pType => {
+        props.pokemonData.forEach((pokemon) => {
+          pokemon.types.forEach((pType) => {
             if (pType.type.name === type) {
               matchList.push(pokemon);
             }
-          })
-        })
+          });
+        });
       }
     });
 
@@ -80,14 +99,22 @@ export default function Search(props) {
     let cardList = [];
 
     if (results) {
-      cardList = results.map((result) => <SearchResult result={result} key={result.id} />);
+      cardList = results.map((result) => (
+        <SearchResult result={result} key={result.id} />
+      ));
     }
 
     return cardList.sort((a, b) => a.key - b.key);
   }
 
   useEffect(() => {
-    setSearchResults([...new Set([...searchById(searchKeywords), ...searchByName(searchKeywords), ... searchByType(searchKeywords)])]);
+    setSearchResults([
+      ...new Set([
+        ...searchById(searchKeywords),
+        ...searchByName(searchKeywords),
+        ...searchByType(searchKeywords),
+      ]),
+    ]);
   }, [searchKeywords]);
 
   useEffect(() => {
@@ -113,18 +140,17 @@ export default function Search(props) {
     if (input === "") navigate(`/`);
     else navigate(`/?search=${input}`);
 
-    if (input !== "")
-      setSearchKeywords(input);
+    if (input !== "") setSearchKeywords(input);
 
     // Center the search form if there are no results
-    const searchComponents = document.getElementById("search-component");
-    if (searchComponents) {
-      if (input === "") {
-        searchComponents.style.justifyContent = "center";
-      } else {
-        searchComponents.style.justifyContent = "normal";
-      }
-    }
+    // const searchComponents = document.getElementById("search-component");
+    // if (searchComponents) {
+    //   if (input === "") {
+    //     searchComponents.style.justifyContent = "center";
+    //   } else {
+    //     searchComponents.style.justifyContent = "normal";
+    //   }
+    // }
   }
 
   return (
@@ -137,7 +163,7 @@ export default function Search(props) {
             name="search"
             id="search-input"
             onChange={handleSearchChange}
-          // autoFocus
+            // autoFocus
           />
           <div id="search-buttons">
             {/* <input type="button" value="Search" id="search-button" /> */}

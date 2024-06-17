@@ -3,20 +3,30 @@ import React from "react";
 function Credits() {
   const links = [
     {
-      id: 1,
       title: "Pokeball Icon",
       url: "https://icon-icons.com/pt/icone/pokeball-pokemon-go-jogo/67533",
     },
     {
-      id: 2,
+      title: "Pokeball Icon",
+      url: "https://www.flaticon.com/free-icon/open-pokeball_188917",
+    },
+    {
+      title: "Pokeball Icon",
+      url: "https://www.flaticon.com/free-icon/pokeball_188918",
+    },
+    {
       title: "Favicon Converter",
       url: "https://favicon.io/favicon-converter/",
     },
-    { id: 3, title: "Bootstrap Icons", url: "https://icons.getbootstrap.com/" },
+    { title: "Bootstrap Icons", url: "https://icons.getbootstrap.com/" },
+    {
+      title: "Pocket Monk Font",
+      url: "https://www.fontspace.com/pocket-monk-font-f23540",
+    },
   ];
 
-  const linksList = links.map((link) => (
-    <li key={link.id}>
+  const linksList = links.map((link, key) => (
+    <li key={key}>
       <a href={link.url}>{link.title}</a>
     </li>
   ));

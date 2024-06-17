@@ -6,7 +6,9 @@ export default function NewHome() {
   useEffect(() => {
     if (isButtonClick) {
       const pokeball = document.getElementById("home-pokeball");
+      const shadow = document.getElementById("home-pokeball-shadow");
       pokeball.style.backgroundImage = "url(open-pokeball.png)";
+      shadow.style.display = "block";
       setTimeout(function () {
         document.location.href = "/search";
       }, 1500);
@@ -23,6 +25,7 @@ export default function NewHome() {
         <h2 id="home-title">Pokéview</h2>
       </div>
       <div id="home-pokeball"></div>
+      <div id="home-pokeball-shadow"></div>
       <form>
         <input
           id="home-button"

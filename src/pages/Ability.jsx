@@ -30,9 +30,8 @@ export function Abilities() {
       });
   }, [abilityCount]);
 
-  if (isLoading) return <p>Loading</p>;
+  if (isLoading || isEmpty(abilitiesData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
-  if (isEmpty(abilitiesData)) return <p>Still loading</p>;
 
   return (
     <div id="abilities">
@@ -67,9 +66,8 @@ export default function Ability() {
       });
   }, [apiUrl]);
 
-  if (isLoading) return <p>Loading</p>;
+  if (isLoading || isEmpty(abilityData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
-  if (isEmpty(abilityData)) return <p>Still loading</p>;
 
   return (
     <div id="ability">

@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SearchPage from "./pages/Search";
-import Pokemons from "./pages/Pokemons";
 import Pokemon, {
   PokemonColor,
   PokemonColors,
@@ -13,6 +12,7 @@ import Pokemon, {
   PokemonShapes,
   PokemonSpecies,
   PokemonSpeciesId,
+  Pokemons,
 } from "./pages/Pokemon";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
@@ -38,8 +38,8 @@ import {
   EncounterConditionValue,
   EncounterMethod,
   EncountersMethod,
-  EncountersCondition,
-  EncountersConditionValue,
+  EncounterConditions,
+  EncounterConditionValues,
 } from "./pages/Encounter";
 import {
   EvolutionChain,
@@ -82,7 +82,7 @@ import Move, {
 import Type, { Types } from "./pages/Type";
 import Characteristic, { Characteristics } from "./pages/Characteristic";
 import { EggGroup, EggGroups } from "./pages/Egg";
-import { Genders, Gender } from "./pages/Gender";
+import Gender, { Genders } from "./pages/Gender";
 import Generation, { Generations } from "./pages/Generation";
 import GrowthRate, { GrowthRates } from "./pages/GrowthRate";
 import Language, { Languages } from "./pages/Language";
@@ -97,6 +97,7 @@ import Version, {
   VersionGroups,
   Versions,
 } from "./pages/Version";
+import Lists from "./pages/Lists";
 
 export default function Router() {
   return (
@@ -104,6 +105,8 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<SearchPage />} />
+        {/* <Route path="/random" element={}/> */}
+        <Route path="/lists" element={<Lists />} />
         {/* <Route path="/search/:keyword" element={} /> */}
 
         <Route path="/ability" element={<Abilities />} />
@@ -122,14 +125,14 @@ export default function Router() {
         <Route path="/contest-type/:id" element={<ContestType />} />
         <Route path="/egg-group" element={<EggGroups />} />
         <Route path="/egg-group/:id" element={<EggGroup />} />
-        <Route path="/encounter-condition" element={<EncountersCondition />} />
+        <Route path="/encounter-condition" element={<EncounterConditions />} />
         <Route
           path="/encounter-condition/:id"
           element={<EncounterCondition />}
         />
         <Route
           path="/encounter-condition-value"
-          element={<EncountersConditionValue />}
+          element={<EncounterConditionValues />}
         />
         <Route
           path="/encounter-condition-value/:id"

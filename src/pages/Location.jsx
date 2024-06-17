@@ -7,3 +7,11 @@ export function Locations() {
 export default function Location() {
   return <></>;
 }
+
+export function LocationAreas() {
+  return <></>;
+}
+
+export function LocationArea() {
+  return <></>;
+}

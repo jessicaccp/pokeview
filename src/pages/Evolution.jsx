@@ -1,9 +1,17 @@
 import React from "react";
 
-export function Evolutions() {
+export function EvolutionsChain() {
   return <></>;
 }
 
-export default function Evolution() {
+export function EvolutionChain() {
+  return <></>;
+}
+
+export function EvolutionsTrigger() {
+  return <></>;
+}
+
+export function EvolutionTrigger() {
   return <></>;
 }

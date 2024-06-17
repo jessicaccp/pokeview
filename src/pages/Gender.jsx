@@ -1,9 +1,9 @@
 import React from "react";
 
-export function Games() {
+export function Genders() {
   return <></>;
 }
 
-export default function Game() {
+export default function Gender() {
   return <></>;
 }

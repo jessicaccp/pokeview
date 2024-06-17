@@ -1,9 +1,9 @@
 import React from "react";
 
-export function Forms() {
+export function Natures() {
   return <></>;
 }
 
-export default function Form() {
+export default function Nature() {
   return <></>;
 }

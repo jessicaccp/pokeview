@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { isEmpty } from "../utils";
 
-export function Characteristics() {
+export function CharacteristicList() {
   const apiUrl = "https://pokeapi.co/api/v2/characteristic";
-  const [characteristicCount, setCharacteristicCount] = useState(0);
-  const [characteristicsData, setCharacteristicsData] = useState([]);
+  const [characteristicListCount, setCharacteristicListCount] = useState(0);
+  const [characteristicListData, setCharacteristicListData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setCharacteristicCount(data.count))
+      .then((data) => setCharacteristicListCount(data.count))
       .catch((error) => {
         console.error(error);
         setIsError(true);
@@ -20,23 +20,23 @@ export function Characteristics() {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}?limit=${characteristicCount}`)
+    fetch(`${apiUrl}?limit=${characteristicListCount}`)
       .then((response) => response.json())
-      .then((data) => setCharacteristicsData(data))
+      .then((data) => setCharacteristicListData(data))
       .then(setIsLoading(false))
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
-  }, [characteristicCount]);
+  }, [characteristicListCount]);
 
-  if (isLoading || isEmpty(characteristicsData)) return <p>Loading</p>;
+  if (isLoading || isEmpty(characteristicListData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
-    <div id="characteristics">
+    <div id="characteristic-list">
       <ul>
-        {characteristicsData.results.map((characteristic, key) => (
+        {characteristicListData.results.map((characteristic, key) => (
           <li key={key}>
             <a href={`/characteristic/${key + 1}`} alt={key + 1}>
               {key + 1}
@@ -92,7 +92,7 @@ export default function Characteristic() {
       <div id="characteristic-highest-stat">
         <h3>Highest stat</h3>
         <a
-          href={`stat/${characteristicData.highest_stat.name}`}
+          href={`/stat/${characteristicData.highest_stat.name}`}
           alt={characteristicData.highest_stat.name}
         >
           {characteristicData.highest_stat.name}

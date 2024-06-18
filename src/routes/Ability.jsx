@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { isEmpty } from "../utils";
 
-export function Abilities() {
+export function AbilityList() {
   const apiUrl = "https://pokeapi.co/api/v2/ability";
-  const [abilityCount, setAbilityCount] = useState(0);
-  const [abilitiesData, setAbilitiesData] = useState([]);
+  const [abilityListCount, setAbilityListCount] = useState(0);
+  const [abilityListData, setAbilityListData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setAbilityCount(data.count))
+      .then((data) => setAbilityListCount(data.count))
       .catch((error) => {
         console.error(error);
         setIsError(true);
@@ -20,23 +20,23 @@ export function Abilities() {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}?limit=${abilityCount}`)
+    fetch(`${apiUrl}?limit=${abilityListCount}`)
       .then((response) => response.json())
-      .then((data) => setAbilitiesData(data))
+      .then((data) => setAbilityListData(data))
       .then(setIsLoading(false))
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
-  }, [abilityCount]);
+  }, [abilityListCount]);
 
-  if (isLoading || isEmpty(abilitiesData)) return <p>Loading</p>;
+  if (isLoading || isEmpty(abilityListData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
-    <div id="abilities">
+    <div id="ability-list">
       <ul>
-        {abilitiesData.results.map((ability, key) => (
+        {abilityListData.results.map((ability, key) => (
           <li key={key}>
             <a href={`/ability/${ability.name}`} alt={ability.name}>
               {ability.name}
@@ -129,7 +129,7 @@ export default function Ability() {
           <>
             <li key={key}>
               <a
-                href={`/versiongroup/${change.version_group.name}`}
+                href={`/version-group/${change.version_group.name}`}
                 alt={change.version_group.name}
               >
                 {change.version_group.name}
@@ -164,7 +164,7 @@ export default function Ability() {
             </a>{" "}
             -{" "}
             <a
-              href={`/versiongroup/${entry.version_group.name}`}
+              href={`/version-group/${entry.version_group.name}`}
               alt={entry.version_group.name}
             >
               {entry.version_group.name}

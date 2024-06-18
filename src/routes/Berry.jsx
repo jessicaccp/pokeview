@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { isEmpty } from "../utils";
 
-export function Berries() {
+export function BerryList() {
   const apiUrl = "https://pokeapi.co/api/v2/berry";
-  const [berryCount, setBerryCount] = useState(0);
-  const [berriesData, setBerriesData] = useState([]);
+  const [berryListCount, setBerryListCount] = useState(0);
+  const [berryListData, setBerryListData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setBerryCount(data.count))
+      .then((data) => setBerryListCount(data.count))
       .catch((error) => {
         console.error(error);
         setIsError(true);
@@ -20,23 +20,23 @@ export function Berries() {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}?limit=${berryCount}`)
+    fetch(`${apiUrl}?limit=${berryListCount}`)
       .then((response) => response.json())
-      .then((data) => setBerriesData(data))
+      .then((data) => setBerryListData(data))
       .then(setIsLoading(false))
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
-  }, [berryCount]);
+  }, [berryListCount]);
 
-  if (isLoading || isEmpty(berriesData)) return <p>Loading</p>;
+  if (isLoading || isEmpty(berryListData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
-    <div id="berries">
+    <div id="berry-list">
       <ul>
-        {berriesData.results.map((berry, key) => (
+        {berryListData.results.map((berry, key) => (
           <li key={key}>
             <a href={`/berry/${berry.name}`} alt={berry.name}>
               {berry.name}
@@ -142,17 +142,17 @@ export default function Berry() {
   );
 }
 
-export function BerriesFirmness() {
+export function BerryFirmnessList() {
   const apiUrl = "https://pokeapi.co/api/v2/berry-firmness";
-  const [berryFirmnessCount, setBerryFirmnessCount] = useState(0);
-  const [berriesFirmnessData, setBerriesFirmnessData] = useState([]);
+  const [berryFirmnessListCount, setBerryFirmnessListCount] = useState(0);
+  const [berryFirmnessListData, setBerryFirmnessListData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setBerryFirmnessCount(data.count))
+      .then((data) => setBerryFirmnessListCount(data.count))
       .catch((error) => {
         console.error(error);
         setIsError(true);
@@ -160,23 +160,23 @@ export function BerriesFirmness() {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}?limit=${berryFirmnessCount}`)
+    fetch(`${apiUrl}?limit=${berryFirmnessListCount}`)
       .then((response) => response.json())
-      .then((data) => setBerriesFirmnessData(data))
+      .then((data) => setBerryFirmnessListData(data))
       .then(setIsLoading(false))
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
-  }, [berryFirmnessCount]);
+  }, [berryFirmnessListCount]);
 
-  if (isLoading || isEmpty(berriesFirmnessData)) return <p>Loading</p>;
+  if (isLoading || isEmpty(berryFirmnessListData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
-    <div id="berries-firmness">
+    <div id="berry-firmness-list">
       <ul>
-        {berriesFirmnessData.results.map((firmness, key) => (
+        {berryFirmnessListData.results.map((firmness, key) => (
           <li key={key}>
             <a href={`/berry-firmness/${firmness.name}`} alt={firmness.name}>
               {firmness.name}
@@ -243,17 +243,17 @@ export function BerryFirmness() {
   );
 }
 
-export function BerriesFlavor() {
+export function BerryFlavorList() {
   const apiUrl = "https://pokeapi.co/api/v2/berry-flavor";
-  const [berryFlavorCount, setBerryFlavorCount] = useState(0);
-  const [berriesFlavorData, setBerriesFlavorData] = useState([]);
+  const [berryFlavorListCount, setBerryFlavorListCount] = useState(0);
+  const [berryFlavorListData, setBerryFlavorListData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setBerryFlavorCount(data.count))
+      .then((data) => setBerryFlavorListCount(data.count))
       .catch((error) => {
         console.error(error);
         setIsError(true);
@@ -261,23 +261,23 @@ export function BerriesFlavor() {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}?limit=${berryFlavorCount}`)
+    fetch(`${apiUrl}?limit=${berryFlavorListCount}`)
       .then((response) => response.json())
-      .then((data) => setBerriesFlavorData(data))
+      .then((data) => setBerryFlavorListData(data))
       .then(setIsLoading(false))
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
-  }, [berryFlavorCount]);
+  }, [berryFlavorListCount]);
 
-  if (isLoading || isEmpty(berriesFlavorData)) return <p>Loading</p>;
+  if (isLoading || isEmpty(berryFlavorListData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
-    <div id="berries-flavor">
+    <div id="berry-flavor-list">
       <ul>
-        {berriesFlavorData.results.map((flavor, key) => (
+        {berryFlavorListData.results.map((flavor, key) => (
           <li key={key}>
             <a href={`/berry-flavor/${flavor.name}`} alt={flavor.name}>
               {flavor.name}

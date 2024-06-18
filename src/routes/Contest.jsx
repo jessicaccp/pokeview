@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { isEmpty } from "../utils";
 
-export function ContestsEffect() {
+export function ContestEffectList() {
   const apiUrl = "https://pokeapi.co/api/v2/contest-effect";
-  const [contestEffectCount, setContestEffectCount] = useState(0);
-  const [contestsEffectData, setContestsEffectData] = useState([]);
+  const [contestEffectListCount, setContestEffectListCount] = useState(0);
+  const [contestEffectListData, setContestEffectListData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setContestEffectCount(data.count))
+      .then((data) => setContestEffectListCount(data.count))
       .catch((error) => {
         console.error(error);
         setIsError(true);
@@ -20,23 +20,23 @@ export function ContestsEffect() {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}?limit=${contestEffectCount}`)
+    fetch(`${apiUrl}?limit=${contestEffectListCount}`)
       .then((response) => response.json())
-      .then((data) => setContestsEffectData(data))
+      .then((data) => setContestEffectListData(data))
       .then(setIsLoading(false))
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
-  }, [contestEffectCount]);
+  }, [contestEffectListCount]);
 
-  if (isLoading || isEmpty(contestsEffectData)) return <p>Loading</p>;
+  if (isLoading || isEmpty(contestEffectListData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
-    <div id="contests-effect">
+    <div id="contest-effect-list">
       <ul>
-        {contestsEffectData.results.map((effect, key) => (
+        {contestEffectListData.results.map((effect, key) => (
           <li key={key}>
             <a href={`/contest-effect/${key + 1}`} alt={key + 1}>
               {key + 1}
@@ -112,17 +112,17 @@ export function ContestEffect() {
   );
 }
 
-export function ContestsType() {
+export function ContestTypeList() {
   const apiUrl = "https://pokeapi.co/api/v2/contest-type";
-  const [contestTypeCount, setContestTypeCount] = useState(0);
-  const [contestsTypeData, setContestsTypeData] = useState([]);
+  const [contestTypeListCount, setContestTypeListCount] = useState(0);
+  const [contestTypeListData, setContestTypeListData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setContestTypeCount(data.count))
+      .then((data) => setContestTypeListCount(data.count))
       .catch((error) => {
         console.error(error);
         setIsError(true);
@@ -130,23 +130,23 @@ export function ContestsType() {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}?limit=${contestTypeCount}`)
+    fetch(`${apiUrl}?limit=${contestTypeListCount}`)
       .then((response) => response.json())
-      .then((data) => setContestsTypeData(data))
+      .then((data) => setContestTypeListData(data))
       .then(setIsLoading(false))
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
-  }, [contestTypeCount]);
+  }, [contestTypeListCount]);
 
-  if (isLoading || isEmpty(contestsTypeData)) return <p>Loading</p>;
+  if (isLoading || isEmpty(contestTypeListData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
-    <div id="contests-type">
+    <div id="contest-type-list">
       <ul>
-        {contestsTypeData.results.map((type, key) => (
+        {contestTypeListData.results.map((type, key) => (
           <li key={key}>
             <a href={`/contest-type/${type.name}`} alt={type.name}>
               {type.name}
@@ -212,10 +212,111 @@ export function ContestType() {
   );
 }
 
-export function SuperContestEffects() {
-  return <></>;
+export function SuperContestEffectList() {
+  const apiUrl = "https://pokeapi.co/api/v2/super-contest-effect";
+  const [superContestEffectListCount, setSuperContestEffectListCount] =
+    useState(0);
+  const [superContestEffectListData, setSuperContestEffectListData] = useState(
+    []
+  );
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => setSuperContestEffectListCount(data.count))
+      .catch((error) => {
+        console.error(error);
+        setIsError(true);
+      });
+  }, [apiUrl]);
+
+  useEffect(() => {
+    fetch(`${apiUrl}?limit=${superContestEffectListCount}`)
+      .then((response) => response.json())
+      .then((data) => setSuperContestEffectListData(data))
+      .then(setIsLoading(false))
+      .catch((error) => {
+        console.error(error);
+        setIsError(true);
+      });
+  }, [superContestEffectListCount]);
+
+  if (isLoading || isEmpty(superContestEffectListData)) return <p>Loading</p>;
+  if (isError) return <p>Error</p>;
+
+  return (
+    <div id="super-contest-effect-list">
+      <ul>
+        {superContestEffectListData.results.map((effect, key) => (
+          <li key={key}>
+            <a href={`/super-contest-effect/${key + 1}`} alt={key + 1}>
+              {key + 1}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export function SuperContestEffect() {
-  return <></>;
+  const { id } = useParams();
+  const apiUrl = `https://pokeapi.co/api/v2/super-contest-effect/${id}/`;
+  const [superContestEffectData, setSuperContestEffectData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => setSuperContestEffectData(data))
+      .then(setIsLoading(false))
+      .catch((error) => {
+        console.log(error);
+        setIsError(true);
+      });
+  }, [apiUrl]);
+
+  if (isLoading || isEmpty(superContestEffectData)) return <p>Loading</p>;
+  if (isError) return <p>Error</p>;
+
+  return (
+    <div id="super-contest-effect">
+      <div id="super-contest-effect-appeal">
+        <h3>Appeal</h3>
+        {superContestEffectData.appeal}
+      </div>
+      <div id="super-contest-effect-flavor-text-entries">
+        <h3>Flavor text entries</h3>
+        <ul>
+          {superContestEffectData.flavor_text_entries.map((entry, key) => (
+            <li key={key}>
+              <a
+                href={`/language/${entry.language.name}`}
+                alt={entry.language.name}
+              >
+                {entry.language.name}
+              </a>{" "}
+              - {entry.flavor_text}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div id="super-contest-effect-id">#{superContestEffectData.id}</div>
+      <div id="super-contest-effect-moves">
+        <h3>Moves</h3>
+        <ul>
+          {superContestEffectData.moves.map((move, key) => (
+            <li key={key}>
+              <a href={`/move/${move.name}`} alt={move.name}>
+                {move.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 }

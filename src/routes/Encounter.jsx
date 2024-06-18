@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 import { isEmpty } from "../utils";
 import { useParams } from "react-router-dom";
 
-export function EncounterConditions() {
+export function EncounterConditionList() {
   const apiUrl = "https://pokeapi.co/api/v2/encounter-condition";
-  const [encounterConditionCount, setEncounterConditionCount] = useState(0);
-  const [encounterConditionsData, setEncounterConditionsData] = useState([]);
+  const [encounterConditionListCount, setEncounterConditionListCount] =
+    useState(0);
+  const [encounterConditionListData, setEncounterConditionListData] = useState(
+    []
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setEncounterConditionCount(data.count))
+      .then((data) => setEncounterConditionListCount(data.count))
       .catch((error) => {
         console.error(error);
         setIsError(true);
@@ -20,23 +23,23 @@ export function EncounterConditions() {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}?limit=${encounterConditionCount}`)
+    fetch(`${apiUrl}?limit=${encounterConditionListCount}`)
       .then((response) => response.json())
-      .then((data) => setEncounterConditionsData(data))
+      .then((data) => setEncounterConditionListData(data))
       .then(setIsLoading(false))
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
-  }, [encounterConditionCount]);
+  }, [encounterConditionListCount]);
 
-  if (isLoading || isEmpty(encounterConditionsData)) return <p>Loading</p>;
+  if (isLoading || isEmpty(encounterConditionListData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
-    <div id="encounter-conditions">
+    <div id="encounter-condition-list">
       <ul>
-        {encounterConditionsData.results.map((condition, key) => (
+        {encounterConditionListData.results.map((condition, key) => (
           <li key={key}>
             <a
               href={`/encounter-condition/${condition.name}`}
@@ -113,11 +116,13 @@ export function EncounterCondition() {
   );
 }
 
-export function EncounterConditionValues() {
+export function EncounterConditionValueList() {
   const apiUrl = "https://pokeapi.co/api/v2/encounter-condition-value";
-  const [encounterConditionValueCount, setEncounterConditionValueCount] =
-    useState(0);
-  const [encounterConditionValuesData, setEncounterConditionValuesData] =
+  const [
+    encounterConditionValueListCount,
+    setEncounterConditionValueListCount,
+  ] = useState(0);
+  const [encounterConditionValueListData, setEncounterConditionValueListData] =
     useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -125,7 +130,7 @@ export function EncounterConditionValues() {
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setEncounterConditionValueCount(data.count))
+      .then((data) => setEncounterConditionValueListCount(data.count))
       .catch((error) => {
         console.error(error);
         setIsError(true);
@@ -133,23 +138,24 @@ export function EncounterConditionValues() {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}?limit=${encounterConditionValueCount}`)
+    fetch(`${apiUrl}?limit=${encounterConditionValueListCount}`)
       .then((response) => response.json())
-      .then((data) => setEncounterConditionValuesData(data))
+      .then((data) => setEncounterConditionValueListData(data))
       .then(setIsLoading(false))
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
-  }, [encounterConditionValueCount]);
+  }, [encounterConditionValueListCount]);
 
-  if (isLoading || isEmpty(encounterConditionValuesData)) return <p>Loading</p>;
+  if (isLoading || isEmpty(encounterConditionValueListData))
+    return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
-    <div id="encounter-condition-values">
+    <div id="encounter-condition-value-list">
       <ul>
-        {encounterConditionValuesData.results.map((value, key) => (
+        {encounterConditionValueListData.results.map((value, key) => (
           <li key={key}>
             <a
               href={`/encounter-condition-value/${value.name}`}
@@ -221,17 +227,17 @@ export function EncounterConditionValue() {
   );
 }
 
-export function EncountersMethod() {
+export function EncounterMethodList() {
   const apiUrl = "https://pokeapi.co/api/v2/encounter-method";
-  const [encounterMethodCount, setEncounterMethodCount] = useState(0);
-  const [encounterMethodsData, setEncounterMethodsData] = useState([]);
+  const [encounterMethodListCount, setEncounterMethodListCount] = useState(0);
+  const [encounterMethodListData, setEncounterMethodListData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setEncounterMethodCount(data.count))
+      .then((data) => setEncounterMethodListCount(data.count))
       .catch((error) => {
         console.error(error);
         setIsError(true);
@@ -239,23 +245,23 @@ export function EncountersMethod() {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}?limit=${encounterMethodCount}`)
+    fetch(`${apiUrl}?limit=${encounterMethodListCount}`)
       .then((response) => response.json())
-      .then((data) => setEncounterMethodsData(data))
+      .then((data) => setEncounterMethodListData(data))
       .then(setIsLoading(false))
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
-  }, [encounterMethodCount]);
+  }, [encounterMethodListCount]);
 
-  if (isLoading || isEmpty(encounterMethodsData)) return <p>Loading</p>;
+  if (isLoading || isEmpty(encounterMethodListData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
-    <div id="encounter-methods">
+    <div id="encounter-method-list">
       <ul>
-        {encounterMethodsData.results.map((method, key) => (
+        {encounterMethodListData.results.map((method, key) => (
           <li key={key}>
             <a href={`/encounter-method/${method.name}`} alt={method.name}>
               {method.name}
@@ -309,7 +315,10 @@ export function EncounterMethod() {
           ))}
         </ul>
       </div>
-      <div id="encounter-method-order"></div>
+      <div id="encounter-method-order">
+        <h3>Order</h3>
+        {encounterMethodData.order}
+      </div>
     </div>
   );
 }

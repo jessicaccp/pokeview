@@ -17,21 +17,25 @@ import Pokemon, {
 import NotFound from "./NotFound";
 import Home from "./Home";
 
-import Ability, { Abilities } from "./Ability";
+import Ability, { Abilities, AbilityList } from "./Ability";
 import Berry, {
   Berries,
   BerriesFirmness,
   BerryFirmness,
   BerriesFlavor,
   BerryFlavor,
+  BerryList,
+  BerryFirmnessList,
+  BerryFlavorList,
 } from "./Berry";
 import {
   ContestEffect,
   ContestsEffect,
   ContestType,
-  ContestsType,
-  SuperContestEffects,
+  ContestTypeList,
+  SuperContestEffectList,
   SuperContestEffect,
+  ContestEffectList,
 } from "./Contest";
 import {
   EncounterCondition,
@@ -76,7 +80,10 @@ import Move, {
   Moves,
 } from "./Move";
 import Type, { Types } from "./Type";
-import Characteristic, { Characteristics } from "./Characteristic";
+import Characteristic, {
+  CharacteristicList,
+  Characteristics,
+} from "./Characteristic";
 import { EggGroup, EggGroups } from "./Egg";
 import Gender, { Genders } from "./Gender";
 import Generation, { Generations } from "./Generation";
@@ -103,19 +110,19 @@ export default function Router() {
         {/* <Route path="/search/:keyword" element={} /> */}
 
         {/* api resources */}
-        <Route path="/ability" element={<Abilities />} />
+        <Route path="/ability" element={<AbilityList />} />
         <Route path="/ability/:id" element={<Ability />} />
-        <Route path="/berry" element={<Berries />} />
+        <Route path="/berry" element={<BerryList />} />
         <Route path="/berry/:id" element={<Berry />} />
-        <Route path="/berry-firmness/" element={<BerriesFirmness />} />
+        <Route path="/berry-firmness/" element={<BerryFirmnessList />} />
         <Route path="/berry-firmness/:id" element={<BerryFirmness />} />
-        <Route path="/berry-flavor" element={<BerriesFlavor />} />
+        <Route path="/berry-flavor" element={<BerryFlavorList />} />
         <Route path="/berry-flavor/:id" element={<BerryFlavor />} />
-        <Route path="/characteristic" element={<Characteristics />} />
+        <Route path="/characteristic" element={<CharacteristicList />} />
         <Route path="/characteristic/:id" element={<Characteristic />} />
-        <Route path="/contest-effect" element={<ContestsEffect />} />
+        <Route path="/contest-effect" element={<ContestEffectList />} />
         <Route path="/contest-effect/:id" element={<ContestEffect />} />
-        <Route path="/contest-type" element={<ContestsType />} />
+        <Route path="/contest-type" element={<ContestTypeList />} />
         <Route path="/contest-type/:id" element={<ContestType />} />
         <Route path="/egg-group" element={<EggGroups />} />
         <Route path="/egg-group/:id" element={<EggGroup />} />
@@ -200,7 +207,10 @@ export default function Router() {
         <Route path="/region/:id" element={<Region />} />
         <Route path="/stat" element={<Stats />} />
         <Route path="/stat/:id" element={<Stat />} />
-        <Route path="/super-contest-effect" element={<SuperContestEffects />} />
+        <Route
+          path="/super-contest-effect"
+          element={<SuperContestEffectList />}
+        />
         <Route
           path="/super-contest-effect/:id"
           element={<SuperContestEffect />}

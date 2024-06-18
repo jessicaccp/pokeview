@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SearchPage from "./pages/Search";
+import SearchPage from "./Search";
 import Pokemon, {
   PokemonColor,
   PokemonColors,
@@ -13,18 +13,18 @@ import Pokemon, {
   PokemonSpecies,
   PokemonSpeciesId,
   Pokemons,
-} from "./pages/Pokemon";
-import NotFound from "./pages/NotFound";
-import Home from "./pages/Home";
+} from "./Pokemon";
+import NotFound from "./NotFound";
+import Home from "./Home";
 
-import Ability, { Abilities } from "./pages/Ability";
+import Ability, { Abilities } from "./Ability";
 import Berry, {
   Berries,
   BerriesFirmness,
   BerryFirmness,
   BerriesFlavor,
   BerryFlavor,
-} from "./pages/Berry";
+} from "./Berry";
 import {
   ContestEffect,
   ContestsEffect,
@@ -32,7 +32,7 @@ import {
   ContestsType,
   SuperContestEffects,
   SuperContestEffect,
-} from "./pages/Contest";
+} from "./Contest";
 import {
   EncounterCondition,
   EncounterConditionValue,
@@ -40,13 +40,13 @@ import {
   EncountersMethod,
   EncounterConditions,
   EncounterConditionValues,
-} from "./pages/Encounter";
+} from "./Encounter";
 import {
   EvolutionChain,
   EvolutionTrigger,
   EvolutionsChain,
   EvolutionsTrigger,
-} from "./pages/Evolution";
+} from "./Evolution";
 import Item, {
   ItemAttribute,
   ItemAttributes,
@@ -57,13 +57,9 @@ import Item, {
   ItemPocket,
   ItemPockets,
   Items,
-} from "./pages/Item";
-import Location, {
-  LocationArea,
-  LocationAreas,
-  Locations,
-} from "./pages/Location";
-import Machine, { Machines } from "./pages/Machine";
+} from "./Item";
+import Location, { LocationArea, LocationAreas, Locations } from "./Location";
+import Machine, { Machines } from "./Machine";
 import Move, {
   MoveAilment,
   MoveAilments,
@@ -78,37 +74,35 @@ import Move, {
   MoveTarget,
   MoveTargets,
   Moves,
-} from "./pages/Move";
-import Type, { Types } from "./pages/Type";
-import Characteristic, { Characteristics } from "./pages/Characteristic";
-import { EggGroup, EggGroups } from "./pages/Egg";
-import Gender, { Genders } from "./pages/Gender";
-import Generation, { Generations } from "./pages/Generation";
-import GrowthRate, { GrowthRates } from "./pages/GrowthRate";
-import Language, { Languages } from "./pages/Language";
-import Nature, { Natures } from "./pages/Nature";
-import PalParkArea, { PalParkAreas } from "./pages/PalParkArea";
-import PokeathlonStat, { PokeathlonStats } from "./pages/Pokeathlon";
-import Pokedex, { Pokedexes } from "./pages/Pokedex";
-import Region, { Regions } from "./pages/Region";
-import Stat, { Stats } from "./pages/Stat";
-import Version, {
-  VersionGroup,
-  VersionGroups,
-  Versions,
-} from "./pages/Version";
-import Lists from "./pages/Lists";
+} from "./Move";
+import Type, { Types } from "./Type";
+import Characteristic, { Characteristics } from "./Characteristic";
+import { EggGroup, EggGroups } from "./Egg";
+import Gender, { Genders } from "./Gender";
+import Generation, { Generations } from "./Generation";
+import GrowthRate, { GrowthRates } from "./GrowthRate";
+import Language, { Languages } from "./Language";
+import Nature, { Natures } from "./Nature";
+import PalParkArea, { PalParkAreas } from "./PalParkArea";
+import PokeathlonStat, { PokeathlonStats } from "./Pokeathlon";
+import Pokedex, { Pokedexes } from "./Pokedex";
+import Region, { Regions } from "./Region";
+import Stat, { Stats } from "./Stat";
+import Version, { VersionGroup, VersionGroups, Versions } from "./Version";
+import Lists from "./Lists";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* pages */}
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<SearchPage />} />
         {/* <Route path="/random" element={}/> */}
         <Route path="/lists" element={<Lists />} />
         {/* <Route path="/search/:keyword" element={} /> */}
 
+        {/* api resources */}
         <Route path="/ability" element={<Abilities />} />
         <Route path="/ability/:id" element={<Ability />} />
         <Route path="/berry" element={<Berries />} />

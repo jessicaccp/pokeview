@@ -5,8 +5,10 @@ export default function Header() {
   return (
     <>
       <header>
-        <Logo />
-        <Nav />
+        <div id="header-container">
+          <Logo />
+          <Nav />
+        </div>
       </header>
     </>
   );

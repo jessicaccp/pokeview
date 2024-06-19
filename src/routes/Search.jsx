@@ -5,8 +5,8 @@ import Error from "../components/Error";
 import PokemonMiniCard from "../components/PokemonMiniCard";
 
 export default function Search() {
-  const { option, keyword } = useParams();
   const apiUrl = "https://pokeapi.co/api/v2/pokemon";
+  const { option, keyword } = useParams();
   const options = ["name", "id", "type", "ability", "version", "item", "move"];
   const [optionSelected, setOptionSelected] = useState(option);
   const [count, setCount] = useState(0);
@@ -48,7 +48,6 @@ export default function Search() {
 
   // Gets the urls to fetch each pokémon data
   useEffect(() => {
-    setIsLoading(true);
     setUrls([]);
     fetch(`${apiUrl}?limit=${count}`)
       .then((response) => response.json())
@@ -66,20 +65,31 @@ export default function Search() {
   // Gets the data of each pokémon
   useEffect(() => {
     if (urls) {
-      setIsLoading(true);
       setData([]);
       urls.forEach((url) => {
         fetch(url)
           .then((response) => response.json())
-          .then((data) => setData((prev) => [...prev, data]))
+          .then((data) => {
+            setData((prev) => [...prev, data]);
+            setIsError(false);
+          })
           .catch((error) => {
             console.error(error);
             setIsError(true);
           });
       });
-      setIsLoading(false);
     }
   }, [count, urls]);
+
+  // useEffect(() => {
+  // data.sort((a, b) => a.id - b.id);
+  // }, [data]);
+
+  useEffect(() => {
+    if (data.length === count) {
+      setIsLoading(false);
+    }
+  }, [data]);
 
   // Handles page loading and error
   if (isLoading) return <Loading />;
@@ -87,7 +97,8 @@ export default function Search() {
 
   // Does search when keyword changes
   function handleInputChange(event) {
-    doSearch(optionSelected, event.target.value);
+    if (event.target.value === "") setResult([]);
+    else doSearch(optionSelected, event.target.value);
   }
 
   // Blocks the form submit with Enter key

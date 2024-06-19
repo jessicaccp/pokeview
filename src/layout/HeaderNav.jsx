@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Nav() {
   const links = [
     { title: "Home", path: "/" },

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { isObjEmpty } from "../utils";
 import { useParams } from "react-router-dom";
 

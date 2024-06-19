@@ -174,6 +174,7 @@ export function ResourceCard(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
+  // Verifies if the id is valid and get the data
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => {
@@ -193,154 +194,105 @@ export function ResourceCard(props) {
   if (isLoading) return <Loading />;
   if (isError) return <Error />;
 
+  // Forwards data to respective resource card
   switch (props.resource) {
     case "ability":
       return <Ability data={data} />;
-
     case "berry":
       return <Berry data={data} />;
-
     case "berry-firmness":
       return <BerryFirmness data={data} />;
-
     case "berry-flavor":
       return <BerryFlavor data={data} />;
-
     case "characteristic":
       return <Characteristic data={data} />;
-
     case "contest-effect":
       return <ContestEffect data={data} />;
-
     case "contest-type":
       return <ContestType data={data} />;
-
     case "egg-group":
       return <EggGroup data={data} />;
-
     case "encounter-condition":
       return <EncounterCondition data={data} />;
-
     case "encounter-condition-value":
       return <EncounterConditionValue data={data} />;
-
     case "encounter-method":
       return <EncounterMethod data={data} />;
-
     case "evolution-chain":
       return <EvolutionChain data={data} />;
-
     case "evolution-trigger":
       return <EvolutionTrigger data={data} />;
-
     case "gender":
       return <Gender data={data} />;
-
     case "generation":
       return <Generation data={data} />;
-
     case "growth-rate":
       return <GrowthRate data={data} />;
-
     case "item":
       return <Item data={data} />;
-
     case "item-attribute":
       return <ItemAttribute data={data} />;
-
     case "item-category":
       return <ItemCategory data={data} />;
-
     case "item-fling-effect":
       return <ItemFlingEffect data={data} />;
-
     case "item-pocket":
       return <ItemPocket data={data} />;
-
     case "language":
       return <Language data={data} />;
-
     case "location":
       return <Location data={data} />;
-
     case "location-area":
       return <LocationArea data={data} />;
-
     case "machine":
       return <Machine data={data} />;
-
     case "move":
       return <Move data={data} />;
-
     case "move-ailment":
       return <MoveAilment data={data} />;
-
     case "move-battle-style":
       return <MoveBattleStyle data={data} />;
-
     case "move-category":
       return <MoveCategory data={data} />;
-
     case "move-damage-class":
       return <MoveDamageClass data={data} />;
-
     case "move-learn-method":
       return <MoveLearnMethod data={data} />;
-
     case "move-target":
       return <MoveTarget data={data} />;
-
     case "nature":
       return <Nature data={data} />;
-
     case "pal-park-area":
       return <PalParkArea data={data} />;
-
     case "pokeathlon-stat":
       return <PokeathlonStat data={data} />;
-
     case "pokedex":
       return <Pokedex data={data} />;
-
     case "pokemon":
       return <Pokemon data={data} />;
-
     case "pokemon-color":
       return <PokemonColor data={data} />;
-
     case "pokemon-form":
       return <PokemonForm data={data} />;
-
     case "pokemon-habitat":
       return <PokemonHabitat data={data} />;
-
     case "pokemon-shape":
       return <PokemonShape data={data} />;
-
     case "pokemon-species":
       return <PokemonSpeciesId data={data} />;
-
     case "region":
       return <Region data={data} />;
-
     case "stat":
       return <Stat data={data} />;
-
     case "super-contest-effect":
       return <SuperContestEffect data={data} />;
-
     case "type":
       return <Type data={data} />;
-
     case "version":
       return <Version data={data} />;
-
     case "version-group":
       return <VersionGroup data={data} />;
-
     default:
       return <NotFound />;
   }
-
-  return <></>;
 }

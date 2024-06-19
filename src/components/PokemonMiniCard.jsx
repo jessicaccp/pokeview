@@ -1,6 +1,9 @@
 export default function PokemonMiniCard(props) {
+  // Sets initial values
   const id = props.data.id;
   const name = props.data.name;
+
+  // Full list of possible images
   const images = [
     props.data.sprites.front_default,
     props.data.sprites.back_default,
@@ -158,8 +161,8 @@ export default function PokemonMiniCard(props) {
     props.data.sprites.versions["generation-viii"].icons.front_female,
   ];
 
+  // Chooses the first valid image of all possibilities
   let image = "";
-
   for (let img of images) {
     if (img) {
       image = img;

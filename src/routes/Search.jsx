@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import PokemonMiniCard from "../components/PokemonMiniCard";
 
 export default function Search() {
   const { option, keyword } = useParams();
@@ -123,7 +124,7 @@ export default function Search() {
       case "name":
         data.forEach((pokemon) => {
           if (pokemon.name.includes(keyword)) {
-            setResult((prev) => [...prev, pokemon.name]);
+            setResult((prev) => [...prev, <PokemonMiniCard data={pokemon} />]);
           }
         });
         break;
@@ -131,7 +132,7 @@ export default function Search() {
       case "id":
         data.forEach((pokemon) => {
           if (pokemon.id === Number(keyword)) {
-            setResult((prev) => [...prev, pokemon.name]);
+            setResult((prev) => [...prev, <PokemonMiniCard data={pokemon} />]);
           }
         });
         break;
@@ -140,7 +141,10 @@ export default function Search() {
         data.forEach((pokemon) => {
           pokemon.types.forEach((type) => {
             if (type.type.name === keyword) {
-              setResult((prev) => [...prev, pokemon.name]);
+              setResult((prev) => [
+                ...prev,
+                <PokemonMiniCard data={pokemon} />,
+              ]);
             }
           });
         });
@@ -150,7 +154,10 @@ export default function Search() {
         data.forEach((pokemon) => {
           pokemon.abilities.forEach((ability) => {
             if (ability.ability.name === keyword) {
-              setResult((prev) => [...prev, pokemon.name]);
+              setResult((prev) => [
+                ...prev,
+                <PokemonMiniCard data={pokemon} />,
+              ]);
             }
           });
         });
@@ -160,7 +167,10 @@ export default function Search() {
         data.forEach((pokemon) => {
           pokemon.game_indices.forEach((game) => {
             if (game.version.name === keyword) {
-              setResult((prev) => [...prev, pokemon.name]);
+              setResult((prev) => [
+                ...prev,
+                <PokemonMiniCard data={pokemon} />,
+              ]);
             }
           });
         });
@@ -170,7 +180,10 @@ export default function Search() {
         data.forEach((pokemon) => {
           pokemon.held_items.forEach((item) => {
             if (item.item.name === keyword) {
-              setResult((prev) => [...prev, pokemon.name]);
+              setResult((prev) => [
+                ...prev,
+                <PokemonMiniCard data={pokemon} />,
+              ]);
             }
           });
         });
@@ -180,7 +193,10 @@ export default function Search() {
         data.forEach((pokemon) => {
           pokemon.moves.forEach((move) => {
             if (move.move.name === keyword) {
-              setResult((prev) => [...prev, pokemon.name]);
+              setResult((prev) => [
+                ...prev,
+                <PokemonMiniCard data={pokemon} />,
+              ]);
             }
           });
         });

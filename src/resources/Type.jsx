@@ -17,89 +17,119 @@ export default function Type(props) {
         <div id="type-card-damage-relations-double-damage-from">
           <h4>Double damage from</h4>
           <ul>
-            {props.data.damage_relations.double_damage_from.map((type, key) => (
-              <li key={key}>
-                <a href={`/type/${type.name}`} alt={type.name}>
-                  {type.name}
-                </a>
-              </li>
-            ))}
+            {isObjEmpty(!props.data.damage_relations.double_damage_from) ? (
+              props.data.damage_relations.double_damage_from.map(
+                (type, key) => (
+                  <li key={key}>
+                    <a href={`/type/${type.name}`} alt={type.name}>
+                      {type.name}
+                    </a>
+                  </li>
+                )
+              )
+            ) : (
+              <p>None</p>
+            )}
           </ul>
         </div>
         <div id="type-card-damage-relations-double-damage-to">
           <h4>Double damage to</h4>
           <ul>
-            {props.data.damage_relations.double_damage_to.map((type, key) => (
-              <li key={key}>
-                <a href={`/type/${type.name}`} alt={type.name}>
-                  {type.name}
-                </a>
-              </li>
-            ))}
+            {isObjEmpty(!props.data.damage_relations.double_damage_to) ? (
+              props.data.damage_relations.double_damage_to.map((type, key) => (
+                <li key={key}>
+                  <a href={`/type/${type.name}`} alt={type.name}>
+                    {type.name}
+                  </a>
+                </li>
+              ))
+            ) : (
+              <p>None</p>
+            )}
           </ul>
         </div>
         <div id="type-card-damage-relations-half-damage-from">
           <h4>Half damage from</h4>
           <ul>
-            {props.data.damage_relations.half_damage_from.map((type, key) => (
-              <li key={key}>
-                <a href={`/type/${type.name}`} alt={type.name}>
-                  {type.name}
-                </a>
-              </li>
-            ))}
+            {isObjEmpty(!props.data.damage_relations.half_damage_from) ? (
+              props.data.damage_relations.half_damage_from.map((type, key) => (
+                <li key={key}>
+                  <a href={`/type/${type.name}`} alt={type.name}>
+                    {type.name}
+                  </a>
+                </li>
+              ))
+            ) : (
+              <p>None</p>
+            )}
           </ul>
         </div>
         <div id="type-card-damage-relations-half-damage-to">
           <h4>Half damage to</h4>
           <ul>
-            {props.data.damage_relations.half_damage_to.map((type, key) => (
-              <li key={key}>
-                <a href={`/type/${type.name}`} alt={type.name}>
-                  {type.name}
-                </a>
-              </li>
-            ))}
+            {isObjEmpty(!props.data.damage_relations.half_damage_to) ? (
+              props.data.damage_relations.half_damage_to.map((type, key) => (
+                <li key={key}>
+                  <a href={`/type/${type.name}`} alt={type.name}>
+                    {type.name}
+                  </a>
+                </li>
+              ))
+            ) : (
+              <p>None</p>
+            )}
           </ul>
         </div>
         <div id="type-card-damage-relations-no-damage-from">
           <h4>No damage from</h4>
           <ul>
-            {props.data.damage_relations.no_damage_from.map((type, key) => (
-              <li key={key}>
-                <a href={`/type/${type.name}`} alt={type.name}>
-                  {type.name}
-                </a>
-              </li>
-            ))}
+            {isObjEmpty(!props.data.damage_relations.no_damage_from) ? (
+              props.data.damage_relations.no_damage_from.map((type, key) => (
+                <li key={key}>
+                  <a href={`/type/${type.name}`} alt={type.name}>
+                    {type.name}
+                  </a>
+                </li>
+              ))
+            ) : (
+              <p>None</p>
+            )}
           </ul>
         </div>
         <div id="type-card-damage-relations-no-damage-to">
           <h4>No damage to</h4>
           <ul>
-            {props.data.damage_relations.no_damage_to.map((type, key) => (
-              <li key={key}>
-                <a href={`/type/${type.name}`} alt={type.name}>
-                  {type.name}
-                </a>
-              </li>
-            ))}
+            {isObjEmpty(!props.data.damage_relations.no_damage_to) ? (
+              props.data.damage_relations.no_damage_to.map((type, key) => (
+                <li key={key}>
+                  <a href={`/type/${type.name}`} alt={type.name}>
+                    {type.name}
+                  </a>
+                </li>
+              ))
+            ) : (
+              <p>None</p>
+            )}
           </ul>
         </div>
       </div>
       <div id="type-card-game-indices">
         <h3>Games indices</h3>
         <ul>
-          {props.data.game_indices.map((generation, key) => (
-            <li key={key}>
-              <a
-                href={`/generation/${generation.generation.name}`}
-                alt={generation.generation.name}
-              >
-                {generation.generation.name}
-              </a>
-            </li>
-          ))}
+          {isObjEmpty(!props.data.game_indices) ? (
+            props.data.game_indices.map((generation, key) => (
+              <li key={key}>
+                <a
+                  href={`/generation/${generation.generation.name}`}
+                  alt={generation.generation.name}
+                >
+                  {generation.generation.name}
+                </a>
+              </li>
+            ))
+          ) : (
+            <p>None</p>
+          )}
         </ul>
       </div>
       <div id="type-card-generation">
@@ -127,30 +157,38 @@ export default function Type(props) {
       <div id="type-card-moves">
         <h3>Moves</h3>
         <ul>
-          {props.data.moves.map((move, key) => (
-            <li key={key}>
-              <a href={`/move/${move.name}`} alt={move.name}>
-                {move.name}
-              </a>
-            </li>
-          ))}
+          {isObjEmpty(!props.data.moves) ? (
+            props.data.moves.map((move, key) => (
+              <li key={key}>
+                <a href={`/move/${move.name}`} alt={move.name}>
+                  {move.name}
+                </a>
+              </li>
+            ))
+          ) : (
+            <p>None</p>
+          )}
         </ul>
       </div>
       <div id="type-card-names">
         <h3>Names</h3>
         <h4>by language</h4>
         <ul>
-          {props.data.names.map((name, key) => (
-            <li key={key}>
-              <a
-                href={`/language/${name.language.name}`}
-                alt={name.language.name}
-              >
-                {name.language.name}
-              </a>{" "}
-              - {name.name}
-            </li>
-          ))}
+          {isObjEmpty(!props.data.names) ? (
+            props.data.names.map((name, key) => (
+              <li key={key}>
+                <a
+                  href={`/language/${name.language.name}`}
+                  alt={name.language.name}
+                >
+                  {name.language.name}
+                </a>{" "}
+                - {name.name}
+              </li>
+            ))
+          ) : (
+            <p>None</p>
+          )}
         </ul>
       </div>
       {/* <div id="type-card-past-damage-relations">
@@ -159,16 +197,20 @@ export default function Type(props) {
       <div id="type-card-pokemon">
         <h3>Pokémon</h3>
         <ul>
-          {props.data.pokemon.map((pokemon, key) => (
-            <li key={key}>
-              <a
-                href={`/pokemon/${pokemon.pokemon.name}`}
-                alt={pokemon.pokemon.name}
-              >
-                {pokemon.pokemon.name}
-              </a>
-            </li>
-          ))}
+          {isObjEmpty(!props.data.pokemon) ? (
+            props.data.pokemon.map((pokemon, key) => (
+              <li key={key}>
+                <a
+                  href={`/pokemon/${pokemon.pokemon.name}`}
+                  alt={pokemon.pokemon.name}
+                >
+                  {pokemon.pokemon.name}
+                </a>
+              </li>
+            ))
+          ) : (
+            <p>None</p>
+          )}
         </ul>
       </div>
     </div>

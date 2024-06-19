@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { isEmpty } from "../utils";
+import { isObjEmpty } from "../utils";
 
 export function EvolutionChain() {
   const { id } = useParams();
@@ -20,7 +20,7 @@ export function EvolutionChain() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(evolutionChainData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(evolutionChainData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
@@ -62,7 +62,7 @@ export function EvolutionTrigger() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(evolutionTriggerData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(evolutionTriggerData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (

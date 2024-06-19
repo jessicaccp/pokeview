@@ -4,14 +4,6 @@ import PokemonCard from "../components/PokemonCard";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 
-export function PokemonCard() {
-  return <></>;
-}
-
-export function PokemonMiniCard() {
-  return <></>;
-}
-
 /**
  * This component renders a page with a list of pokémons cards based on the searchbar value.
  *

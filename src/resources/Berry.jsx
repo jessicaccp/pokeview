@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { isEmpty } from "../utils";
+import { isObjEmpty } from "../utils";
 
 export default function Berry() {
   const { id } = useParams();
@@ -20,7 +20,7 @@ export default function Berry() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(berryData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(berryData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
@@ -114,7 +114,7 @@ export function BerryFirmness() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(berryFirmnessData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(berryFirmnessData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
@@ -171,7 +171,7 @@ export function BerryFlavor() {
 
   console.log(berryFlavorData);
 
-  if (isLoading || isEmpty(berryFlavorData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(berryFlavorData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (

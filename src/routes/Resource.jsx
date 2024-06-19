@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { isObjEmpty, isIdValid } from "../utils";
-import NotFound from "./NotFound";
+import NotFound from "../components/NotFound";
+import Error from "../components/Error";
+import Loading from "../components/Loading";
 
-export function Path() {
+export default function Resource() {
   const { resource, id } = useParams();
   const resourceList = [
     "ability",
@@ -63,6 +65,8 @@ export function Path() {
       return <Resource resource={resource} id={id} />;
     }
   }
+
+  return <NotFound />;
 }
 
 export function ResourceList(props) {
@@ -93,8 +97,8 @@ export function ResourceList(props) {
       });
   }, [count]);
 
-  if (isLoading || isObjEmpty(data)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
+  if (isLoading || isObjEmpty(data)) return <Loading />;
+  if (isError) return <Error />;
 
   return (
     <div id={`${props.resource}-list`}>
@@ -114,7 +118,7 @@ export function ResourceList(props) {
   );
 }
 
-export function Resource(props) {
+export function ResourceCard(props) {
   const apiUrl = `https://pokeapi.co/api/v2/${props.resource}/${props.id}`;
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

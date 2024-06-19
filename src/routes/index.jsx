@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SearchPage from "./Search";
-import NotFound from "./NotFound";
+import Search from "./Search";
+import NotFound from "../components/NotFound";
 import Home from "./Home";
 import Lists from "./Lists";
-import { Path } from "./Resource";
+import Resource from "./Resource";
+import Random from "./Random";
 
 export default function Router() {
   return (
@@ -12,13 +13,14 @@ export default function Router() {
       <Routes>
         {/* pages */}
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={<SearchPage />} />
-        {/* <Route path="/random" element={}/> */}
+        <Route path="/search" element={<Search />} />
+        <Route path="/search/:keyword" element={<Search />} />
+        <Route path="/search/:option/:keyword" element={<Search />} />
+        <Route path="/random" element={<Random />} />
         <Route path="/lists" element={<Lists />} />
-        {/* <Route path="/search/:keyword" element={} /> */}
 
-        <Route path="/:resource" element={<Path />} />
-        <Route path="/:resource/:id" element={<Path />} />
+        <Route path="/:resource" element={<Resource />} />
+        <Route path="/:resource/:id" element={<Resource />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

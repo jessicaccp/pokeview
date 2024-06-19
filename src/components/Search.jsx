@@ -153,6 +153,13 @@ export default function Search(props) {
     // }
   }
 
+  function setKeyword(keyword) {
+    const input = document.getElementById("search-input");
+    if (input) input.value = keyword;
+  }
+
+  if (props.keyword) setKeyword(props.keyword);
+
   return (
     <>
       <section id="search-component">
@@ -163,6 +170,7 @@ export default function Search(props) {
             name="search"
             id="search-input"
             onChange={handleSearchChange}
+            value={props.keyword}
             // autoFocus
           />
           <div id="search-buttons">

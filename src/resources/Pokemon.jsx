@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PokemonCard from "../components/PokemonCard";
 
+export function PokemonCard() {
+  return <></>;
+}
+
+export function PokemonMiniCard() {
+  return <></>;
+}
+
 /**
  * This component renders a page with a list of pokémons cards based on the searchbar value.
  *

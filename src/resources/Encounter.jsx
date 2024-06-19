@@ -3,26 +3,6 @@ import { isObjEmpty } from "../utils";
 import { useParams } from "react-router-dom";
 
 export function EncounterCondition() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/encounter-condition/${id}/`;
-  const [encounterConditionData, setEncounterConditionData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setEncounterConditionData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(encounterConditionData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="encounter-condition">
       <div id="encounter-condition-id">#{encounterConditionData.id}</div>
@@ -65,28 +45,6 @@ export function EncounterCondition() {
 }
 
 export function EncounterConditionValue() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/encounter-condition-value/${id}/`;
-  const [encounterConditionValueData, setEncounterConditionValueData] =
-    useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setEncounterConditionValueData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(encounterConditionValueData))
-    return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="encounter-condition-value">
       <div id="encounter-condition-value-condition">
@@ -123,26 +81,6 @@ export function EncounterConditionValue() {
 }
 
 export function EncounterMethod() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/encounter-method/${id}/`;
-  const [encounterMethodData, setEncounterMethodData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setEncounterMethodData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(encounterMethodData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="encounter-method">
       <div id="encounter-method-id">#{encounterMethodData.id}</div>

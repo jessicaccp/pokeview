@@ -3,26 +3,6 @@ import { useParams } from "react-router-dom";
 import { isObjEmpty } from "../utils";
 
 export function EvolutionChain() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/evolution-chain/${id}/`;
-  const [evolutionChainData, setEvolutionChainData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setEvolutionChainData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(evolutionChainData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="evolution-chain">
       <div id="evolution-chain-baby-trigger-item">
@@ -45,26 +25,6 @@ export function EvolutionChain() {
 }
 
 export function EvolutionTrigger() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/evolution-trigger/${id}/`;
-  const [evolutionTriggerData, setEvolutionTriggerData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setEvolutionTriggerData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(evolutionTriggerData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="evolution-trigger">
       <div id="evolution-trigger-id">

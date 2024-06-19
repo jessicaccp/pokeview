@@ -3,26 +3,6 @@ import { useParams } from "react-router-dom";
 import { isObjEmpty } from "../utils";
 
 export default function Characteristic() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/characteristic/${id}/`;
-  const [characteristicData, setCharacteristicData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setCharacteristicData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(characteristicData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="characteristic">
       <div id="characteristic-descriptions">

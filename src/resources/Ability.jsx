@@ -3,26 +3,6 @@ import { useParams } from "react-router-dom";
 import { isObjEmpty } from "../utils";
 
 export default function Ability() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/ability/${id}/`;
-  const [abilityData, setAbilityData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setAbilityData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(abilityData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="ability">
       <div id="ability-id">#{abilityData.id}</div>

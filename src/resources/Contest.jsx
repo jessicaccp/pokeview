@@ -3,26 +3,6 @@ import { useParams } from "react-router-dom";
 import { isObjEmpty } from "../utils";
 
 export function ContestEffect() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/contest-effect/${id}/`;
-  const [contestEffectData, setContestEffectData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setContestEffectData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(contestEffectData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="contest-effect">
       <div id="contest-effect-appeal">
@@ -67,26 +47,6 @@ export function ContestEffect() {
 }
 
 export function ContestType() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/contest-type/${id}/`;
-  const [contestTypeData, setContestTypeData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setContestTypeData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(contestTypeData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="contest-type">
       <div id="contest-type-berry-flavor">
@@ -121,26 +81,6 @@ export function ContestType() {
 }
 
 export function SuperContestEffect() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/super-contest-effect/${id}/`;
-  const [superContestEffectData, setSuperContestEffectData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setSuperContestEffectData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(superContestEffectData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="super-contest-effect">
       <div id="super-contest-effect-appeal">

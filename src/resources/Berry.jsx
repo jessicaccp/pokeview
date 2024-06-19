@@ -3,26 +3,6 @@ import { useParams } from "react-router-dom";
 import { isObjEmpty } from "../utils";
 
 export default function Berry() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/berry/${id}/`;
-  const [berryData, setBerryData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setBerryData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(berryData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="berry">
       <div id="berry-id">#{berryData.id}</div>
@@ -97,26 +77,6 @@ export default function Berry() {
 }
 
 export function BerryFirmness() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/berry-firmness/${id}/`;
-  const [berryFirmnessData, setBerryFirmnessData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setBerryFirmnessData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  if (isLoading || isObjEmpty(berryFirmnessData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="berry-firmness">
       <div id="berry-firmness-berries">
@@ -152,28 +112,6 @@ export function BerryFirmness() {
 }
 
 export function BerryFlavor() {
-  const { id } = useParams();
-  const apiUrl = `https://pokeapi.co/api/v2/berry-flavor/${id}/`;
-  const [berryFlavorData, setBerryFlavorData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setBerryFlavorData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  console.log(berryFlavorData);
-
-  if (isLoading || isObjEmpty(berryFlavorData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
   return (
     <div id="berry-flavor">
       <div id="berry-flavor-berries">

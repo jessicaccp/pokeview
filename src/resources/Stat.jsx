@@ -1,7 +1,3 @@
-import { useState, useEffect } from "react";
-import { isObjEmpty } from "../utils";
-import { useParams } from "react-router-dom";
-
-export default function Stat() {
+export default function Stat(props) {
   return <></>;
 }

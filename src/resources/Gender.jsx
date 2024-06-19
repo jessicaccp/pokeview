@@ -1,20 +1,16 @@
-import { useState, useEffect } from "react";
-import { isObjEmpty } from "../utils";
-import { useParams } from "react-router-dom";
-
-export default function Gender() {
+export default function Gender(props) {
   return (
     <div id="gender">
       <div id="gender-id">
-        <p>#{genderData.id}</p>
+        <p>#{props.data.id}</p>
       </div>
       <div id="gender-name">
-        <h2>{genderData.name}</h2>
+        <h2>{props.data.name}</h2>
       </div>
       <div id="gender-pokemon-species-details">
         <h3>Pokemon species details</h3>
         <ul>
-          {genderData.pokemon_species_details.map((pokemon, key) => (
+          {props.data.pokemon_species_details.map((pokemon, key) => (
             <li key={key}>
               <a
                 href={`/pokemon-species/${pokemon.pokemon_species.name}`}
@@ -30,7 +26,7 @@ export default function Gender() {
       <div id="gender-required-for-evolution">
         <h3>Required for evolution</h3>
         <ul>
-          {genderData.required_for_evolution.map((pokemon, key) => (
+          {props.data.required_for_evolution.map((pokemon, key) => (
             <li key={key}>
               <a href={`/pokemon-species/${pokemon.name}`} alt={pokemon.name}>
                 {pokemon.name}

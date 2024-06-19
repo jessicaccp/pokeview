@@ -1,7 +1,3 @@
-import { useState, useEffect } from "react";
-import { isObjEmpty } from "../utils";
-import { useParams } from "react-router-dom";
-
-export default function PalParkArea() {
+export default function PalParkArea(props) {
   return <></>;
 }

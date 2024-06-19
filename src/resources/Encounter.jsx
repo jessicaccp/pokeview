@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
-import { isObjEmpty } from "../utils";
-import { useParams } from "react-router-dom";
-
-export function EncounterCondition() {
+export function EncounterCondition(props) {
   return (
     <div id="encounter-condition">
-      <div id="encounter-condition-id">#{encounterConditionData.id}</div>
+      <div id="encounter-condition-id">#{props.data.id}</div>
       <div id="encounter-condition-name">
-        <h2>{encounterConditionData.name}</h2>
+        <h2>{props.data.name}</h2>
       </div>
       <div id="encounter-condition-names">
         <h3>Names</h3>
         <ul>
-          {encounterConditionData.names.map((condition, key) => (
+          {props.data.names.map((condition, key) => (
             <li key={key}>
               <a
                 href={`/language/${condition.language.name}`}
@@ -28,7 +24,7 @@ export function EncounterCondition() {
       <div id="encounter-condition-values">
         <h3>Values</h3>
         <ul>
-          {encounterConditionData.values.map((value, key) => (
+          {props.data.values.map((value, key) => (
             <li key={key}>
               <a
                 href={`/encounter-condition-value/${value.name}`}
@@ -44,26 +40,24 @@ export function EncounterCondition() {
   );
 }
 
-export function EncounterConditionValue() {
+export function EncounterConditionValue(props) {
   return (
     <div id="encounter-condition-value">
       <div id="encounter-condition-value-condition">
         <a
-          href={`/encounter-condition/${encounterConditionValueData.name}`}
-          alt={encounterConditionValueData.name}
+          href={`/encounter-condition/${props.data.name}`}
+          alt={props.data.name}
         >
-          {encounterConditionValueData.condition.name}
+          {props.data.condition.name}
         </a>
       </div>
-      <div id="encounter-condition-value-id">
-        #{encounterConditionValueData.id}
-      </div>
+      <div id="encounter-condition-value-id">#{props.data.id}</div>
       <div id="encounter-condition-value-name">
-        <h2>{encounterConditionValueData.name}</h2>
+        <h2>{props.data.name}</h2>
       </div>
       <div id="encounter-condition-value-names">
         <ul>
-          {encounterConditionValueData.names.map((name, key) => (
+          {props.data.names.map((name, key) => (
             <li key={key}>
               <a
                 href={`/language/${name.language.name}`}
@@ -80,16 +74,16 @@ export function EncounterConditionValue() {
   );
 }
 
-export function EncounterMethod() {
+export function EncounterMethod(props) {
   return (
     <div id="encounter-method">
-      <div id="encounter-method-id">#{encounterMethodData.id}</div>
+      <div id="encounter-method-id">#{props.data.id}</div>
       <div id="encounter-method-name">
-        <h2>{encounterMethodData.name}</h2>
+        <h2>{props.data.name}</h2>
       </div>
       <div id="encounter-method-names">
         <ul>
-          {encounterMethodData.names.map((name, key) => (
+          {props.data.names.map((name, key) => (
             <li key={key}>
               <a
                 href={`/language/${name.language.name}`}
@@ -104,7 +98,7 @@ export function EncounterMethod() {
       </div>
       <div id="encounter-method-order">
         <h3>Order</h3>
-        {encounterMethodData.order}
+        {props.data.order}
       </div>
     </div>
   );

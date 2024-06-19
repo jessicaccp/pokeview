@@ -1,50 +1,46 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { isObjEmpty } from "../utils";
-
-export default function Berry() {
+export default function Berry(props) {
   return (
     <div id="berry">
-      <div id="berry-id">#{berryData.id}</div>
+      <div id="berry-id">#{props.data.id}</div>
       <div id="berry-name">
-        <h2>{berryData.name}</h2>
+        <h2>{props.data.name}</h2>
       </div>
       <div id="berry-growth-time">
         <h3>Growth time</h3>
-        {berryData.growth_time}
+        {props.data.growth_time}
       </div>
       <div id="berry-max-harvest">
         <h3>Max harvest</h3>
-        {berryData.max_harvest}
+        {props.data.max_harvest}
       </div>
       <div id="berry-natural-gift-power">
         <h3>Natural gift power</h3>
-        {berryData.natural_gift_power}
+        {props.data.natural_gift_power}
       </div>
       <div id="berry-size">
         <h3>Size</h3>
-        {berryData.size}
+        {props.data.size}
       </div>
       <div id="berry-smoothness">
         <h3>Smoothness</h3>
-        {berryData.smoothness}
+        {props.data.smoothness}
       </div>
       <div id="berry-soil-dryness">
         <h3>Soil dryness</h3>
-        {berryData.soil_dryness}
+        {props.data.soil_dryness}
       </div>
       <div id="berry-firmness">
         <h3>Firmness</h3>
         <a
-          href={`/berry-firmness/${berryData.firmness.name}`}
-          alt={berryData.firmness.name}
+          href={`/berry-firmness/${props.data.firmness.name}`}
+          alt={props.data.firmness.name}
         >
-          {berryData.firmness.name}
+          {props.data.firmness.name}
         </a>
       </div>
       <div id="berry-flavors">
         <h3>Flavors</h3>
-        {berryData.flavors.map((flavor, key) => (
+        {props.data.flavors.map((flavor, key) => (
           <li key={key}>
             <a
               href={`/berry-flavor/${flavor.flavor.name}`}
@@ -59,29 +55,29 @@ export default function Berry() {
       </div>
       <div id="berry-item">
         <h3>Item</h3>
-        <a href={`/item/${berryData.item.name}`} alt={berryData.item.name}>
-          {berryData.item.name}
+        <a href={`/item/${props.data.item.name}`} alt={props.data.item.name}>
+          {props.data.item.name}
         </a>
       </div>
       <div id="berry-natural-gift-type">
         <h3>Natural gift type</h3>
         <a
-          href={`/type/${berryData.natural_gift_type.name}`}
-          alt={berryData.natural_gift_type.name}
+          href={`/type/${props.data.natural_gift_type.name}`}
+          alt={props.data.natural_gift_type.name}
         >
-          {berryData.natural_gift_type.name}
+          {props.data.natural_gift_type.name}
         </a>
       </div>
     </div>
   );
 }
 
-export function BerryFirmness() {
+export function BerryFirmness(props) {
   return (
     <div id="berry-firmness">
       <div id="berry-firmness-berries">
         <h3>Berries</h3>
-        {berryFirmnessData.berries.map((berry, key) => (
+        {props.data.berries.map((berry, key) => (
           <li key={key}>
             <a href={`/berry/${berry.name}`} alt={berry.name}>
               {berry.name}
@@ -89,13 +85,13 @@ export function BerryFirmness() {
           </li>
         ))}
       </div>
-      <div id="berry-firmness-id">#{berryFirmnessData.id}</div>
+      <div id="berry-firmness-id">#{props.data.id}</div>
       <div id="berry-firmness-name">
-        <h2>{berryFirmnessData.name}</h2>
+        <h2>{props.data.name}</h2>
       </div>
       <div id="berry-firmness-names">
         <h3>Names</h3>
-        {berryFirmnessData.names.map((name, key) => (
+        {props.data.names.map((name, key) => (
           <li key={key}>
             <a
               href={`/language/${name.language.name}`}
@@ -111,12 +107,12 @@ export function BerryFirmness() {
   );
 }
 
-export function BerryFlavor() {
+export function BerryFlavor(props) {
   return (
     <div id="berry-flavor">
       <div id="berry-flavor-berries">
         <h3>Berries</h3>
-        {berryFlavorData.berries.map((berry, key) => (
+        {props.data.berries.map((berry, key) => (
           <li key={key}>
             <a href={`/berry/${berry.berry.name}`} alt={berry.berry.name}>
               {berry.berry.name}
@@ -129,18 +125,18 @@ export function BerryFlavor() {
       <div id="berry-flavor-contest-type">
         <h3>Contest type</h3>
         <a
-          href={`/contest-type/${berryFlavorData.contest_type.name}`}
-          alt={berryFlavorData.contest_type.name}
+          href={`/contest-type/${props.data.contest_type.name}`}
+          alt={props.data.contest_type.name}
         >
-          {berryFlavorData.contest_type.name}
+          {props.data.contest_type.name}
         </a>
       </div>
-      <div id="berry-flavor-id">#{berryFlavorData.id}</div>
+      <div id="berry-flavor-id">#{props.data.id}</div>
       <div id="berry-flavor-name">
-        <h2>{berryFlavorData.name}</h2>
+        <h2>{props.data.name}</h2>
       </div>
       <div id="berry-flavor-names">
-        {berryFlavorData.names.map((berry, key) => (
+        {props.data.names.map((berry, key) => (
           <li key={key}>
             <a
               href={`/language/${berry.language.name}`}

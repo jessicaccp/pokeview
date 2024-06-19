@@ -1,23 +1,19 @@
-import { useState, useEffect } from "react";
-import { isObjEmpty } from "../utils";
-import { useParams } from "react-router-dom";
-
-export default function Item() {
+export default function Item(props) {
   return <></>;
 }
 
-export function ItemAttribute() {
+export function ItemAttribute(props) {
   return <></>;
 }
 
-export function ItemCategory() {
+export function ItemCategory(props) {
   return <></>;
 }
 
-export function ItemFlingEffect() {
+export function ItemFlingEffect(props) {
   return <></>;
 }
 
-export function ItemPocket() {
+export function ItemPocket(props) {
   return <></>;
 }

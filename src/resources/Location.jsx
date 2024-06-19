@@ -1,11 +1,7 @@
-import { useState, useEffect } from "react";
-import { isObjEmpty } from "../utils";
-import { useParams } from "react-router-dom";
-
-export default function Location() {
+export default function Location(props) {
   return <></>;
 }
 
-export function LocationArea() {
+export function LocationArea(props) {
   return <></>;
 }

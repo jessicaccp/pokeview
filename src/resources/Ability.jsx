@@ -1,30 +1,26 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { isObjEmpty } from "../utils";
-
-export default function Ability() {
+export default function Ability(props) {
   return (
     <div id="ability">
-      <div id="ability-id">#{abilityData.id}</div>
+      <div id="ability-id">#{props.data.id}</div>
       <div id="ability-name">
-        <h2>{abilityData.name}</h2>
+        <h2>{props.data.name}</h2>
       </div>
       <div id="ability-is-main-series">
         <h3>Is main series?</h3>
-        {abilityData.is_main_series ? <p>True</p> : <p>False</p>}
+        {props.data.is_main_series ? <p>True</p> : <p>False</p>}
       </div>
       <div id="ability-generation">
         <h3>Generation</h3>
         <a
-          href={`/generation/${abilityData.generation.name}`}
-          alt={abilityData.generation.name}
+          href={`/generation/${props.data.generation.name}`}
+          alt={props.data.generation.name}
         >
-          {abilityData.generation.name}
+          {props.data.generation.name}
         </a>
       </div>
       <div id="ability-names">
         <h3>Names</h3>
-        {abilityData.names.map((name, key) => (
+        {props.data.names.map((name, key) => (
           <li key={key}>
             <a
               href={`/language/${name.language.name}`}
@@ -38,7 +34,7 @@ export default function Ability() {
       </div>
       <div id="ability-effect-entries">
         <h3>Effect entries</h3>
-        {abilityData.effect_entries.map((entry, key) => (
+        {props.data.effect_entries.map((entry, key) => (
           <li key={key}>
             <a
               href={`/language/${entry.language.name}`}
@@ -59,7 +55,7 @@ export default function Ability() {
       </div>
       <div id="ability-effect-changes">
         <h3>Effect changes</h3>
-        {abilityData.effect_changes.map((change, key) => (
+        {props.data.effect_changes.map((change, key) => (
           <>
             <li key={key}>
               <a
@@ -88,7 +84,7 @@ export default function Ability() {
       </div>
       <div id="ability-flavor-text-entries">
         <h3>Flavor text entries</h3>
-        {abilityData.flavor_text_entries.map((entry, key) => (
+        {props.data.flavor_text_entries.map((entry, key) => (
           <li key={key}>
             <a
               href={`/language/${entry.language.name}`}
@@ -109,7 +105,7 @@ export default function Ability() {
       </div>
       <div id="ability-pokemon">
         <h3>Pokémon</h3>
-        {abilityData.pokemon.map((pokemon, key) => (
+        {props.data.pokemon.map((pokemon, key) => (
           <li key={key}>
             <a
               href={`/pokemon/${pokemon.pokemon.name}`}

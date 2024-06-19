@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
-import { isObjEmpty } from "../utils";
-import { useParams } from "react-router-dom";
-
-export function EggGroup() {
+export function EggGroup(props) {
   return (
     <div id="egg-group">
-      <div id="egg-group-id">#{eggGroupData.id}</div>
+      <div id="egg-group-id">#{props.data.id}</div>
       <div id="egg-group-name">
-        <h2>{eggGroupData.name}</h2>
+        <h2>{props.data.name}</h2>
       </div>
       <div id="egg-group-names">
         <h3>Names</h3>
         <ul>
-          {eggGroupData.names.map((name, key) => (
+          {props.data.names.map((name, key) => (
             <li key={key}>
               <a
                 href={`/language/${name.language.name}`}
@@ -28,7 +24,7 @@ export function EggGroup() {
       <div id="egg-group-pokemon-species">
         <h3>Pokémon species</h3>
         <ul>
-          {eggGroupData.pokemon_species.map((pokemon, key) => (
+          {props.data.pokemon_species.map((pokemon, key) => (
             <li key={key}>
               <a href={`/pokemon-species/${pokemon.name}`} alt={pokemon.name}>
                 {pokemon.name}

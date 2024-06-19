@@ -345,22 +345,22 @@ export default function Pokemon(props) {
   );
 }
 
-export function PokemonColor() {
+export function PokemonColor(props) {
   return <></>;
 }
 
-export function PokemonForm() {
+export function PokemonForm(props) {
   return <></>;
 }
 
-export function PokemonHabitat() {
+export function PokemonHabitat(props) {
   return <></>;
 }
 
-export function PokemonShape() {
+export function PokemonShape(props) {
   return <></>;
 }
 
-export function PokemonSpeciesId() {
+export function PokemonSpeciesId(props) {
   return <></>;
 }

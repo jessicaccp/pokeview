@@ -1,31 +1,27 @@
-import { useState, useEffect } from "react";
-import { isObjEmpty } from "../utils";
-import { useParams } from "react-router-dom";
-
-export default function Move() {
+export default function Move(props) {
   return <></>;
 }
 
-export function MoveAilment() {
+export function MoveAilment(props) {
   return <></>;
 }
 
-export function MoveBattleStyle() {
+export function MoveBattleStyle(props) {
   return <></>;
 }
 
-export function MoveCategory() {
+export function MoveCategory(props) {
   return <></>;
 }
 
-export function MoveDamageClass() {
+export function MoveDamageClass(props) {
   return <></>;
 }
 
-export function MoveLearnMethod() {
+export function MoveLearnMethod(props) {
   return <></>;
 }
 
-export function MoveTarget() {
+export function MoveTarget(props) {
   return <></>;
 }

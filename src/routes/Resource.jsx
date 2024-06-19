@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { isObjEmpty, isIdValid } from "../utils";
+import { isObjEmpty } from "../utils";
 import NotFound from "../components/NotFound";
 import Error from "../components/Error";
 import Loading from "../components/Loading";

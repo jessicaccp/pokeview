@@ -1,6 +1,4 @@
-import React from "react";
-
-function Credits() {
+export default function Credits() {
   const links = [
     {
       title: "Pokeball Icon",
@@ -38,5 +36,3 @@ function Credits() {
     </div>
   );
 }
-
-export default Credits;

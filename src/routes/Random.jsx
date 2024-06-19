@@ -1,4 +1,3 @@
-import React from "react";
 import { ResourceCard } from "./Resource";
 
 export default function Random() {

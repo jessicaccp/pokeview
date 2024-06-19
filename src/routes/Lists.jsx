@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Lists() {
   const lists = [
     { title: "Ability", path: "/ability" },
@@ -51,6 +49,7 @@ export default function Lists() {
     { title: "Version", path: "/version" },
     { title: "Version Group", path: "/version-group" },
   ];
+
   return (
     <div id="lists">
       {lists.map((item, key) => (

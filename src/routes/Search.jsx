@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { isObjEmpty } from "../utils";
+import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 
@@ -9,7 +8,6 @@ export default function Search() {
   const apiUrl = "https://pokeapi.co/api/v2/pokemon";
   const options = ["name", "id", "type", "ability", "version", "item", "move"];
   const [optionSelected, setOptionSelected] = useState(option);
-  // const [keywords, setKeywords] = useState(keyword);
   const [count, setCount] = useState(0);
   const [urls, setUrls] = useState([]);
   const [data, setData] = useState([]);
@@ -19,7 +17,8 @@ export default function Search() {
 
   // Sets the initial values
   useEffect(() => {
-    if (options.includes(option)) setOptionSelected(option);
+    if (options.includes(String(option).toLowerCase()))
+      setOptionSelected(String(option).toLowerCase());
     else setOptionSelected("name");
   }, [option]);
 
@@ -81,32 +80,121 @@ export default function Search() {
     }
   }, [count, urls]);
 
+  // Handles page loading and error
   if (isLoading) return <Loading />;
   if (isError) return <Error />;
 
+  // Does search when keyword changes
   function handleInputChange(event) {
     doSearch(optionSelected, event.target.value);
   }
 
-  function handleOptionChange(event) {
-    setOptionSelected(event.target.value);
-    doSearch(event.target.value, document.getElementById("search-input").value);
+  // Blocks the form submit with Enter key
+  function preventEnterSubmit(event) {
+    if (
+      event.key === "Enter" ||
+      event.keyCode === 13 ||
+      event.which === 13 ||
+      event.keyIdentifier === "U+000A" ||
+      event.keyIdentifier === "Enter"
+    )
+      event.preventDefault();
+    return false;
   }
 
+  // Does search when option changes and set new value
+  function handleOptionChange(event) {
+    setOptionSelected(event.target.value.toLowerCase());
+    doSearch(
+      event.target.value.toLowerCase(),
+      document.getElementById("search-input").value
+    );
+  }
+
+  // Search the pokémon data based on the option and keyword
   function doSearch(option, keyword) {
+    setResult([]);
+    option = option.toLowerCase();
     if (!options.includes(option)) {
       option = "name";
     }
-    console.log(option, keyword);
-  }
 
-  //show options with input
-  //display results based on option and data
-  // /search/:option/:keyword?
+    switch (option) {
+      case "name":
+        data.forEach((pokemon) => {
+          if (pokemon.name.includes(keyword)) {
+            setResult((prev) => [...prev, pokemon.name]);
+          }
+        });
+        break;
+
+      case "id":
+        data.forEach((pokemon) => {
+          if (pokemon.id === Number(keyword)) {
+            setResult((prev) => [...prev, pokemon.name]);
+          }
+        });
+        break;
+
+      case "type":
+        data.forEach((pokemon) => {
+          pokemon.types.forEach((type) => {
+            if (type.type.name === keyword) {
+              setResult((prev) => [...prev, pokemon.name]);
+            }
+          });
+        });
+        break;
+
+      case "ability":
+        data.forEach((pokemon) => {
+          pokemon.abilities.forEach((ability) => {
+            if (ability.ability.name === keyword) {
+              setResult((prev) => [...prev, pokemon.name]);
+            }
+          });
+        });
+        break;
+
+      case "version":
+        data.forEach((pokemon) => {
+          pokemon.game_indices.forEach((game) => {
+            if (game.version.name === keyword) {
+              setResult((prev) => [...prev, pokemon.name]);
+            }
+          });
+        });
+        break;
+
+      case "item":
+        data.forEach((pokemon) => {
+          pokemon.held_items.forEach((item) => {
+            if (item.item.name === keyword) {
+              setResult((prev) => [...prev, pokemon.name]);
+            }
+          });
+        });
+        break;
+
+      case "move":
+        data.forEach((pokemon) => {
+          pokemon.moves.forEach((move) => {
+            if (move.move.name === keyword) {
+              setResult((prev) => [...prev, pokemon.name]);
+            }
+          });
+        });
+        break;
+
+      default:
+        setResult([]);
+        break;
+    }
+  }
 
   return (
     <div id="search">
-      <form id="search-form" role="search">
+      <form id="search-form">
         <fieldset id="search-fieldset">
           {options.map((option) => (
             <label key={option} id={`search-label-${option}`}>
@@ -124,16 +212,23 @@ export default function Search() {
 
         <input
           id="search-input"
-          name="s"
+          name="search"
           type="search"
           placeholder="Search pokémons"
           aria-label="Search pokémons"
           defaultValue={keyword}
           onChange={handleInputChange}
+          onKeyDown={preventEnterSubmit}
         />
       </form>
 
-      <div id="search-result">{result}</div>
+      <div id="search-result">
+        <ul>
+          {result.map((r, key) => {
+            return <li key={key}>{r}</li>;
+          })}
+        </ul>
+      </div>
     </div>
   );
 }

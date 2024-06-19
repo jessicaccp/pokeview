@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PokemonCard from "../components/PokemonCard";
+import Error from "../components/Error";
+import Loading from "../components/Loading";
 
 export function PokemonCard() {
   return <></>;
@@ -163,8 +165,9 @@ export function Pokemons() {
     return false;
   }
 
-  if (isLoading) return <p>Wait while we're catching the pokémons...</p>;
-  if (isError) return <p>A wild error appeared!</p>;
+  // Handles page loading and error
+  if (isLoading) return <Loading />;
+  if (isError) return <Error />;
 
   return (
     <>
@@ -179,7 +182,7 @@ export default function Pokemon(props) {
   const [abilitiesData, setAbilitiesData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-  const [gotError, setGotError] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const gallery = () => {
     const images = [
@@ -423,7 +426,7 @@ export default function Pokemon(props) {
           if (response.status === 404) {
             setNotFound(true);
           } else {
-            setGotError(true);
+            setIsError(true);
           }
           console.error(`Error while fetching: ${response.status}`);
         }
@@ -431,7 +434,7 @@ export default function Pokemon(props) {
       .then((data) => setPokemonData(data))
       .then(() => setIsLoading(false))
       .catch((error) => {
-        setGotError(true);
+        setIsError(true);
         console.error(error);
       });
   }, [id]);
@@ -451,9 +454,10 @@ export default function Pokemon(props) {
     return Object.keys(array).length === 0 ? true : false;
   }
 
-  if (isLoading) return <p>Loading battle info...</p>;
+  // Handles page loading and error
+  if (isLoading) return <Loading />;
+  if (isError) return <Error />;
   if (notFound) return <p>The pokémon has escaped! Keep searching!</p>;
-  if (gotError) return <p>A wild ERROR appeared!</p>;
 
   return (
     <section id="pokemon-page">

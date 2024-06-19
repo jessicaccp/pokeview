@@ -139,8 +139,9 @@ export function ResourceCard(props) {
       });
   }, [apiUrl]);
 
-  if (isLoading) return <p>Wait, we're catching the pokémons...</p>;
-  if (isError) return <p>A wild error appeared!</p>;
+  // Handles page loading and error
+  if (isLoading) return <Loading />;
+  if (isError) return <Error />;
 
   return (
     <>

@@ -1,52 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { isEmpty } from "../utils";
+import { isObjEmpty } from "../utils";
 import { useParams } from "react-router-dom";
-
-export function EggGroupList() {
-  const apiUrl = "https://pokeapi.co/api/v2/egg-group";
-  const [eggGroupListCount, setEggGroupListCount] = useState(0);
-  const [eggGroupListData, setEggGroupListData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setEggGroupListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${eggGroupListCount}`)
-      .then((response) => response.json())
-      .then((data) => setEggGroupListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [eggGroupListCount]);
-
-  if (isLoading || isEmpty(eggGroupListData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="egg-group-list">
-      <ul>
-        {eggGroupListData.results.map((group, key) => (
-          <li key={key}>
-            <a href={`/egg-group/${group.name}`} alt={group.name}>
-              {group.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
 export function EggGroup() {
   const { id } = useParams();
@@ -66,7 +20,7 @@ export function EggGroup() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(eggGroupData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(eggGroupData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (

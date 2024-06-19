@@ -1,52 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { isEmpty } from "../utils";
-
-export function CharacteristicList() {
-  const apiUrl = "https://pokeapi.co/api/v2/characteristic";
-  const [characteristicListCount, setCharacteristicListCount] = useState(0);
-  const [characteristicListData, setCharacteristicListData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setCharacteristicListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${characteristicListCount}`)
-      .then((response) => response.json())
-      .then((data) => setCharacteristicListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [characteristicListCount]);
-
-  if (isLoading || isEmpty(characteristicListData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="characteristic-list">
-      <ul>
-        {characteristicListData.results.map((characteristic, key) => (
-          <li key={key}>
-            <a href={`/characteristic/${key + 1}`} alt={key + 1}>
-              {key + 1}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+import { isObjEmpty } from "../utils";
 
 export default function Characteristic() {
   const { id } = useParams();
@@ -66,7 +20,7 @@ export default function Characteristic() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(characteristicData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(characteristicData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (

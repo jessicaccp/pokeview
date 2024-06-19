@@ -1,52 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { isEmpty } from "../utils";
-
-export function AbilityList() {
-  const apiUrl = "https://pokeapi.co/api/v2/ability";
-  const [abilityListCount, setAbilityListCount] = useState(0);
-  const [abilityListData, setAbilityListData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setAbilityListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${abilityListCount}`)
-      .then((response) => response.json())
-      .then((data) => setAbilityListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [abilityListCount]);
-
-  if (isLoading || isEmpty(abilityListData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="ability-list">
-      <ul>
-        {abilityListData.results.map((ability, key) => (
-          <li key={key}>
-            <a href={`/ability/${ability.name}`} alt={ability.name}>
-              {ability.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+import { isObjEmpty } from "../utils";
 
 export default function Ability() {
   const { id } = useParams();
@@ -66,7 +20,7 @@ export default function Ability() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(abilityData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(abilityData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (

@@ -1,58 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { isEmpty } from "../utils";
+import { isObjEmpty } from "../utils";
 import { useParams } from "react-router-dom";
-
-export function EncounterConditionList() {
-  const apiUrl = "https://pokeapi.co/api/v2/encounter-condition";
-  const [encounterConditionListCount, setEncounterConditionListCount] =
-    useState(0);
-  const [encounterConditionListData, setEncounterConditionListData] = useState(
-    []
-  );
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setEncounterConditionListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${encounterConditionListCount}`)
-      .then((response) => response.json())
-      .then((data) => setEncounterConditionListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [encounterConditionListCount]);
-
-  if (isLoading || isEmpty(encounterConditionListData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="encounter-condition-list">
-      <ul>
-        {encounterConditionListData.results.map((condition, key) => (
-          <li key={key}>
-            <a
-              href={`/encounter-condition/${condition.name}`}
-              alt={condition.name}
-            >
-              {condition.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
 export function EncounterCondition() {
   const { id } = useParams();
@@ -72,7 +20,7 @@ export function EncounterCondition() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(encounterConditionData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(encounterConditionData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
@@ -116,60 +64,6 @@ export function EncounterCondition() {
   );
 }
 
-export function EncounterConditionValueList() {
-  const apiUrl = "https://pokeapi.co/api/v2/encounter-condition-value";
-  const [
-    encounterConditionValueListCount,
-    setEncounterConditionValueListCount,
-  ] = useState(0);
-  const [encounterConditionValueListData, setEncounterConditionValueListData] =
-    useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setEncounterConditionValueListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${encounterConditionValueListCount}`)
-      .then((response) => response.json())
-      .then((data) => setEncounterConditionValueListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [encounterConditionValueListCount]);
-
-  if (isLoading || isEmpty(encounterConditionValueListData))
-    return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="encounter-condition-value-list">
-      <ul>
-        {encounterConditionValueListData.results.map((value, key) => (
-          <li key={key}>
-            <a
-              href={`/encounter-condition-value/${value.name}`}
-              alt={value.name}
-            >
-              {value.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 export function EncounterConditionValue() {
   const { id } = useParams();
   const apiUrl = `https://pokeapi.co/api/v2/encounter-condition-value/${id}/`;
@@ -189,7 +83,8 @@ export function EncounterConditionValue() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(encounterConditionValueData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(encounterConditionValueData))
+    return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (
@@ -227,52 +122,6 @@ export function EncounterConditionValue() {
   );
 }
 
-export function EncounterMethodList() {
-  const apiUrl = "https://pokeapi.co/api/v2/encounter-method";
-  const [encounterMethodListCount, setEncounterMethodListCount] = useState(0);
-  const [encounterMethodListData, setEncounterMethodListData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setEncounterMethodListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${encounterMethodListCount}`)
-      .then((response) => response.json())
-      .then((data) => setEncounterMethodListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [encounterMethodListCount]);
-
-  if (isLoading || isEmpty(encounterMethodListData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="encounter-method-list">
-      <ul>
-        {encounterMethodListData.results.map((method, key) => (
-          <li key={key}>
-            <a href={`/encounter-method/${method.name}`} alt={method.name}>
-              {method.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 export function EncounterMethod() {
   const { id } = useParams();
   const apiUrl = `https://pokeapi.co/api/v2/encounter-method/${id}/`;
@@ -291,7 +140,7 @@ export function EncounterMethod() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(encounterMethodData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(encounterMethodData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
 
   return (

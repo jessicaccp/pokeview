@@ -1,50 +1,6 @@
-import React from "react";
-
-export function Items() {
-  const apiUrl = "https://pokeapi.co/api/v2/gender";
-  const [genderListCount, setGenderListCount] = useState(0);
-  const [genderListData, setGenderListData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setGenderListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${genderListCount}`)
-      .then((response) => response.json())
-      .then((data) => setGenderListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [genderListCount]);
-
-  if (isLoading || isEmpty(genderListData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="gender-list">
-      <ul>
-        {genderListData.results.map((gender, key) => (
-          <li key={key}>
-            <a href={`/gender/${gender.name}`} alt={gender.name}>
-              {gender.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+import React, { useState, useEffect } from "react";
+import { isObjEmpty } from "../utils";
+import { useParams } from "react-router-dom";
 
 export default function Item() {
   const { id } = useParams();
@@ -64,55 +20,9 @@ export default function Item() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(genderData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(genderData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
   return <></>;
-}
-
-export function ItemAttributes() {
-  const apiUrl = "https://pokeapi.co/api/v2/gender";
-  const [genderListCount, setGenderListCount] = useState(0);
-  const [genderListData, setGenderListData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setGenderListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${genderListCount}`)
-      .then((response) => response.json())
-      .then((data) => setGenderListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [genderListCount]);
-
-  if (isLoading || isEmpty(genderListData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="gender-list">
-      <ul>
-        {genderListData.results.map((gender, key) => (
-          <li key={key}>
-            <a href={`/gender/${gender.name}`} alt={gender.name}>
-              {gender.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
 }
 
 export function ItemAttribute() {
@@ -133,55 +43,9 @@ export function ItemAttribute() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(genderData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(genderData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
   return <></>;
-}
-
-export function ItemCategories() {
-  const apiUrl = "https://pokeapi.co/api/v2/gender";
-  const [genderListCount, setGenderListCount] = useState(0);
-  const [genderListData, setGenderListData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setGenderListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${genderListCount}`)
-      .then((response) => response.json())
-      .then((data) => setGenderListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [genderListCount]);
-
-  if (isLoading || isEmpty(genderListData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="gender-list">
-      <ul>
-        {genderListData.results.map((gender, key) => (
-          <li key={key}>
-            <a href={`/gender/${gender.name}`} alt={gender.name}>
-              {gender.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
 }
 
 export function ItemCategory() {
@@ -202,55 +66,9 @@ export function ItemCategory() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(genderData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(genderData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
   return <></>;
-}
-
-export function ItemFlingEffects() {
-  const apiUrl = "https://pokeapi.co/api/v2/gender";
-  const [genderListCount, setGenderListCount] = useState(0);
-  const [genderListData, setGenderListData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setGenderListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${genderListCount}`)
-      .then((response) => response.json())
-      .then((data) => setGenderListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [genderListCount]);
-
-  if (isLoading || isEmpty(genderListData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="gender-list">
-      <ul>
-        {genderListData.results.map((gender, key) => (
-          <li key={key}>
-            <a href={`/gender/${gender.name}`} alt={gender.name}>
-              {gender.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
 }
 
 export function ItemFlingEffect() {
@@ -271,55 +89,9 @@ export function ItemFlingEffect() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(genderData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(genderData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
   return <></>;
-}
-
-export function ItemPockets() {
-  const apiUrl = "https://pokeapi.co/api/v2/gender";
-  const [genderListCount, setGenderListCount] = useState(0);
-  const [genderListData, setGenderListData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setGenderListCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${apiUrl}?limit=${genderListCount}`)
-      .then((response) => response.json())
-      .then((data) => setGenderListData(data))
-      .then(setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [genderListCount]);
-
-  if (isLoading || isEmpty(genderListData)) return <p>Loading</p>;
-  if (isError) return <p>Error</p>;
-
-  return (
-    <div id="gender-list">
-      <ul>
-        {genderListData.results.map((gender, key) => (
-          <li key={key}>
-            <a href={`/gender/${gender.name}`} alt={gender.name}>
-              {gender.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
 }
 
 export function ItemPocket() {
@@ -340,7 +112,7 @@ export function ItemPocket() {
       });
   }, [apiUrl]);
 
-  if (isLoading || isEmpty(genderData)) return <p>Loading</p>;
+  if (isLoading || isObjEmpty(genderData)) return <p>Loading</p>;
   if (isError) return <p>Error</p>;
   return <></>;
 }

@@ -47,7 +47,7 @@ export function Pokemons() {
   }, []);
 
   let pokemonCards = "";
-  if (!isEmpty(pokemonData)) {
+  if (!isObjEmpty(pokemonData)) {
     pokemonCards = getCards(pokemonData);
   }
 
@@ -150,7 +150,7 @@ export function Pokemons() {
    * @param {Object} object
    * @returns {boolean}
    */
-  function isEmpty(object) {
+  function isObjEmpty(object) {
     if (Object.keys(object).length === 0) return true;
     return false;
   }
@@ -429,7 +429,7 @@ export default function Pokemon(props) {
   }, [id]);
 
   useEffect(() => {
-    if (!isEmpty(pokemonData)) {
+    if (!isObjEmpty(pokemonData)) {
       pokemonData.abilities.forEach((ability) => {
         fetch(ability.ability.url)
           .then((response) => response.json())
@@ -439,7 +439,7 @@ export default function Pokemon(props) {
     }
   }, [isLoading]);
 
-  function isEmpty(array) {
+  function isObjEmpty(array) {
     return Object.keys(array).length === 0 ? true : false;
   }
 
@@ -506,15 +506,7 @@ export default function Pokemon(props) {
   );
 }
 
-export function PokemonColors() {
-  return <></>;
-}
-
 export function PokemonColor() {
-  return <></>;
-}
-
-export function PokemonForms() {
   return <></>;
 }
 
@@ -522,23 +514,11 @@ export function PokemonForm() {
   return <></>;
 }
 
-export function PokemonHabitats() {
-  return <></>;
-}
-
 export function PokemonHabitat() {
   return <></>;
 }
 
-export function PokemonShapes() {
-  return <></>;
-}
-
 export function PokemonShape() {
-  return <></>;
-}
-
-export function PokemonSpecies() {
   return <></>;
 }
 

@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import PokemonMiniCard from "../components/PokemonMiniCard";
 
 export default function Search() {
   const apiUrl = "https://pokeapi.co/api/v2/pokemon";
-  const { option, keyword } = useParams();
   const options = ["name", "id", "type", "ability", "version", "item", "move"];
-  const [optionSelected, setOptionSelected] = useState(option);
+  const [option, setOption] = useState("name");
   const [count, setCount] = useState(0);
   const [urls, setUrls] = useState([]);
   const [data, setData] = useState([]);
@@ -16,80 +14,83 @@ export default function Search() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  // Sets the initial values
+  // Clears result list when option changes
   useEffect(() => {
-    if (options.includes(String(option).toLowerCase()))
-      setOptionSelected(String(option).toLowerCase());
-    else setOptionSelected("name");
+    setResult([]);
   }, [option]);
-
-  // Get the initial results if there are params
-  useEffect(() => {
-    if (keyword) {
-      if (option) {
-        doSearch(option, keyword);
-      } else {
-        doSearch("name", keyword);
-      }
-    }
-  }, [option, keyword]);
 
   // Gets the number of pokémons
   useEffect(() => {
+    let isMounted = true;
     setIsLoading(true);
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setCount(data.count))
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      });
-  }, [apiUrl]);
-
-  // Gets the urls to fetch each pokémon data
-  useEffect(() => {
-    setUrls([]);
-    fetch(`${apiUrl}?limit=${count}`)
-      .then((response) => response.json())
       .then((data) => {
-        data.results.forEach((result) => {
-          setUrls((prev) => [...prev, result.url]);
-        });
+        if (isMounted) {
+          setCount(data.count);
+        }
       })
       .catch((error) => {
         console.error(error);
         setIsError(true);
       });
+    return () => {
+      isMounted = false;
+    };
+  }, [apiUrl]);
+
+  // Gets the urls to fetch each pokémon data
+  useEffect(() => {
+    let isMounted = true;
+    setUrls([]);
+    fetch(`${apiUrl}?limit=${count}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (isMounted) {
+          data.results.forEach((result) => {
+            setUrls((prev) => [...prev, result.url]);
+          });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsError(true);
+      });
+    return () => {
+      isMounted = false;
+    };
   }, [count]);
 
   // Gets the data of each pokémon
   useEffect(() => {
+    let isMounted = true;
     if (urls) {
+      setIsLoading(true);
       setData([]);
       urls.forEach((url) => {
         fetch(url)
           .then((response) => response.json())
           .then((data) => {
-            setData((prev) => [...prev, data]);
-            setIsError(false);
+            if (isMounted) {
+              setData((prev) => [...prev, data]);
+              setIsError(false);
+            }
           })
           .catch((error) => {
             console.error(error);
             setIsError(true);
           });
       });
+      setIsLoading(false);
     }
+    return () => {
+      isMounted = false;
+    };
   }, [count, urls]);
 
   // useEffect(() => {
   // data.sort((a, b) => a.id - b.id);
   // }, [data]);
-
-  useEffect(() => {
-    if (data.length === count) {
-      setIsLoading(false);
-    }
-  }, [data]);
 
   // Handles page loading and error
   if (isLoading) return <Loading />;
@@ -98,7 +99,7 @@ export default function Search() {
   // Does search when keyword changes
   function handleInputChange(event) {
     if (event.target.value === "") setResult([]);
-    else doSearch(optionSelected, event.target.value);
+    else doSearch(option, event.target.value);
   }
 
   // Blocks the form submit with Enter key
@@ -116,11 +117,7 @@ export default function Search() {
 
   // Does search when option changes and set new value
   function handleOptionChange(event) {
-    setOptionSelected(event.target.value.toLowerCase());
-    doSearch(
-      event.target.value.toLowerCase(),
-      document.getElementById("search-input").value
-    );
+    setOption(event.target.value.toLowerCase());
   }
 
   // Search the pokémon data based on the option and keyword
@@ -220,19 +217,19 @@ export default function Search() {
   }
 
   return (
-    <div id="search">
+    <div id="search-page">
       <form id="search-form">
         <fieldset id="search-fieldset">
-          {options.map((option) => (
-            <label key={option} id={`search-label-${option}`}>
+          {options.map((label) => (
+            <label key={label} id={`search-label-${label}`}>
               <input
                 type="radio"
-                value={option}
-                id={`search-radio-${option}`}
-                checked={optionSelected === option}
+                value={label}
+                id={`search-radio-${label}`}
+                checked={label === option}
                 onChange={handleOptionChange}
               />{" "}
-              {option}
+              {label}
             </label>
           ))}
         </fieldset>
@@ -243,7 +240,6 @@ export default function Search() {
           type="search"
           placeholder="Search pokémons"
           aria-label="Search pokémons"
-          defaultValue={keyword}
           onChange={handleInputChange}
           onKeyDown={preventEnterSubmit}
         />

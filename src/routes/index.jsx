@@ -13,8 +13,8 @@ export default function Router() {
         {/* pages */}
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/search/:keyword" element={<Search />} />
-        <Route path="/search/:option/:keyword" element={<Search />} />
+        {/* <Route path="/search/:keyword" element={<Search />} /> */}
+        {/* <Route path="/search/:option/:keyword" element={<Search />} /> */}
         <Route path="/random" element={<Random />} />
         <Route path="/lists" element={<Lists />} />
         <Route path="/:resource" element={<Resource />} />

@@ -88,10 +88,6 @@ export default function Search() {
     };
   }, [count, urls]);
 
-  // useEffect(() => {
-  // data.sort((a, b) => a.id - b.id);
-  // }, [data]);
-
   // Handles page loading and error
   if (isLoading) return <Loading />;
   if (isError) return <Error />;
@@ -218,7 +214,7 @@ export default function Search() {
 
   return (
     <div id="search-page">
-      <form id="search-form">
+      <form id="search-form" autocomplete="off">
         <fieldset id="search-fieldset">
           {options.map((label) => (
             <label key={label} id={`search-label-${label}`}>

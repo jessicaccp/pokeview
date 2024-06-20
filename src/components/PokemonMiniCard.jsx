@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 export default function PokemonMiniCard(props) {
   // Sets initial values
   const id = props.data.id;
   const name = props.data.name;
+  const types = props.data.types;
+  const navigate = useNavigate();
 
   // Full list of possible images
   const images = [
@@ -161,6 +165,29 @@ export default function PokemonMiniCard(props) {
     props.data.sprites.versions["generation-viii"].icons.front_female,
   ];
 
+  const typeColor = {
+    normal: "#A8A77A",
+    fighting: "#C22E28",
+    flying: "#A98FF3",
+    poison: "#A33EA1",
+    ground: "#E2BF65",
+    rock: "#B6A136",
+    bug: "#A6B91A",
+    ghost: "#735797",
+    steel: "#B7B7CE",
+    fire: "#EE8130",
+    water: "#6390F0",
+    grass: "#7AC74C",
+    electric: "#F7D02C",
+    psychic: "#F95587",
+    ice: "#96D9D6",
+    dragon: "#6F35FC",
+    dark: "#705746",
+    fairy: "#D685AD",
+    unknown: "#000000",
+    shadow: "#333333",
+  };
+
   // Chooses the first valid image of all possibilities
   let image = "";
   for (let img of images) {
@@ -170,8 +197,12 @@ export default function PokemonMiniCard(props) {
     }
   }
 
+  function handleClick() {
+    navigate(`/pokemon/${name}`);
+  }
+
   return (
-    <div className="pokemon-mini-card">
+    <div className="pokemon-mini-card" onClick={handleClick}>
       <div className="pokemon-mini-card-sprite">
         <a href={`/pokemon/${name}`} alt={name}>
           <img src={image} alt={name} />
@@ -190,6 +221,20 @@ export default function PokemonMiniCard(props) {
             {name}
           </a>
         </p>
+      </div>
+      <div className="pokemon-mini-card-types">
+        <ul>
+          {types.map((type, key) => (
+            <li
+              key={key}
+              style={{
+                boxShadow: `0.25rem 0.25rem ${typeColor[type.type.name]}`,
+              }}
+            >
+              {type.type.name}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

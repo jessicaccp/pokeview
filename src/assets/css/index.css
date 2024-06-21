@@ -120,7 +120,7 @@ header {
   left: 0;
   width: 100vw;
   min-width: inherit;
-  z-index: 10;
+  z-index: 100;
   box-shadow: 0 0.3rem #ddd;
 }
 
@@ -620,7 +620,7 @@ label input {
   background-color: white;
   padding: 0.75rem;
   border: 1px solid black;
-  box-shadow: 0.25rem 0.25rem black;
+  /* box-shadow: 0.25rem 0.25rem black; */
 }
 
 [id*="list"] li:hover {
@@ -655,37 +655,44 @@ label input {
 
 /* end */
 
-/* #pokemon-card {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 1rem;
-}
-
-#pokemon-card img {
-  max-width: 100px;
-} */
-
 /* ---------- pages / pokemon --------- */
 
 #pokemon-page {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* flex-wrap: wrap; */
-  max-width: 100vw;
-  /* height: 90vh; */
-  /* padding: 1rem; */
-  gap: 1rem;
+  /* align-items: center; */
+  /* max-width: 100vw; */
+  /* gap: 1rem; */
+  /* background-color: white; */
+  width: 50%;
+  align-self: center;
 }
 
-#pokemon-page div {
-  width: 100%;
+#pokemon-page #picture img {
+  width: 200px;
+  aspect-ratio: 1/1;
+}
+
+#pokemon-page>div {
+  background-color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  padding: 1rem;
+  /* width: 100%; */
   /* border: 1px solid black; */
-  padding: 0.5rem;
+}
+
+#pokemon-page #profile {
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+#pokemon-page #info p {
+  padding-left: 0.5rem;
+  line-height: 1.5rem;
 }
 
 #pokemon-page h3 {
@@ -705,14 +712,43 @@ label input {
   padding: 0.125rem;
 }
 
-#pokemon-page #stats {
-  flex-direction: column;
-}
-
 #pokemon-page img {
   width: 5rem;
 }
 
-/* end */
+#pokemon-page #sprites ul {
+  justify-content: center;
+}
+
+#pokemon-page #sprites li {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pokemon-page #profile>div {
+  align-content: center;
+}
+
+#pokemon-page #types li {
+  padding: 0.25rem 0.5rem;
+}
+
+#pokemon-page #stats ul {
+  flex-direction: column;
+  aspect-ratio: 1/1;
+  width: 200px;
+  text-align: right;
+}
+
+#pokemon-page #stats li {
+  background-color: transparent;
+}
+
+#pokemon-page #cries ul {
+  display: flex;
+  flex-direction: column;
+}
 
 /* end */

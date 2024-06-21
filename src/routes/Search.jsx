@@ -90,7 +90,7 @@ export default function Search() {
 
   // Handles page loading and error
   if (isLoading) return <Loading />;
-  if (isError) return <Error />;
+  if (isError) return <Loading />;
 
   // Does search when keyword changes
   function handleInputChange(event) {

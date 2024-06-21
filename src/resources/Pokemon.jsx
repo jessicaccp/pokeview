@@ -10,6 +10,187 @@ export default function Pokemon(props) {
   const [notFound, setNotFound] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  // Full list of possible images
+  const images = [
+    props.data.sprites.front_default,
+    props.data.sprites.back_default,
+    props.data.sprites.front_female,
+    props.data.sprites.back_female,
+    props.data.sprites.front_shiny,
+    props.data.sprites.back_shiny,
+    props.data.sprites.front_shiny_female,
+    props.data.sprites.back_shiny_female,
+    props.data.sprites.other.dream_world.front_default,
+    props.data.sprites.other.dream_world.front_female,
+    props.data.sprites.other.home.front_default,
+    props.data.sprites.other.home.front_female,
+    props.data.sprites.other.home.front_shiny,
+    props.data.sprites.other.home.front_shiny_female,
+    props.data.sprites.other["official-artwork"].front_default,
+    props.data.sprites.other["official-artwork"].front_shiny,
+    props.data.sprites.other.showdown.front_default,
+    props.data.sprites.other.showdown.back_default,
+    props.data.sprites.other.showdown.front_female,
+    props.data.sprites.other.showdown.back_female,
+    props.data.sprites.other.showdown.front_shiny,
+    props.data.sprites.other.showdown.back_shiny,
+    props.data.sprites.other.showdown.front_shiny_female,
+    props.data.sprites.other.showdown.back_shiny_female,
+    props.data.sprites.versions["generation-i"]["red-blue"].front_default,
+    props.data.sprites.versions["generation-i"]["red-blue"].back_default,
+    props.data.sprites.versions["generation-i"]["red-blue"].front_gray,
+    props.data.sprites.versions["generation-i"]["red-blue"].back_gray,
+    props.data.sprites.versions["generation-i"]["red-blue"].front_transparent,
+    props.data.sprites.versions["generation-i"]["red-blue"].back_transparent,
+    props.data.sprites.versions["generation-i"].yellow.front_default,
+    props.data.sprites.versions["generation-i"].yellow.back_default,
+    props.data.sprites.versions["generation-i"].yellow.front_gray,
+    props.data.sprites.versions["generation-i"].yellow.back_gray,
+    props.data.sprites.versions["generation-i"].yellow.front_transparent,
+    props.data.sprites.versions["generation-i"].yellow.back_transparent,
+    props.data.sprites.versions["generation-ii"].crystal.front_default,
+    props.data.sprites.versions["generation-ii"].crystal.back_default,
+    props.data.sprites.versions["generation-ii"].crystal.front_shiny,
+    props.data.sprites.versions["generation-ii"].crystal.back_shiny,
+    props.data.sprites.versions["generation-ii"].crystal
+      .front_shiny_transparent,
+    props.data.sprites.versions["generation-ii"].crystal.back_shiny_transparent,
+    props.data.sprites.versions["generation-ii"].crystal.front_transparent,
+    props.data.sprites.versions["generation-ii"].crystal.back_transparent,
+    props.data.sprites.versions["generation-ii"].gold.front_default,
+    props.data.sprites.versions["generation-ii"].gold.back_default,
+    props.data.sprites.versions["generation-ii"].gold.front_shiny,
+    props.data.sprites.versions["generation-ii"].gold.back_shiny,
+    props.data.sprites.versions["generation-ii"].gold.front_transparent,
+    props.data.sprites.versions["generation-ii"].silver.front_default,
+    props.data.sprites.versions["generation-ii"].silver.back_default,
+    props.data.sprites.versions["generation-ii"].silver.front_shiny,
+    props.data.sprites.versions["generation-ii"].silver.back_shiny,
+    props.data.sprites.versions["generation-ii"].silver.front_transparent,
+    props.data.sprites.versions["generation-iii"].emerald.front_default,
+    props.data.sprites.versions["generation-iii"].emerald.front_shiny,
+    props.data.sprites.versions["generation-iii"]["firered-leafgreen"]
+      .front_default,
+    props.data.sprites.versions["generation-iii"]["firered-leafgreen"]
+      .back_default,
+    props.data.sprites.versions["generation-iii"]["firered-leafgreen"]
+      .front_shiny,
+    props.data.sprites.versions["generation-iii"]["firered-leafgreen"]
+      .back_shiny,
+    props.data.sprites.versions["generation-iii"]["ruby-sapphire"]
+      .front_default,
+    props.data.sprites.versions["generation-iii"]["ruby-sapphire"].back_default,
+    props.data.sprites.versions["generation-iii"]["ruby-sapphire"].front_shiny,
+    props.data.sprites.versions["generation-iii"]["ruby-sapphire"].back_shiny,
+    props.data.sprites.versions["generation-iv"]["diamond-pearl"].front_default,
+    props.data.sprites.versions["generation-iv"]["diamond-pearl"].back_default,
+    props.data.sprites.versions["generation-iv"]["diamond-pearl"].front_female,
+    props.data.sprites.versions["generation-iv"]["diamond-pearl"].back_female,
+    props.data.sprites.versions["generation-iv"]["diamond-pearl"].front_shiny,
+    props.data.sprites.versions["generation-iv"]["diamond-pearl"].back_shiny,
+    props.data.sprites.versions["generation-iv"]["diamond-pearl"]
+      .front_shiny_female,
+    props.data.sprites.versions["generation-iv"]["diamond-pearl"]
+      .back_shiny_female,
+    props.data.sprites.versions["generation-iv"]["heartgold-soulsilver"]
+      .front_default,
+    props.data.sprites.versions["generation-iv"]["heartgold-soulsilver"]
+      .back_default,
+    props.data.sprites.versions["generation-iv"]["heartgold-soulsilver"]
+      .front_female,
+    props.data.sprites.versions["generation-iv"]["heartgold-soulsilver"]
+      .back_female,
+    props.data.sprites.versions["generation-iv"]["heartgold-soulsilver"]
+      .front_shiny,
+    props.data.sprites.versions["generation-iv"]["heartgold-soulsilver"]
+      .back_shiny,
+    props.data.sprites.versions["generation-iv"]["heartgold-soulsilver"]
+      .front_shiny_female,
+    props.data.sprites.versions["generation-iv"]["heartgold-soulsilver"]
+      .back_shiny_female,
+    props.data.sprites.versions["generation-iv"].platinum.front_default,
+    props.data.sprites.versions["generation-iv"].platinum.back_default,
+    props.data.sprites.versions["generation-iv"].platinum.front_female,
+    props.data.sprites.versions["generation-iv"].platinum.back_female,
+    props.data.sprites.versions["generation-iv"].platinum.front_shiny,
+    props.data.sprites.versions["generation-iv"].platinum.back_shiny,
+    props.data.sprites.versions["generation-iv"].platinum.front_shiny_female,
+    props.data.sprites.versions["generation-iv"].platinum.back_shiny_female,
+    props.data.sprites.versions["generation-v"]["black-white"].front_default,
+    props.data.sprites.versions["generation-v"]["black-white"].back_default,
+    props.data.sprites.versions["generation-v"]["black-white"].front_female,
+    props.data.sprites.versions["generation-v"]["black-white"].back_female,
+    props.data.sprites.versions["generation-v"]["black-white"].front_shiny,
+    props.data.sprites.versions["generation-v"]["black-white"].back_shiny,
+    props.data.sprites.versions["generation-v"]["black-white"]
+      .front_shiny_female,
+    props.data.sprites.versions["generation-v"]["black-white"]
+      .back_shiny_female,
+    props.data.sprites.versions["generation-v"]["black-white"].animated
+      .front_default,
+    props.data.sprites.versions["generation-v"]["black-white"].animated
+      .back_default,
+    props.data.sprites.versions["generation-v"]["black-white"].animated
+      .front_female,
+    props.data.sprites.versions["generation-v"]["black-white"].animated
+      .back_female,
+    props.data.sprites.versions["generation-v"]["black-white"].animated
+      .front_shiny,
+    props.data.sprites.versions["generation-v"]["black-white"].animated
+      .back_shiny,
+    props.data.sprites.versions["generation-v"]["black-white"].animated
+      .front_shiny_female,
+    props.data.sprites.versions["generation-v"]["black-white"].animated
+      .back_shiny_female,
+    props.data.sprites.versions["generation-vi"]["omegaruby-alphasapphire"]
+      .front_default,
+    props.data.sprites.versions["generation-vi"]["omegaruby-alphasapphire"]
+      .front_female,
+    props.data.sprites.versions["generation-vi"]["omegaruby-alphasapphire"]
+      .front_shiny,
+    props.data.sprites.versions["generation-vi"]["omegaruby-alphasapphire"]
+      .front_shiny_female,
+    props.data.sprites.versions["generation-vi"]["x-y"].front_default,
+    props.data.sprites.versions["generation-vi"]["x-y"].front_female,
+    props.data.sprites.versions["generation-vi"]["x-y"].front_shiny,
+    props.data.sprites.versions["generation-vi"]["x-y"].front_shiny_female,
+    props.data.sprites.versions["generation-vii"].icons.front_default,
+    props.data.sprites.versions["generation-vii"].icons.front_female,
+    props.data.sprites.versions["generation-vii"]["ultra-sun-ultra-moon"]
+      .front_default,
+    props.data.sprites.versions["generation-vii"]["ultra-sun-ultra-moon"]
+      .front_female,
+    props.data.sprites.versions["generation-vii"]["ultra-sun-ultra-moon"]
+      .front_shiny,
+    props.data.sprites.versions["generation-vii"]["ultra-sun-ultra-moon"]
+      .front_shiny_female,
+    props.data.sprites.versions["generation-viii"].icons.front_default,
+    props.data.sprites.versions["generation-viii"].icons.front_female,
+  ];
+
+  const typeColor = {
+    normal: "#A8A77A",
+    fighting: "#C22E28",
+    flying: "#A98FF3",
+    poison: "#A33EA1",
+    ground: "#E2BF65",
+    rock: "#B6A136",
+    bug: "#A6B91A",
+    ghost: "#735797",
+    steel: "#B7B7CE",
+    fire: "#EE8130",
+    water: "#6390F0",
+    grass: "#7AC74C",
+    electric: "#F7D02C",
+    psychic: "#F95587",
+    ice: "#96D9D6",
+    dragon: "#6F35FC",
+    dark: "#705746",
+    fairy: "#D685AD",
+    unknown: "#000000",
+    shadow: "#333333",
+  };
+
   useEffect(() => {
     if (props.data) {
       props.data.abilities.forEach((ability) => {
@@ -199,13 +380,21 @@ export default function Pokemon(props) {
 
   const abilities = () => {
     return props.data.abilities.map((ability, key) => (
-      <li key={key}>{ability.ability.name}</li>
+      <li key={key}>
+        <a href={`/ability/${ability.ability.name}`} alt={ability.ability.name}>
+          {ability.ability.name}
+        </a>
+      </li>
     ));
   };
 
   const games = () => {
     return props.data.game_indices.map((game, key) => (
-      <li key={key}>{game.version.name}</li>
+      <li key={key}>
+        <a href={`/version/${game.version.name}`} alt={game.version.name}>
+          {game.version.name}
+        </a>
+      </li>
     ));
   };
 
@@ -231,48 +420,90 @@ export default function Pokemon(props) {
 
   const heldItems = () => {
     return props.data.held_items.map((item, key) => (
-      <li key={key}>{item.item.name}</li>
+      <li key={key}>
+        <a href={`/item/${item.item.name}`} alt={item.item.name}>
+          {item.item.name}
+        </a>
+      </li>
     ));
   };
 
   const types = () => {
     return props.data.types.map((type, key) => (
-      <li key={key}>{type.type.name}</li>
+      <li key={key} style={{ backgroundColor: typeColor[type.type.name] }}>
+        <a href={`/type/${type.type.name}`} alt={type.type.name}>
+          {type.type.name}
+        </a>
+      </li>
     ));
   };
 
   const stats = () => {
     return props.data.stats.map((stat, key) => (
       <li key={key}>
-        {stat.stat.name}: {stat.base_stat}
+        <a href={`/stat/${stat.stat.name}`} alt={stat.stat.name}>
+          {stat.stat.name}
+        </a>
+        : {stat.base_stat}
       </li>
     ));
   };
 
   const forms = () => {
-    return props.data.forms.map((form, key) => <li key={key}>{form.name}</li>);
+    return props.data.forms.map((form, key) => (
+      <li key={key}>
+        <a href={`/pokemon-form/${form.name}`} alt={form.name}>
+          {form.name}
+        </a>
+      </li>
+    ));
   };
+
+  const moves = () => {
+    return props.data.moves.map((move, key) => (
+      <li key={key}>
+        <a href={`/move/${move.move.name}`} alt={move.move.name}>
+          {move.move.name}
+        </a>
+      </li>
+    ));
+  };
+
+  let image = "";
+  for (let img of images) {
+    if (img) {
+      image = img;
+      break;
+    }
+  }
 
   // Handles page loading and error
   if (isLoading) return <Loading />;
-  if (isError) return <Error />;
+  if (isError) return <Loading />;
   if (notFound) return <p>The pokémon has escaped! Keep searching!</p>;
 
   return (
     <section id="pokemon-page">
-      <div id="name-id">
-        <h2>{props.data.name}</h2>
-        <h3>#{props.data.id}</h3>
-      </div>
-
-      <div id="types">
-        <h3>Types</h3>
-        <ul>{types()}</ul>
-      </div>
-
-      <div id="stats">
-        <h3>Stats</h3>
-        <ul>{stats()}</ul>
+      <div id="profile">
+        <div id="picture">
+          <img src={image} alt={props.data.name} />
+        </div>
+        <div>
+          <div id="name-id">
+            <h2>{props.data.name}</h2>
+            <h3>#{props.data.id}</h3>
+          </div>
+          <div id="types">
+            <h3>Types</h3>
+            <ul>{types()}</ul>
+          </div>
+        </div>
+        <div>
+          <div id="stats">
+            {/* <h3>Stats</h3> */}
+            <ul>{stats()}</ul>
+          </div>
+        </div>
       </div>
 
       <div id="info">
@@ -292,6 +523,11 @@ export default function Pokemon(props) {
       <div id="abilities">
         <h3>Abilities</h3>
         <ul>{abilities()}</ul>
+      </div>
+
+      <div id="moves">
+        <h3>Moves</h3>
+        <ul>{moves()}</ul>
       </div>
 
       <div id="held-items">

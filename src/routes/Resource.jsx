@@ -149,7 +149,7 @@ export function ResourceList(props) {
   }, [count]);
 
   if (isLoading || isObjEmpty(data)) return <Loading />;
-  if (isError) return <Error />;
+  if (isError) return <Loading />;
   if (props.resource === "pokemon") return <PokemonList data={data} />;
 
   return (
@@ -194,7 +194,7 @@ export function ResourceCard(props) {
 
   // Handles page loading and error
   if (isLoading || isObjEmpty(data)) return <Loading />;
-  if (isError) return <Error />;
+  if (isError) return <Loading />;
 
   // Forwards data to respective resource card
   switch (props.resource) {

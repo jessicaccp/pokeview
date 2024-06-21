@@ -10,7 +10,7 @@ export function ContestEffect(props) {
         {props.data.effect_entries.map((entry, key) => (
           <li key={key}>
             <a
-              href={`/language/${entry.language.name}`}
+              href={`/pokeview/language/${entry.language.name}`}
               alt={entry.language.name}
             >
               {entry.language.name}
@@ -24,7 +24,7 @@ export function ContestEffect(props) {
         {props.data.flavor_text_entries.map((entry, key) => (
           <li key={key}>
             <a
-              href={`/language/${entry.language.name}`}
+              href={`/pokeview/language/${entry.language.name}`}
               alt={entry.language.name}
             >
               {entry.language.name}
@@ -48,7 +48,7 @@ export function ContestType(props) {
       <div id="contest-type-berry-flavor">
         <h3>Berry flavor</h3>
         <a
-          href={`/berry-flavor/${props.data.berry_flavor.name}`}
+          href={`/pokeview/berry-flavor/${props.data.berry_flavor.name}`}
           alt={props.data.berry_flavor.name}
         >
           {props.data.berry_flavor.name}
@@ -63,7 +63,7 @@ export function ContestType(props) {
         {props.data.names.map((name, key) => (
           <li key={key}>
             <a
-              href={`/language/${name.language.name}`}
+              href={`/pokeview/language/${name.language.name}`}
               alt={name.language.name}
             >
               {name.language.name}
@@ -89,7 +89,7 @@ export function SuperContestEffect(props) {
           {props.data.flavor_text_entries.map((entry, key) => (
             <li key={key}>
               <a
-                href={`/language/${entry.language.name}`}
+                href={`/pokeview/language/${entry.language.name}`}
                 alt={entry.language.name}
               >
                 {entry.language.name}
@@ -105,7 +105,7 @@ export function SuperContestEffect(props) {
         <ul>
           {props.data.moves.map((move, key) => (
             <li key={key}>
-              <a href={`/move/${move.name}`} alt={move.name}>
+              <a href={`/pokeview/move/${move.name}`} alt={move.name}>
                 {move.name}
               </a>
             </li>

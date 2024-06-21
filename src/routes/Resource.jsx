@@ -158,7 +158,7 @@ export function ResourceList(props) {
         {data.results.map((item, key) => (
           <li key={key}>
             <a
-              href={`/${props.resource}/${item.name || key + 1}`}
+              href={`/pokeview/${props.resource}/${item.name || key + 1}`}
               alt={item.name || key + 1}
             >
               {item.name || key + 1}

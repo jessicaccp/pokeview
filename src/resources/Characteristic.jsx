@@ -6,7 +6,7 @@ export default function Characteristic(props) {
         {props.data.descriptions.map((description, key) => (
           <li key={key}>
             <a
-              href={`/language/${description.language.name}`}
+              href={`/pokeview/language/${description.language.name}`}
               alt={description.language.name}
             >
               {description.language.name}
@@ -22,7 +22,7 @@ export default function Characteristic(props) {
       <div id="characteristic-highest-stat">
         <h3>Highest stat</h3>
         <a
-          href={`/stat/${props.data.highest_stat.name}`}
+          href={`/pokeview/stat/${props.data.highest_stat.name}`}
           alt={props.data.highest_stat.name}
         >
           {props.data.highest_stat.name}

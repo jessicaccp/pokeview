@@ -19,7 +19,7 @@ export default function Version(props) {
           {props.data.names.map((name, key) => (
             <li key={key}>
               <a
-                href={`/language/${name.language.name}`}
+                href={`/pokeview/language/${name.language.name}`}
                 alt={name.language.name}
               >
                 {name.language.name}
@@ -33,7 +33,7 @@ export default function Version(props) {
         <h3>Version group</h3>
         <p>
           <a
-            href={`/version-group/${props.data.version_group.name}`}
+            href={`/pokeview/version-group/${props.data.version_group.name}`}
             alt={props.data.version_group.name}
           >
             {props.data.version_group.name}
@@ -59,7 +59,7 @@ export function VersionGroup(props) {
         <h3>Generation</h3>
         <p>
           <a
-            href={`/generation/${props.data.generation.name}`}
+            href={`/pokeview/generation/${props.data.generation.name}`}
             alt={props.data.generation.name}
           >
             {props.data.generation.name}
@@ -71,7 +71,10 @@ export function VersionGroup(props) {
         <ul>
           {props.data.move_learn_methods.map((method, key) => (
             <li key={key}>
-              <a href={`/move-learn-method/${method.name}`} alt={method.name}>
+              <a
+                href={`/pokeview/move-learn-method/${method.name}`}
+                alt={method.name}
+              >
                 {method.name}
               </a>
             </li>
@@ -87,7 +90,7 @@ export function VersionGroup(props) {
         <ul>
           {props.data.pokedexes.map((pokedex, key) => (
             <li key={key}>
-              <a href={`/pokedex/${pokedex.name}`} alt={pokedex.name}>
+              <a href={`/pokeview/pokedex/${pokedex.name}`} alt={pokedex.name}>
                 {pokedex.name}
               </a>
             </li>
@@ -99,7 +102,7 @@ export function VersionGroup(props) {
         <ul>
           {props.data.regions.map((region, key) => (
             <li key={key}>
-              <a href={`/region/${region.name}`} alt={region.name}>
+              <a href={`/pokeview/region/${region.name}`} alt={region.name}>
                 {region.name}
               </a>
             </li>
@@ -111,7 +114,7 @@ export function VersionGroup(props) {
         <ul>
           {props.data.versions.map((version, key) => (
             <li key={key}>
-              <a href={`/version/${version.name}`} alt={version.name}>
+              <a href={`/pokeview/version/${version.name}`} alt={version.name}>
                 {version.name}
               </a>
             </li>

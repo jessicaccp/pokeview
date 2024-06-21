@@ -12,7 +12,7 @@ export default function Ability(props) {
       <div id="ability-generation">
         <h3>Generation</h3>
         <a
-          href={`/generation/${props.data.generation.name}`}
+          href={`/pokeview/generation/${props.data.generation.name}`}
           alt={props.data.generation.name}
         >
           {props.data.generation.name}
@@ -23,7 +23,7 @@ export default function Ability(props) {
         {props.data.names.map((name, key) => (
           <li key={key}>
             <a
-              href={`/language/${name.language.name}`}
+              href={`/pokeview/language/${name.language.name}`}
               alt={name.language.name}
             >
               {name.language.name}
@@ -37,7 +37,7 @@ export default function Ability(props) {
         {props.data.effect_entries.map((entry, key) => (
           <li key={key}>
             <a
-              href={`/language/${entry.language.name}`}
+              href={`/pokeview/language/${entry.language.name}`}
               alt={entry.language.name}
             >
               {entry.language.name}
@@ -59,7 +59,7 @@ export default function Ability(props) {
           <>
             <li key={key}>
               <a
-                href={`/version-group/${change.version_group.name}`}
+                href={`/pokeview/version-group/${change.version_group.name}`}
                 alt={change.version_group.name}
               >
                 {change.version_group.name}
@@ -70,7 +70,7 @@ export default function Ability(props) {
               {change.effect_entries.map((entry, key) => (
                 <li key={key}>
                   <a
-                    href={`/language/${entry.language.name}`}
+                    href={`/pokeview/language/${entry.language.name}`}
                     alt={entry.language.name}
                   >
                     {entry.language.name}
@@ -87,14 +87,14 @@ export default function Ability(props) {
         {props.data.flavor_text_entries.map((entry, key) => (
           <li key={key}>
             <a
-              href={`/language/${entry.language.name}`}
+              href={`/pokeview/language/${entry.language.name}`}
               alt={entry.language.name}
             >
               {entry.language.name}
             </a>{" "}
             -{" "}
             <a
-              href={`/version-group/${entry.version_group.name}`}
+              href={`/pokeview/version-group/${entry.version_group.name}`}
               alt={entry.version_group.name}
             >
               {entry.version_group.name}
@@ -108,7 +108,7 @@ export default function Ability(props) {
         {props.data.pokemon.map((pokemon, key) => (
           <li key={key}>
             <a
-              href={`/pokemon/${pokemon.pokemon.name}`}
+              href={`/pokeview/pokemon/${pokemon.pokemon.name}`}
               alt={pokemon.pokemon.name}
             >
               {pokemon.pokemon.name}

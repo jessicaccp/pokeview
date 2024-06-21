@@ -11,7 +11,7 @@ export function EggGroup(props) {
           {props.data.names.map((name, key) => (
             <li key={key}>
               <a
-                href={`/language/${name.language.name}`}
+                href={`/pokeview/language/${name.language.name}`}
                 alt={name.language.name}
               >
                 {name.language.name}
@@ -26,7 +26,10 @@ export function EggGroup(props) {
         <ul>
           {props.data.pokemon_species.map((pokemon, key) => (
             <li key={key}>
-              <a href={`/pokemon-species/${pokemon.name}`} alt={pokemon.name}>
+              <a
+                href={`/pokeview/pokemon-species/${pokemon.name}`}
+                alt={pokemon.name}
+              >
                 {pokemon.name}
               </a>
             </li>

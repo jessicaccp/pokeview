@@ -5,7 +5,7 @@ export function EvolutionChain(props) {
         <h3>Baby trigger item</h3>
         <p>
           <a
-            href={`/item/${props.data.baby_trigger_item.name}`}
+            href={`/pokeview/item/${props.data.baby_trigger_item.name}`}
             alt={props.data.baby_trigger_item.name}
           >
             {props.data.baby_trigger_item.name}
@@ -35,7 +35,7 @@ export function EvolutionTrigger(props) {
           {props.data.names.map((name, key) => (
             <li key={key}>
               <a
-                href={`/language/${name.language.name}`}
+                href={`/pokeview/language/${name.language.name}`}
                 alt={name.language.name}
               >
                 {name.language.name}
@@ -50,7 +50,10 @@ export function EvolutionTrigger(props) {
         <ul>
           {props.data.pokemon_species.map((pokemon, key) => (
             <li key={key}>
-              <a href={`/pokemon-species/${pokemon.name}`} alt={pokemon.name}>
+              <a
+                href={`/pokeview/pokemon-species/${pokemon.name}`}
+                alt={pokemon.name}
+              >
                 {pokemon.name}
               </a>
             </li>

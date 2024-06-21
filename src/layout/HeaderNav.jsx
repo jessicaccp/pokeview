@@ -1,14 +1,14 @@
 export default function Nav() {
   const links = [
-    { title: "Home", path: "/" },
-    { title: "Search", path: "/search" },
-    { title: "Random", path: "/random" },
-    { title: "Pokémon", path: "/pokemon" },
-    { title: "Lists", path: "/lists" },
-    // { title: "Pokémons", path: "/pokemon" },
-    // { title: "Abilities", path: "/abilities" },
+    { title: "Home", path: "/pokeview/" },
+    { title: "Search", path: "/pokeview/search" },
+    { title: "Random", path: "/pokeview/random" },
+    { title: "Pokémon", path: "/pokeview/pokemon" },
+    { title: "Lists", path: "/pokeview/lists" },
+    // { title: "Pokémons", path: "/pokeview/pokemon" },
+    // { title: "Abilities", path: "/pokeview/abilities" },
     // { title: "PokéAPI", url: "https://pokeapi.co" },
-    // { title: "Credits", path: "/credits" },
+    // { title: "Credits", path: "/pokeview/credits" },
   ];
 
   const navList = links.map((link, key) => {

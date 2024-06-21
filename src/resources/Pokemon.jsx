@@ -381,7 +381,10 @@ export default function Pokemon(props) {
   const abilities = () => {
     return props.data.abilities.map((ability, key) => (
       <li key={key}>
-        <a href={`/ability/${ability.ability.name}`} alt={ability.ability.name}>
+        <a
+          href={`/pokeview/ability/${ability.ability.name}`}
+          alt={ability.ability.name}
+        >
           {ability.ability.name}
         </a>
       </li>
@@ -391,7 +394,10 @@ export default function Pokemon(props) {
   const games = () => {
     return props.data.game_indices.map((game, key) => (
       <li key={key}>
-        <a href={`/version/${game.version.name}`} alt={game.version.name}>
+        <a
+          href={`/pokeview/version/${game.version.name}`}
+          alt={game.version.name}
+        >
           {game.version.name}
         </a>
       </li>
@@ -421,7 +427,7 @@ export default function Pokemon(props) {
   const heldItems = () => {
     return props.data.held_items.map((item, key) => (
       <li key={key}>
-        <a href={`/item/${item.item.name}`} alt={item.item.name}>
+        <a href={`/pokeview/item/${item.item.name}`} alt={item.item.name}>
           {item.item.name}
         </a>
       </li>
@@ -431,7 +437,7 @@ export default function Pokemon(props) {
   const types = () => {
     return props.data.types.map((type, key) => (
       <li key={key} style={{ backgroundColor: typeColor[type.type.name] }}>
-        <a href={`/type/${type.type.name}`} alt={type.type.name}>
+        <a href={`/pokeview/type/${type.type.name}`} alt={type.type.name}>
           {type.type.name}
         </a>
       </li>
@@ -441,7 +447,7 @@ export default function Pokemon(props) {
   const stats = () => {
     return props.data.stats.map((stat, key) => (
       <li key={key}>
-        <a href={`/stat/${stat.stat.name}`} alt={stat.stat.name}>
+        <a href={`/pokeview/stat/${stat.stat.name}`} alt={stat.stat.name}>
           {stat.stat.name}
         </a>
         : {stat.base_stat}
@@ -452,7 +458,7 @@ export default function Pokemon(props) {
   const forms = () => {
     return props.data.forms.map((form, key) => (
       <li key={key}>
-        <a href={`/pokemon-form/${form.name}`} alt={form.name}>
+        <a href={`/pokeview/pokemon-form/${form.name}`} alt={form.name}>
           {form.name}
         </a>
       </li>
@@ -462,7 +468,7 @@ export default function Pokemon(props) {
   const moves = () => {
     return props.data.moves.map((move, key) => (
       <li key={key}>
-        <a href={`/move/${move.move.name}`} alt={move.move.name}>
+        <a href={`/pokeview/move/${move.move.name}`} alt={move.move.name}>
           {move.move.name}
         </a>
       </li>

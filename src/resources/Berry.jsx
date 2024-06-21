@@ -32,7 +32,7 @@ export default function Berry(props) {
       <div id="berry-firmness">
         <h3>Firmness</h3>
         <a
-          href={`/berry-firmness/${props.data.firmness.name}`}
+          href={`/pokeview/berry-firmness/${props.data.firmness.name}`}
           alt={props.data.firmness.name}
         >
           {props.data.firmness.name}
@@ -43,7 +43,7 @@ export default function Berry(props) {
         {props.data.flavors.map((flavor, key) => (
           <li key={key}>
             <a
-              href={`/berry-flavor/${flavor.flavor.name}`}
+              href={`/pokeview/berry-flavor/${flavor.flavor.name}`}
               alt={flavor.flavor.name}
             >
               {flavor.flavor.name}
@@ -55,14 +55,17 @@ export default function Berry(props) {
       </div>
       <div id="berry-item">
         <h3>Item</h3>
-        <a href={`/item/${props.data.item.name}`} alt={props.data.item.name}>
+        <a
+          href={`/pokeview/item/${props.data.item.name}`}
+          alt={props.data.item.name}
+        >
           {props.data.item.name}
         </a>
       </div>
       <div id="berry-natural-gift-type">
         <h3>Natural gift type</h3>
         <a
-          href={`/type/${props.data.natural_gift_type.name}`}
+          href={`/pokeview/type/${props.data.natural_gift_type.name}`}
           alt={props.data.natural_gift_type.name}
         >
           {props.data.natural_gift_type.name}
@@ -79,7 +82,7 @@ export function BerryFirmness(props) {
         <h3>Berries</h3>
         {props.data.berries.map((berry, key) => (
           <li key={key}>
-            <a href={`/berry/${berry.name}`} alt={berry.name}>
+            <a href={`/pokeview/berry/${berry.name}`} alt={berry.name}>
               {berry.name}
             </a>
           </li>
@@ -94,7 +97,7 @@ export function BerryFirmness(props) {
         {props.data.names.map((name, key) => (
           <li key={key}>
             <a
-              href={`/language/${name.language.name}`}
+              href={`/pokeview/language/${name.language.name}`}
               alt={name.language.name}
             >
               {name.language.name}
@@ -114,7 +117,10 @@ export function BerryFlavor(props) {
         <h3>Berries</h3>
         {props.data.berries.map((berry, key) => (
           <li key={key}>
-            <a href={`/berry/${berry.berry.name}`} alt={berry.berry.name}>
+            <a
+              href={`/pokeview/berry/${berry.berry.name}`}
+              alt={berry.berry.name}
+            >
               {berry.berry.name}
             </a>
             <h4>Potency</h4>
@@ -125,7 +131,7 @@ export function BerryFlavor(props) {
       <div id="berry-flavor-contest-type">
         <h3>Contest type</h3>
         <a
-          href={`/contest-type/${props.data.contest_type.name}`}
+          href={`/pokeview/contest-type/${props.data.contest_type.name}`}
           alt={props.data.contest_type.name}
         >
           {props.data.contest_type.name}
@@ -139,7 +145,7 @@ export function BerryFlavor(props) {
         {props.data.names.map((berry, key) => (
           <li key={key}>
             <a
-              href={`/language/${berry.language.name}`}
+              href={`/pokeview/language/${berry.language.name}`}
               alt={berry.language.name}
             >
               {berry.language.name}

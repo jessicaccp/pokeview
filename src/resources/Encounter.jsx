@@ -11,7 +11,7 @@ export function EncounterCondition(props) {
           {props.data.names.map((condition, key) => (
             <li key={key}>
               <a
-                href={`/language/${condition.language.name}`}
+                href={`/pokeview/language/${condition.language.name}`}
                 alt={condition.language.name}
               >
                 {condition.language.name}
@@ -27,7 +27,7 @@ export function EncounterCondition(props) {
           {props.data.values.map((value, key) => (
             <li key={key}>
               <a
-                href={`/encounter-condition-value/${value.name}`}
+                href={`/pokeview/encounter-condition-value/${value.name}`}
                 alt={value.name}
               >
                 {value.name}
@@ -45,7 +45,7 @@ export function EncounterConditionValue(props) {
     <div id="encounter-condition-value">
       <div id="encounter-condition-value-condition">
         <a
-          href={`/encounter-condition/${props.data.name}`}
+          href={`/pokeview/encounter-condition/${props.data.name}`}
           alt={props.data.name}
         >
           {props.data.condition.name}
@@ -60,7 +60,7 @@ export function EncounterConditionValue(props) {
           {props.data.names.map((name, key) => (
             <li key={key}>
               <a
-                href={`/language/${name.language.name}`}
+                href={`/pokeview/language/${name.language.name}`}
                 alt={name.language.name}
               >
                 {name.language.name}
@@ -86,7 +86,7 @@ export function EncounterMethod(props) {
           {props.data.names.map((name, key) => (
             <li key={key}>
               <a
-                href={`/language/${name.language.name}`}
+                href={`/pokeview/language/${name.language.name}`}
                 alt={name.language.name}
               >
                 {name.language.name}

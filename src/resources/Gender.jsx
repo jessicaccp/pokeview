@@ -13,7 +13,7 @@ export default function Gender(props) {
           {props.data.pokemon_species_details.map((pokemon, key) => (
             <li key={key}>
               <a
-                href={`/pokemon-species/${pokemon.pokemon_species.name}`}
+                href={`/pokeview/pokemon-species/${pokemon.pokemon_species.name}`}
                 alt={pokemon.pokemon_species.name}
               >
                 {pokemon.pokemon_species.name}
@@ -28,7 +28,10 @@ export default function Gender(props) {
         <ul>
           {props.data.required_for_evolution.map((pokemon, key) => (
             <li key={key}>
-              <a href={`/pokemon-species/${pokemon.name}`} alt={pokemon.name}>
+              <a
+                href={`/pokeview/pokemon-species/${pokemon.name}`}
+                alt={pokemon.name}
+              >
                 {pokemon.name}
               </a>
             </li>

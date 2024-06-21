@@ -204,20 +204,20 @@ export default function PokemonMiniCard(props) {
   return (
     <div className="pokemon-mini-card" onClick={handleClick}>
       <div className="pokemon-mini-card-sprite">
-        <a href={`/pokemon/${name}`} alt={name}>
+        <a href={`/pokeview/pokemon/${name}`} alt={name}>
           <img src={image} alt={name} />
         </a>
       </div>
       <div className="pokemon-mini-card-id">
         <p>
-          <a href={`/pokemon/${name}`} alt={name}>
+          <a href={`/pokeview/pokemon/${name}`} alt={name}>
             #{id}
           </a>
         </p>
       </div>
       <div className="pokemon-mini-card-name">
         <p>
-          <a href={`/pokemon/${name}`} alt={name}>
+          <a href={`/pokeview/pokemon/${name}`} alt={name}>
             {name}
           </a>
         </p>

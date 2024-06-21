@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/pokeview/static/css/main.150b5aab.css",
-    "main.js": "/pokeview/static/js/main.e44b9df8.js",
+    "main.js": "/pokeview/static/js/main.4bf8dcdc.js",
     "static/media/cement-concrete-wall-texture-background.jpg": "/pokeview/static/media/cement-concrete-wall-texture-background.1d4a6ef19b069c0cd999.jpg",
     "static/media/logo512.png": "/pokeview/static/media/logo512.5799e47629570c13c47f.png",
     "static/media/pokeball.png": "/pokeview/static/media/pokeball.9fc0eeaeda972e93ebc7.png",
     "static/media/PocketMonk-15ze.ttf": "/pokeview/static/media/PocketMonk-15ze.09d09837f1b6dec50403.ttf",
     "index.html": "/pokeview/index.html",
     "main.150b5aab.css.map": "/pokeview/static/css/main.150b5aab.css.map",
-    "main.e44b9df8.js.map": "/pokeview/static/js/main.e44b9df8.js.map"
+    "main.4bf8dcdc.js.map": "/pokeview/static/js/main.4bf8dcdc.js.map"
   },
   "entrypoints": [
     "static/css/main.150b5aab.css",
-    "static/js/main.e44b9df8.js"
+    "static/js/main.4bf8dcdc.js"
   ]
 }

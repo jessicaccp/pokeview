@@ -210,6 +210,8 @@ export default function Search() {
         setResult([]);
         break;
     }
+
+    result.sort((a, b) => a.props.data.id > b.props.data.id);
   }
 
   return (

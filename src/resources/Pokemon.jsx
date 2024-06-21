@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PokemonMiniCard from "../components/PokemonMiniCard";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import { isObjEmpty } from "../utils";
@@ -318,25 +319,50 @@ export default function Pokemon(props) {
 
 export function PokemonList(props) {
   const [data, setData] = useState([]);
+  const [sortedData, setSortedData] = useState([]);
+  const [result, setResult] = useState([]);
 
   useEffect(() => {
+    // console.log(props.data);
+    let isMounted = true;
+    setData([]);
     props.data.results.forEach((pokemon) => {
       fetch(pokemon.url)
         .then((response) => response.json())
-        .then((data) => setData((prev) => [...prev, data]))
+        .then((data) => {
+          if (isMounted) {
+            setData((prev) => [...prev, data]);
+          }
+        })
         .catch((error) => console.error(error));
     });
-  });
+    return () => {
+      isMounted = false;
+    };
+  }, [props.data.results]);
 
-  if (data)
-    return (
-      <>
-        {data.forEach((pokemon) => (
-          <li>{pokemon.name}</li>
-        ))}
-      </>
-    );
-  return <></>;
+  useEffect(() => {
+    setSortedData(data.sort((a, b) => a.id > b.id));
+  }, [data]);
+
+  useEffect(() => {
+    setResult([]);
+    sortedData.forEach((pokemon) => {
+      setResult((prev) => [...prev, <PokemonMiniCard data={pokemon} />]);
+    });
+  }, [sortedData]);
+
+  return (
+    <div id="pokemon-list">
+      <div id="search-result">
+        <ul>
+          {result.map((r, key) => {
+            return <li key={key}>{r}</li>;
+          })}
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 export function PokemonColor(props) {

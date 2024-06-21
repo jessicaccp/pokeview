@@ -357,14 +357,12 @@ export function PokemonList(props) {
   if (isLoading) return <Loading />;
 
   return (
-    <div id="pokemon-list">
-      <div id="search-result">
-        <ul>
-          {result.map((r, key) => {
-            return <li key={key}>{r}</li>;
-          })}
-        </ul>
-      </div>
+    <div id="search-result">
+      <ul>
+        {result.map((r, key) => {
+          return <li key={key}>{r}</li>;
+        })}
+      </ul>
     </div>
   );
 }

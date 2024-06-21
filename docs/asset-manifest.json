@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e9918689.css",
+    "main.js": "/static/js/main.102942bd.js",
+    "static/media/cement-concrete-wall-texture-background.jpg": "/static/media/cement-concrete-wall-texture-background.1d4a6ef19b069c0cd999.jpg",
+    "static/media/logo512.png": "/static/media/logo512.5799e47629570c13c47f.png",
+    "static/media/pokeball.png": "/static/media/pokeball.9fc0eeaeda972e93ebc7.png",
+    "static/media/PocketMonk-15ze.ttf": "/static/media/PocketMonk-15ze.09d09837f1b6dec50403.ttf",
+    "index.html": "/index.html",
+    "main.e9918689.css.map": "/static/css/main.e9918689.css.map",
+    "main.102942bd.js.map": "/static/js/main.102942bd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e9918689.css",
+    "static/js/main.102942bd.js"
+  ]
+}

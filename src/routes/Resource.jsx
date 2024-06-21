@@ -47,6 +47,7 @@ import Pokemon, {
   PokemonColor,
   PokemonForm,
   PokemonHabitat,
+  PokemonList,
   PokemonShape,
   PokemonSpeciesId,
 } from "../resources/Pokemon";
@@ -149,6 +150,7 @@ export function ResourceList(props) {
 
   if (isLoading || isObjEmpty(data)) return <Loading />;
   if (isError) return <Error />;
+  if (props.resource === "pokemon") return <PokemonList data={data} />;
 
   return (
     <div id={`${props.resource}-list`}>
@@ -191,7 +193,7 @@ export function ResourceCard(props) {
   }, [apiUrl]);
 
   // Handles page loading and error
-  if (isLoading) return <Loading />;
+  if (isLoading || isObjEmpty(data)) return <Loading />;
   if (isError) return <Error />;
 
   // Forwards data to respective resource card

@@ -517,6 +517,7 @@ main {
   border: 1px solid black;
   border-bottom: 0;
   box-shadow: 0.25rem 0.25rem black;
+  /* font-weight: bold; */
 }
 
 label input {

@@ -3,6 +3,7 @@ export default function Nav() {
     { title: "Home", path: "/" },
     { title: "Search", path: "/search" },
     { title: "Random", path: "/random" },
+    { title: "Pokémon", path: "/pokemon" },
     { title: "Lists", path: "/lists" },
     // { title: "Pokémons", path: "/pokemon" },
     // { title: "Abilities", path: "/abilities" },

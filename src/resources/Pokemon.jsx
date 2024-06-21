@@ -321,9 +321,10 @@ export function PokemonList(props) {
   const [data, setData] = useState([]);
   const [sortedData, setSortedData] = useState([]);
   const [result, setResult] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // console.log(props.data);
+    setIsLoading(true);
     let isMounted = true;
     setData([]);
     props.data.results.forEach((pokemon) => {
@@ -336,6 +337,7 @@ export function PokemonList(props) {
         })
         .catch((error) => console.error(error));
     });
+    setIsLoading(false);
     return () => {
       isMounted = false;
     };
@@ -351,6 +353,8 @@ export function PokemonList(props) {
       setResult((prev) => [...prev, <PokemonMiniCard data={pokemon} />]);
     });
   }, [sortedData]);
+
+  if (isLoading) return <Loading />;
 
   return (
     <div id="pokemon-list">

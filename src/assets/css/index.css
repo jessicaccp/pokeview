@@ -232,7 +232,7 @@ footer {
 /* app / main */
 
 main {
-  padding-top: 4rem;
+  padding-top: 5rem;
   padding-bottom: 1rem;
   width: 100%;
   height: auto;
@@ -494,7 +494,7 @@ main {
   background-color: #eee;
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+  margin-bottom: 2rem;
 }
 
 #search-fieldset {
@@ -517,7 +517,6 @@ main {
   border: 1px solid black;
   border-bottom: 0;
   box-shadow: 0.25rem 0.25rem black;
-  /* font-weight: bold; */
 }
 
 label input {
@@ -534,7 +533,17 @@ label input {
 
 #search-result {
   width: 100%;
-  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#search-result>p {
+  background-color: #fff;
+  margin-bottom: 1rem;
+  padding: 0.25rem 1rem;
+  border: 1px solid black;
+  font-size: 0.75rem;
 }
 
 #search-result ul {
@@ -557,7 +566,6 @@ label input {
   aspect-ratio: 1;
   width: 300px;
   height: 300px;
-  /* white-space: nowrap; */
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -577,7 +585,6 @@ label input {
   width: 100px;
   height: 100px;
   aspect-ratio: 1;
-  /* margin-bottom: 1rem; */
 }
 
 .pokemon-mini-card-id {
@@ -593,8 +600,18 @@ label input {
 .pokemon-mini-card-types li {
   padding: 0.35rem;
   border: 1px solid black;
-  /* font-weight: bold; */
   background-color: white;
+}
+
+/* end */
+
+/* routes / lists */
+
+#lists ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 1rem;
 }
 
 /* end */

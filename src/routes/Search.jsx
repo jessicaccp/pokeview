@@ -210,13 +210,11 @@ export default function Search() {
         setResult([]);
         break;
     }
-
-    result.sort((a, b) => a.props.data.id > b.props.data.id);
   }
 
   return (
     <div id="search-page">
-      <form id="search-form" autocomplete="off">
+      <form id="search-form" autoComplete="off">
         <fieldset id="search-fieldset">
           {options.map((label) => (
             <label key={label} id={`search-label-${label}`}>
@@ -244,6 +242,7 @@ export default function Search() {
       </form>
 
       <div id="search-result">
+        <p>{result.length} result(s)</p>
         <ul>
           {result.map((r, key) => {
             return <li key={key}>{r}</li>;

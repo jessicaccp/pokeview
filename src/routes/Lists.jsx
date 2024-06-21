@@ -52,13 +52,15 @@ export default function Lists() {
 
   return (
     <div id="lists">
-      {lists.map((item, key) => (
-        <li key={key}>
-          <a href={item.path} alt={item.title}>
-            {item.title}
-          </a>
-        </li>
-      ))}
+      <ul>
+        {lists.map((item, key) => (
+          <li key={key}>
+            <a href={item.path} alt={item.title}>
+              {item.title}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

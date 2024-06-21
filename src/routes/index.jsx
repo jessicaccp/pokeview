@@ -11,14 +11,14 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         {/* pages */}
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/pokeview/" element={<Home />} />
+        <Route path="/pokeview/search" element={<Search />} />
         {/* <Route path="/search/:keyword" element={<Search />} /> */}
         {/* <Route path="/search/:option/:keyword" element={<Search />} /> */}
-        <Route path="/random" element={<Random />} />
-        <Route path="/lists" element={<Lists />} />
-        <Route path="/:resource" element={<Resource />} />
-        <Route path="/:resource/:id" element={<Resource />} />
+        <Route path="/pokeview/random" element={<Random />} />
+        <Route path="/pokeview/lists" element={<Lists />} />
+        <Route path="/pokeview/:resource" element={<Resource />} />
+        <Route path="/pokeview/:resource/:id" element={<Resource />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,3 @@
+resultados:
+    x por página
+    
